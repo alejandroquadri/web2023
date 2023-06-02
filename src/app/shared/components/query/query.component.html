@@ -1,0 +1,18 @@
+<div class="wrapper d-flex flex-column">
+  <header *ngIf="data" class="d-flex align-items-center mb-3">
+    <h2 class="flex-fill">
+      <span> {{ lang === 'es' ? 'Presupuesto' : 'Quote' }} </span>
+      <!-- <span *ngIf="showOrigin(data.origin)">{{ data.origin }}</span> -->
+    </h2>
+
+    <button mat-icon-button (click)="closeDialog()" tabindex="99">
+      <mat-icon>close</mat-icon>
+    </button>
+  </header>
+
+  <div mat-dialog-content class="dialog-content">
+    <app-form
+      [origin]="data.origin"
+      (submitEmiter)="closeDialog($event)"></app-form>
+  </div>
+</div>

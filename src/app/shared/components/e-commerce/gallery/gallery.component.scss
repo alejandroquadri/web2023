@@ -1,0 +1,49 @@
+.tile-wrapper {
+  height: 100%;
+  width: 100%;
+}
+
+.img-wrapper {
+  flex: 1;
+}
+
+.prod-img {
+  width: 85%;
+  height: auto;
+}
+
+.text-wrapper {
+  // height: 80px;
+}
+
+select {
+  color: inherit;
+}
+
+.second-row {
+  color: var(--grey-600);
+  font-size: 0.8rem;
+}
+
+.add-btn {
+  line-height: 30px;
+}
+
+@media (max-width: 992px) {
+  .prod-img {
+    width: 80%;
+  }
+  .text-wrapper {
+    font-size: 0.7rem;
+  }
+
+  .add-btn {
+    line-height: 20px;
+    font-size: 0.7rem;
+    padding: 0px 0px;
+  }
+
+  .second-row {
+    font-size: 0.6rem;
+  }
+}

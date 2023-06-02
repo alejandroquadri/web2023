@@ -1,0 +1,102 @@
+<!-- <div
+  class="wrapper"
+  [ngClass]="{
+    mobile: isMobile$ | async,
+    desktop: (isMobile$ | async) === false
+  }"> -->
+<div *ngIf="entries" class="container wrapper">
+  <h1 class="title text-center py-3">blog</h1>
+
+  <div
+    #subNav
+    class="nav-wrapper"
+    [ngClass]="{ container: sticky, 'sticky-nav': sticky }">
+    <div class="pb-3 pb-lg-5 d-flex justify-content-evenly flex-wrap">
+      <span
+        *ngFor="let tag of tags"
+        class="p-2 filter"
+        [ngClass]="{ 'selected-filter': selectedTag === tag.value }"
+        role="button"
+        (click)="changeSelectedTag(tag.value)"
+        >{{ tag[lang] | lowercase }}
+      </span>
+      <input
+        [(ngModel)]="searchTerm"
+        class="search d-none d-sm-block"
+        placeholder="Buscar" />
+    </div>
+  </div>
+
+  <!-- <div *ngIf="data$ | async as data; else spinner"> -->
+  <div>
+    <div
+      class="row pb-4"
+      *ngFor="let entry of filterEntries(); let last = last">
+      <div class="col-12">
+        <h1 (click)="openPost(entry)" class="entry-title" role="button">
+          {{ entry.title }}
+        </h1>
+        <p class="author-title">
+          <span>{{ lang === 'es' ? 'Por' : 'By ' }} </span>
+          <span class="author"> {{ entry.author }} </span>
+          <span>{{ lang === 'es' ? 'el' : 'on ' }} </span>
+          <span>{{ entry.date | dateFns: 'dd-MM-yyyy' }}</span>
+        </p>
+        <div
+          class="img-div rounded mb-4"
+          *ngIf="entry.featureImg"
+          [ngStyle]="{
+            'background-image': 'url(' + entry.featureImg + ')'
+          }"></div>
+        <div class="blog-content" [innerHTML]="entry.preview | markdown"></div>
+        <div>
+          <a class="more-btn" role="button" (click)="openPost(entry)">
+            {{ lang === 'es' ? 'Leer más...' : 'Read more...' }}
+          </a>
+        </div>
+        <hr *ngIf="!last" />
+      </div>
+    </div>
+  </div>
+
+  <!-- <ng-template #spinner>
+    <div
+      class="loader d-flex flex-column justify-content-center align-items-center">
+      <mat-spinner diameter="50"></mat-spinner>
+      <div class="mt-4">Cargando</div>
+    </div>
+  </ng-template> -->
+</div>
+<!-- </div> -->
+
+<!-- <ng-template #spinner>
+  <div
+    class="wrapper loader d-flex flex-column justify-content-center align-items-center">
+    <mat-spinner diameter="50"></mat-spinner>
+    <div class="mt-4">Cargando</div>
+  </div>
+</ng-template> -->
+
+<!-- 
+  <div #subNav class="nav-wrapper" [ngClass]="{ 'sticky-nav': sticky }">
+    <mat-toolbar class="nav pb-3" [class]="{ 'sticky-pad': sticky }">
+      <div class="btns">
+        <button
+          (click)="changeSelectedTag(tag)"
+          class="sub-btn"
+          [ngClass]="{ 'btn-cel': selectedTag === tag }"
+          type="button"
+          mat-button
+          *ngFor="let tag of tags">
+          {{ tag | titlecase }}
+        </button>
+      </div>
+      <span class="spacer"></span>
+      <input
+        *ngIf="(isMobile$ | async) === false"
+        [(ngModel)]="searchTerm"
+        class="search"
+        placeholder="Buscar" />
+    </mat-toolbar>
+  </div> 
+-->

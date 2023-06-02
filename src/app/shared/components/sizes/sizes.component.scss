@@ -1,0 +1,30 @@
+.dim-container {
+  flex-direction: row;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.thickness {
+  font-size: 0.9rem;
+  // font-weight: 200;
+}
+
+.dim {
+  margin: 10px;
+}
+
+@media (max-width: 744px) {
+
+  // .dim-container {
+  //   flex-direction: column;
+  //   flex-wrap: nowrap;
+  //   justify-content: center;
+  // }
+
+  .dim {
+    // width: 100%;
+    margin: 10px;
+    margin-bottom: 0.7rem;
+  }
+
+}

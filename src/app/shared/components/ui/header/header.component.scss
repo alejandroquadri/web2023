@@ -1,0 +1,46 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+.logo {
+  width: 150px;
+  height: 49.8px;
+  cursor: pointer;
+}
+
+.nav {
+  // background-color: black;
+  background-color: white;
+  // color: white;
+  z-index: 99;
+}
+
+.sticky-nav {
+  position: fixed;
+  top: 0;
+  z-index: 9;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  -webkit-backdrop-filter: blur(2px);
+  -o-backdrop-filter: blur(2px);
+  -moz-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+}
+
+.abs-nav {
+  position: absolute;
+  background-color: white;
+  -webkit-backdrop-filter: none;
+  -o-backdrop-filter: none;
+  -moz-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+.link-item {
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+.router-link-active {
+  font-weight: 400;
+}

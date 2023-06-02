@@ -1,0 +1,43 @@
+
+.wrapper {
+  height: 100%;
+  width: 100%;
+  max-height: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow: auto;
+  // background-color: red;
+}
+
+.subtitle {
+  font-weight: 200;
+  font-style: italic;
+}
+
+.img-wrapper {
+  flex: 1;
+  width: 100%;
+  position: relative;
+}
+
+
+.loader {
+  height: 100%;
+  width: 100%;
+  // position: absolute;
+  z-index: -99
+  // margin: 2rem;
+}
+
+.img-div {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  // height: 70vh;
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

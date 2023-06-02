@@ -1,0 +1,78 @@
+<div class="container p-0" *ngIf="products && dbProducts">
+  <mat-grid-list
+    class="my-4"
+    [cols]="getScreenSize() | async"
+    gutterSize="10px"
+    rowHeight="1:1">
+    <mat-grid-tile
+      class="product-gallery"
+      role="button"
+      [colspan]="1"
+      [rowspan]="1"
+      *ngFor="let product of products; let i = index">
+      <div class="tile-wrapper d-flex flex-column">
+        <div
+          class="img-wrapper d-flex justify-content-center align-items-center"
+          (click)="select(product.name)">
+          <img
+            [src]="allColors[product.name].url"
+            class="rounded prod-img"
+            [alt]="product.name" />
+        </div>
+        <div class="text-wrapper ps-3 pe-3 px-lg-5">
+          <div class="d-flex pb-lg-1">
+            <div class="flex-grow-1 text-start fw-bold m-auto">
+              {{ getName(product.name) }}
+            </div>
+            <div class="flex-grow-1 text-end">
+              <!-- <span *ngIf="dbProducts">
+                {{ calcStock(product.sizes[0].code) }}
+              </span> -->
+              <button
+                class="add-btn"
+                *ngIf="!isEcom"
+                mat-stroked-button
+                aria-label="add"
+                (click)="select(product.name)">
+                + agregar
+              </button>
+              <span *ngIf="isEcom && dbProducts">
+                {{
+                  dbProducts[selectedProducts[i]?.code].precioActual
+                    | currency : 'USD' : 'symbol-narrow' : '0.0-2'
+                }}
+                /
+                {{ dbProducts[selectedProducts[i]?.code].unidad | lowercase }}
+              </span>
+            </div>
+          </div>
+          <div class="d-flex second-row" *ngIf="isEcom">
+            <div class="flex-grow-1 text-start">
+              <select
+                [(ngModel)]="selectedProducts[i]"
+                [value]="product.sizes[0]">
+                <option
+                  *ngFor="let sizeObj of product.sizes"
+                  [ngValue]="sizeObj">
+                  {{ sizeObj.size }}
+                </option>
+              </select>
+              <!-- <span> {{ product.sizes[0] | json }} </span> -->
+            </div>
+            <div class="flex-grow-1 text-end">
+              <!-- <span *ngIf="dbProducts">
+                {{
+                  dbProducts[selectedProducts[i]?.code]?.precioActual
+                    | currency: 'USD':'symbol-narrow':'0.0-2'
+                }}
+                /
+                {{ dbProducts[selectedProducts[i]?.code]?.unidad | lowercase }}
+              </span> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <!-- <div>{{ products | json }}</div> -->
+</div>

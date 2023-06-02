@@ -1,0 +1,149 @@
+<div class="wrapper d-flex flex-column pb-3 mx-3 pb-lg-4 mx-lg-4">
+  <swiper
+    [slidesPerView]="1"
+    [spaceBetween]="0"
+    [autoplay]="{ delay: 8000, disableOnInteraction: false }"
+    [navigation]="false"
+    [pagination]="{ clickable: true }"
+    [scrollbar]="{ draggable: true }"
+    [centeredSlides]="true">
+    <ng-template *ngFor="let slide of copy.slides" swiperSlide>
+      <div class="slide-wrapper">
+        <div
+          class="slide d-none d-sm-block"
+          [style.background-image]="
+            'url(' + slide.bg_img_desktop.url + ')'
+          "></div>
+        <div
+          class="slide d-sm-none"
+          [style.background-image]="'url(' + slide.bg_img_mob.url + ')'"></div>
+
+        <div class="caption-wrapper d-flex flex-column align-items-center">
+          <div class="m-auto">
+            <div class="text-wrapper">
+              <h1 class="landing-title">{{ slide.title[lang] }}</h1>
+              <h4 class="landing-oneLiner">{{ slide.oneLiner[lang] }}</h4>
+            </div>
+
+            <div class="btns-wrapper">
+              <app-cta-btn
+                class="btn"
+                [text]="copy.cta_btn1[lang]"
+                [origin]="'landing'"
+                [lang]="lang"
+                [fullWidth]="true">
+              </app-cta-btn>
+              <button
+                mat-stroked-button
+                class="lg-btn ms-0 ms-md-3 mt-3 mt-md-0 btn-outline-white btn"
+                (click)="toCol(slide.cta_btn2.url)">
+                {{ slide.cta_btn2[lang] }}
+              </button>
+            </div>
+
+            <!-- botones viejos -->
+            <!-- <div class="d-flex justify-content-center">
+              <app-cta-btn
+                class="mx-2"
+                [text]="copy.cta_btn1[lang]"
+                [origin]="'landing'"
+                [lang]="lang">
+              </app-cta-btn>
+              <button
+                mat-stroked-button
+                class="lg-btn mx-2 btn-outline-white"
+                (click)="toCol(slide.cta_btn2.url)">
+                {{ slide.cta_btn2[lang] }}
+              </button>
+            </div> -->
+          </div>
+        </div>
+
+        <!-- swipper viejo -->
+        <!-- <div class="caption-wrapper d-flex flex-column align-items-center">
+          <div class="m-auto">
+            <div class="text-wrapper">
+              <h1 class="landing-oneLiner">{{ slide.oneLiner[lang] }}</h1>
+            </div>
+            <div class="d-flex justify-content-center">
+              <app-cta-btn
+                class="mx-2"
+                [text]="copy.cta_btn1[lang]"
+                [origin]="'landing'"
+                [lang]="lang">
+              </app-cta-btn>
+              <button
+                mat-stroked-button
+                class="lg-btn mx-2 btn-outline-white"
+                (click)="toCol(slide.cta_btn2.url)">
+                {{ slide.cta_btn2[lang] }}
+              </button>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </ng-template>
+  </swiper>
+
+  <!-- <div class="img-wrapper flex-fill">
+    <video
+      #bgVideo
+      playsinline
+      autoplay
+      [muted]="true"
+      loop
+      [poster]="
+        (isMobile$ | async) ? copy.bg_img_mob.url : copy.bg_img_desktop.url
+      ">
+      <source
+        [src]="(isMobile$ | async) ? copy.bg_vid_mob.url : copy.bg_vid_dt.url"
+        type="video/mp4" />
+    </video>
+
+    <div class="caption-wrapper d-flex flex-column align-items-center">
+      <div class="m-auto">
+        <div class="text-wrapper">
+          <h1 class="landing-oneLiner">{{ copy.oneLiner[lang] }}</h1>
+        </div>
+        <div class="d-flex justify-content-center">
+          <app-cta-btn
+            class="mx-2"
+            [text]="copy[isLocal() ? 'cta_btn1' : 'cta_btn1_int'][lang]"
+            [origin]="'landing'"
+            [lang]="lang">
+          </app-cta-btn>
+          <button
+            *ngIf="!isLocal()"
+            mat-stroked-button
+            class="lg-btn mx-2 btn-outline-white"
+            (click)="toTiles(lang === 'es' ? 'placas' : 'tiles')">
+            {{ copy.cta_btn2[lang] }}
+          </button>
+        </div>
+      </div>
+
+      <div class="w-100">
+        <div class="d-flex justify-content-evenly" *ngIf="isLocal()">
+          <button
+            class="lg-btn white prod-btn mb-2"
+            mat-button
+            *ngFor="let prod of prodCopy?.products"
+            (click)="toProd(prod)">
+            {{ prod[lang].text }}
+          </button>
+        </div>
+        <div class="mt-auto d-flex justify-content-center mb-2">
+          <mat-icon class="align-middle">expand_more</mat-icon>
+        </div>
+      </div>
+    </div>
+  </div> -->
+</div>
+
+<div>
+  <app-feature-with-img [copy]="terrazzoArt"></app-feature-with-img>
+</div>
+
+<div>
+  <app-three-features [copy]="threeFeatures"></app-three-features>
+</div>

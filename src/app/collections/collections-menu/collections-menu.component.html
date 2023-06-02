@@ -1,0 +1,71 @@
+<div class="contenedor">
+  <div class="container">
+    <h1 class="title text-center py-3">{{ colMenu.title[lang] }}</h1>
+    <div class="sub-title fw-bold fs-6 text-center mb-4">
+      {{ colMenu.subTitle[lang] }}
+    </div>
+    <div class="pb-2 d-flex justify-content-evenly flex-wrap">
+      <span
+        *ngFor="let filter of filters"
+        class="p-2 filter"
+        [ngClass]="{ 'selected-filter': selFilter === filter.value }"
+        role="button"
+        (click)="setFilter(filter.value)"
+        >{{ filter[lang] }}</span
+      >
+    </div>
+
+    <mat-grid-list
+      class="my-4"
+      [cols]="(isL$ | async) ? 3 : 2"
+      gutterSize="20px"
+      rowHeight="1:1">
+      <mat-grid-tile
+        role="button"
+        [colspan]="1"
+        [rowspan]="1"
+        *ngFor="let collection of filterCollections()"
+        (click)="toCollection(collection)">
+        <div
+          class="collection rounded"
+          [style.background-image]="
+            'linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0),
+            rgba(0, 0, 0, 0.2)
+          ), url(' +
+            collection.featureImg +
+            ')'
+          "></div>
+        <div class="caption-wrapper">
+          <div class="col-title ps-3 ps-lg-4 pt-2">
+            {{ collection[lang].title }}
+          </div>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+    <!-- <div class="columns my-4">
+      <div
+        class="col-wrapper my-3"
+        role="button"
+        *ngFor="let collection of filterCollections()"
+        (click)="toCollection(collection)">
+        <div
+          class="collection rounded"
+          [style.background-image]="
+            'linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0),
+            rgba(0, 0, 0, 0.2)
+          ), url(' +
+            collection.featureImg +
+            ')'
+          "></div>
+        <div class="caption-wrapper">
+          <div class="col-title ps-4 pt-2">{{ collection[lang].title }}</div>
+        </div>
+      </div>
+    </div> -->
+  </div>
+</div>

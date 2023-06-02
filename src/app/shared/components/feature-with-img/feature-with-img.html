@@ -1,0 +1,19 @@
+<div class="container px-0 py-4">
+  <div class="row mx-3 mx-lg-4">
+    <div class="col-12 col-lg-6 feature-text ps-lg-0 pe-lg-4 pb-3 pb-lg-0">
+      <div class="sub-title pb-3">
+        {{ copy?.copy[lang].title }}
+      </div>
+
+      <div *ngFor="let p of copy?.copy[lang].body" class="pb-2 copy">
+        {{ p }}
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-6 ps-lg-4 pe-lg-0">
+      <div
+        class="divImg rounded"
+        [ngStyle]="{ 'background-image': 'url(' + copy?.img + ')' }"></div>
+    </div>
+  </div>
+</div>

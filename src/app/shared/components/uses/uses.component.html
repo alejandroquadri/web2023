@@ -1,0 +1,18 @@
+<div class="mt-3 mb-4">
+  <div class="d-flex flex-wrap">
+    <div
+      *ngFor="let use of uses"
+      class="d-flex flex-column justify-content-end m-3">
+      <div class="d-flex flex-row">
+        <img
+          class="app-img mx-auto align-self-center"
+          [src]="allUses[use].iconBlack"
+          alt=""
+          [ngClass]="detWidth(use)" />
+      </div>
+      <div class="app-text feature-text text-center pt-2">
+        {{ allUses[use][lang].titulo }}
+      </div>
+    </div>
+  </div>
+</div>

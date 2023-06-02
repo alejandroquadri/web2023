@@ -1,0 +1,19 @@
+<ng-container *ngFor="let link of intRoutes; last as isLast">
+  <a
+    *ngIf="!isLast"
+    mat-button
+    class="internal-link"
+    [routerLink]="[link.route]"
+    routerLinkActive="router-link-active"
+    [routerLinkActiveOptions]="{ exact: true }">
+    {{ link.name }}
+  </a>
+  <div
+    *ngIf="isLast"
+    class="internal-link d-inline-block ps-2"
+    routerLinkActive="router-link-active"
+    [routerLinkActiveOptions]="{ exact: true }">
+    {{ link.name }}
+  </div>
+  <span *ngIf="!isLast" class="internal-link"> > </span>
+</ng-container>

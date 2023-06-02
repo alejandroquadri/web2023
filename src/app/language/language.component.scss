@@ -1,0 +1,30 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
+}
+
+.mat-drawer {
+  background-color: white;
+}
+
+@supports (-webkit-touch-callout: none) {
+  /* CSS specific to iOS devices */
+  .wrapper {
+    /* mobile viewport bug fix - only working with ios */
+    min-height: -webkit-fill-available;
+  }
+}
+
+@supports not (-webkit-touch-callout: none) {
+  /* CSS for other than iOS devices */
+  .wrapper {
+    /* mobile viewport bug fix */
+    min-height: 100vh;
+  }
+}

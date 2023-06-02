@@ -1,0 +1,16 @@
+<div class="wrapper" *ngIf="data">
+  <div class="container pt-5 pb-4">
+    <h1 class="title">{{ data.title }}</h1>
+    <p class="author-title pb-2">
+      <span>{{ lang === 'es' ? 'Por' : 'By ' }} </span>
+      <span class="author"> {{ data.author }} </span>
+      <span>{{ lang === 'es' ? 'el' : 'on ' }} </span>
+      <span>{{ data.date | dateFns: 'dd-MM-yyyy' }}</span>
+    </p>
+    <div
+      class="img-div rounded mb-4"
+      *ngIf="data.featureImg"
+      [ngStyle]="{ 'background-image': 'url(' + data.featureImg + ')' }"></div>
+    <div class="blog-content" [innerHTML]="data.content | markdown"></div>
+  </div>
+</div>

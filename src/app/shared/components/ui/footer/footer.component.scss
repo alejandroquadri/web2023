@@ -1,0 +1,32 @@
+
+.foot {
+	background-color: black;
+	color: white;
+	font-size: 1rem;
+}
+
+.contact-link {
+	display: block;
+}
+
+.contact-link, .links {
+	text-decoration: none;
+}
+
+mat-icon {
+	transform: scale(2);
+}
+
+.nota {
+	font-size: 0.7rem;
+  margin-left: auto;
+}
+
+.ofertas {
+	cursor: pointer;
+}
+
+.lang-sel {
+	max-width: 230px;
+	margin: auto;
+}

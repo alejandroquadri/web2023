@@ -1,0 +1,33 @@
+.contenedor {
+	// min-height: calc(100vh - var(--navbar-height));
+  // min-height: calc(var(--vh, 1vh) * 100 - var(--navbar-height));
+  min-height: calc(100vh - 56px);
+}
+
+.sebm-google-map-container {
+  height: 100%;
+  width: 100%;
+}
+
+google-map, .map-container {
+  height: 100% !important;
+}
+
+.item {
+	width: 50%;
+}
+
+.contact-data {
+  font-size: 0.8rem;
+  font-weight: 300;
+}
+
+@media (max-width : 415px) {
+	.item {
+		width:100%;
+	}
+
+	google-map, .map-container {
+	  height: 400px;
+	}
+}

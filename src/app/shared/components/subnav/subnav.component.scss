@@ -1,0 +1,36 @@
+.subProd-links {
+  width: 200px;
+  color: black;
+  border-radius: 0px;
+}
+
+.link-img {
+ width: auto;
+}
+
+.active-btn {
+  border-bottom: var(--grey-400) 2px solid;
+}
+
+.mobile {
+
+  &.subProd-nav {
+    height: 98px;
+  }
+
+  .link-img {
+    height: 50px;
+  }
+
+}
+
+.desktop {
+
+  &.subProd-nav {
+    height: 120px;
+  }
+
+  .link-img {
+    height: 70px;
+   }
+}

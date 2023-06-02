@@ -1,0 +1,28 @@
+<h1 mat-dialog-title class="sub-title dialog-title">
+  Cotiza online, al instante 🚀
+</h1>
+<mat-dialog-content class="feature-text content">
+  <!-- <p>Vamos a ayudarte a preparar tu cotizacion online</p> -->
+  <ul class="steps mb-4 mt-1">
+    <li class="mb-2" *ngFor="let step of stepsArray">
+      <div class="d-flex align-items-center">
+        <span class="align-self-start numbers"> {{ step.num }} </span>
+        <span> {{ step.text }} </span>
+      </div>
+    </li>
+  </ul>
+  <p>💥 ¡Boom! Vas a recibir tu cotización al instante por email</p>
+  <p class="">
+    Si preferis, tambien podes dejarnos tu consulta
+    <a
+      class="link m-0 p-0"
+      [routerLink]="['/' + langSc.currentLang + '/contact']"
+      (click)="close()"
+      >acá</a
+    >.<br />
+    Prepararemos tu cotizacion lo antes posible y te la enviaremos
+  </p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button color="primary" mat-raised-button mat-dialog-close>¡Vamos!</button>
+</mat-dialog-actions>

@@ -1,0 +1,215 @@
+<div class="container my-4 my-md-3">
+  <div class="row d-sm-none">
+    <div class="col-12">
+      <h1 class="d-inline-block">
+        {{ setTitle() }}
+        {{ allColors[productObj.name].name }}
+      </h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-6 my-4 my-md-0 d-flex">
+      <div class="thumbs d-lg-flex d-none flex-column me-2">
+        <img
+          *ngFor="let img of imgArray; let i = index"
+          [src]="img"
+          class="img-thumbnail"
+          alt="img"
+          (click)="toSlide(i)" />
+      </div>
+      <swiper
+        #swiper
+        [slidesPerView]="1"
+        [spaceBetween]="0"
+        [navigation]="false"
+        [pagination]="true"
+        [scrollbar]="{ draggable: true }"
+        [centeredSlides]="false">
+        <ng-template *ngFor="let img of imgArray" swiperSlide>
+          <img [src]="img" class="img-fluid carrousel-img" alt="" />
+        </ng-template>
+      </swiper>
+    </div>
+    <div class="col-12 col-md-6 px-3">
+      <div class="row d-none d-md-block">
+        <div class="col-12">
+          <h1 class="d-inline-block">
+            {{ setTitle() }} {{ allColors[productObj.name].name }}
+          </h1>
+        </div>
+      </div>
+      <div class="row" *ngIf="isEcom">
+        <div class="col-12">
+          <div class="price">
+            <span *ngIf="selectedProduct"
+              >{{
+                selectedProduct.precioActual
+                  | currency : 'USD' : 'symbol-narrow' : '0.0-2'
+              }}
+              /{{ selectedProduct.unidad | lowercase }}</span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3 mb-4">
+        <div class="col-12">
+          <button
+            mat-stroked-button
+            class="me-2"
+            *ngFor="let sizeObj of productObj.sizes"
+            (click)="chooseSize(sizeObj)"
+            [ngClass]="{ 'slected-size': sizeObj.size === selectedSize.size }">
+            {{ sizeObj.size }}
+          </button>
+        </div>
+      </div>
+      <form [formGroup]="qForm">
+        <div class="row">
+          <div class="col-6">
+            <mat-form-field appearance="outline" class="q-field">
+              <mat-label
+                >Cantidad ({{ selectedProduct.unidad | lowercase }})
+              </mat-label>
+              <input
+                matInput
+                formControlName="quantity"
+                type="text"
+                inputmode="decimal"
+                mask="separator.2"
+                thousandSeparator=","
+                enterkeyhint="next" />
+              <mat-hint *ngIf="hasPackaging()"
+                >mínimo 1 caja ({{
+                  selectedProduct.uPorBulto
+                }}
+                unidades)</mat-hint
+              >
+            </mat-form-field>
+          </div>
+          <div class="col-6">
+            <mat-form-field appearance="outline" class="q-field">
+              <mat-label>Desperdicio</mat-label>
+              <input
+                matInput
+                formControlName="excess"
+                mask="separator.0"
+                suffix=" %"
+                thousandSeparator=","
+                inputmode="decimal" />
+              <mat-hint>% de material en exceso</mat-hint>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row feature-text mt-4 py-3">
+          <div class="col-6 col-lg first-row-sm">
+            <div class="q-title">
+              {{ selectedProduct.unidad | lowercase }} netos
+              <mat-icon
+                class="material-icons-outlined info-icon"
+                matTooltip="m2 necesarios considerando desperdicio"
+                matTooltipPosition="above">
+                info
+              </mat-icon>
+            </div>
+            <div class="q-num">{{ netQ | number : '0.0-2' }}</div>
+          </div>
+          <div class="col-6 col-lg first-row-sm">
+            <div class="q-title">
+              unidades
+              <mat-icon
+                class="material-icons-outlined info-icon"
+                [matTooltip]="
+                  'conversion de unidades de ' +
+                  (selectedProduct.unidad | lowercase) +
+                  ' netos'
+                "
+                matTooltipPosition="above">
+                info
+              </mat-icon>
+            </div>
+            <div class="q-num">{{ units | number : '0.0-2' }}</div>
+          </div>
+          <div class="col-6 col-lg" *ngIf="hasPackaging()">
+            <div class="q-title">
+              cajas
+              <mat-icon
+                class="material-icons-outlined info-icon"
+                [matTooltip]="
+                  'cajas necesarias en base a ' +
+                  (selectedProduct.unidad | lowercase) +
+                  ' netos'
+                "
+                matTooltipPosition="above">
+                info
+              </mat-icon>
+            </div>
+            <div class="q-num">{{ boxes | number : '0.0-0' }}</div>
+          </div>
+          <div class="col-6 col-lg" *ngIf="hasPackaging()">
+            <div class="q-title">
+              {{ selectedProduct.unidad | lowercase }} finales
+              <mat-icon
+                class="material-icons-outlined info-icon"
+                [matTooltip]="
+                  (selectedProduct.unidad | lowercase) +
+                  ' en base a cajas requeridas'
+                "
+                matTooltipPosition="above">
+                info
+              </mat-icon>
+            </div>
+            <div class="q-num">{{ totalQ | number : '0.0-2' }}</div>
+          </div>
+        </div>
+        <div class="row mt-2 mt-lg-3" *ngIf="isEcom">
+          <div class="col-12 col-lg-auto">
+            <div class="q-title">subtotal</div>
+            <div class="q-num sub-total">
+              {{ subTotal | currency : 'USD' : 'symbol-narrow' : '0.0-2' }}
+            </div>
+          </div>
+          <div class="col-12 col-lg d-flex justify-content-lg-end mt-3 mt-lg-0">
+            <button
+              class="buy-btn"
+              mat-flat-button
+              color="primary"
+              [disabled]="!qForm.valid"
+              (click)="addToCart()">
+              <mat-icon class="material-icons-outlined"
+                >add_shopping_cart</mat-icon
+              >
+              Agregar a presupuesto
+            </button>
+          </div>
+        </div>
+        <div class="row mt-2 mt-lg-3" *ngIf="!isEcom">
+          <div class="col d-flex justify-content-lg-start mt-3 mt-lg-0">
+            <button
+              class="buy-btn"
+              mat-flat-button
+              color="primary"
+              [disabled]="!qForm.valid"
+              (click)="addToCart()">
+              <mat-icon class="material-icons-outlined"
+                >add_shopping_cart</mat-icon
+              >
+              Agregar a presupuesto
+            </button>
+          </div>
+        </div>
+      </form>
+      <div class="row mt-3">
+        <div class="col d-flex">
+          <mat-checkbox
+            color="primary"
+            class="me-2"
+            [(ngModel)]="addComplements"></mat-checkbox>
+          <div class="flex-grow-1 ps-2">
+            Agregar al carrito productos complementarios para una correcta
+            colocación
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

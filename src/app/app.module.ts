@@ -1,29 +1,63 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {
+  BrowserModule,
+  // BrowserTransferStateModule,
+  // HammerModule,
+  // HAMMER_GESTURE_CONFIG,
+  // HammerGestureConfig,
+} from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// import { ServiceWorkerModule } from '@angular/service-worker';
+import { DecimalPipe, registerLocaleData } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+
+import localeEsAr from '@angular/common/locales/es-AR';
+registerLocaleData(localeEsAr, 'es');
+
+import { environment } from '../environments/environment';
+
+import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { getDatabase, provideDatabase } from '@angular/fire/database';
+import { getStorage, provideStorage } from '@angular/fire/storage';
 
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
-import { environment } from '../environments/environment';
-import { provideAuth,getAuth } from '@angular/fire/auth';
-import { provideDatabase,getDatabase } from '@angular/fire/database';
-import { provideFirestore,getFirestore } from '@angular/fire/firestore';
-import { provideStorage,getStorage } from '@angular/fire/storage';
+import { AppRoutingModule } from './app-routing.module';
+import { SharedModule } from './shared/modules/shared.module';
+import { LanguageComponent } from './language/language.component';
+import { NavigatorComponent } from './navigator/navigator.component';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent, NavigatorComponent, LanguageComponent],
   imports: [
+    // BrowserModule.withServerTransition({ appId: 'quadri-web-new' }),
     BrowserModule,
+    // BrowserTransferStateModule,
+    AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
+    // AngularFireModule.initializeApp(environment.firebase),
+    // AngularFirestoreModule,
+    // AngularFireDatabaseModule,
+    // AngularFireStorageModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideAuth(() => getAuth()),
-    provideDatabase(() => getDatabase()),
     provideFirestore(() => getFirestore()),
-    provideStorage(() => getStorage())
+    provideDatabase(() => getDatabase()),
+    provideStorage(() => getStorage()),
+    // HammerModule, // tambien tuve que cargar en el main.ts
+    SharedModule,
+    // ServiceWorkerModule.register('ngsw-worker.js', {
+    //   enabled: environment.production,
+    //   // Register the ServiceWorker as soon as the application is stable
+    //   // or after 30 seconds (whichever comes first).
+    //   registrationStrategy: 'registerWhenStable:30000',
+    // }),
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    // lo de abajo es para que funcionen los gestos de Hammer
+    // { provide: HAMMER_GESTURE_CONFIG, useClass: HammerGestureConfig, deps: [] },
+    DecimalPipe,
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,0 +1,11 @@
+<mat-form-field appearance="outline" class="lang-change">
+  <mat-label>{{
+    langSc.currentLang === 'es' ? 'Idioma' : 'Language'
+  }}</mat-label>
+  <mat-select
+    [(ngModel)]="langSc.currentLang"
+    (selectionChange)="changeLanguage()">
+    <mat-option value="es">Español</mat-option>
+    <mat-option value="en">English</mat-option>
+  </mat-select>
+</mat-form-field>

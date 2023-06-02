@@ -1,0 +1,62 @@
+<div *ngIf="copy" class="m-0 foot container-fluid">
+  <div class="row p-4">
+    <div class="col-12 col-lg-4 d-flex flex-column mb-2">
+      <div class="text-center my-3">
+        <a
+          class="contact-link link-item my-1"
+          style="color: #ddd"
+          id="call-mobile"
+          href="tel:+541148610450"
+          >+54 11 4861 0450</a
+        >
+        <a
+          class="contact-link link-item my-1"
+          style="color: #ddd"
+          [href]="'mailto:info@quadri.com.ar'"
+          id="email-link"
+          >info@quadri.com.ar</a
+        >
+        <div class="contact-link link-item my-1">Gascon 483</div>
+        <div class="contact-link link-item my-1">
+          Ciudad Autonoma de Buenos Aires
+        </div>
+        <div class="contact-link link-item my-1">CP C1181ACG, Argentina</div>
+      </div>
+    </div>
+    <div class="col-12 col-lg-4 mb-2">
+      <div class="text-center my-3">
+        <app-menu-list type="footer"></app-menu-list>
+      </div>
+    </div>
+    <div
+      class="col-12 col-lg-4 d-flex flex-column justify-content-center text-center mb-2 mt-3 mt-lg-0">
+      <div class="d-flex justify-content-center my-3">
+        <a
+          mat-icon-button
+          class="links mx-3"
+          href="https://www.instagram.com/quadribsas/">
+          <mat-icon [svgIcon]="ig" aria-label="IG"></mat-icon>
+        </a>
+        <a
+          mat-icon-button
+          class="links mx-3"
+          href="https://ar.pinterest.com/quadribsas/">
+          <mat-icon [svgIcon]="pin" aria-label="IG"></mat-icon>
+        </a>
+        <a
+          mat-icon-button
+          class="links mx-3"
+          href="https://www.facebook.com/quadribsas/">
+          <mat-icon [svgIcon]="fb" aria-label="IG"></mat-icon>
+        </a>
+      </div>
+      <div class="d-flex justify-content-center">
+        <app-lang-change class="lang-sel mt-3 mx-5"></app-lang-change>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex">
+    <div class="px-2 nota">Copyright © 2022 Quadri - web design by Maurito</div>
+  </div>
+</div>

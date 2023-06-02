@@ -1,0 +1,76 @@
+<div class="cart-wrapper d-flex flex-column">
+  <mat-toolbar *ngIf="forSideNav">
+    <span>Carrito</span>
+    <span class="spacer"></span>
+    <button mat-icon-button class="" aria-label="close icon" (click)="close()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <div class="m-1 item-wrapper">
+    <div class="mb-2" *ngFor="let item of cartList; let i = index">
+      <div class="d-flex m-1">
+        <div
+          class="img-wrapper d-flex justify-content-center align-items-start">
+          <img [src]="item.imageUrl" class="img-thumbnail m-1" alt="prod-img" />
+        </div>
+        <div class="desc ms-1" [ngClass]="{ 'pe-3': !isEcom }">
+          <div>{{ item.product.descripcion }}</div>
+          <div class="note-desc" *ngIf="isEcom">
+            {{
+              item.product.precioActual
+                | currency : 'USD' : 'symbol-narrow' : '0.0-2'
+            }}
+            /{{ item.product.unidad | lowercase }}
+          </div>
+          <div class="note-desc">
+            {{ item.totalQ | number : '0.0-2' }}
+            {{ item.product.unidad | lowercase }}
+          </div>
+          <div class="note-desc">
+            <button
+              class="remove-btn"
+              mat-button
+              aria-label="remove"
+              (click)="remove(i)">
+              Remover
+              <mat-icon
+                class="material-icons-outlined remove-icon"
+                [inline]="true"
+                >delete</mat-icon
+              >
+            </button>
+          </div>
+        </div>
+        <div class="ms-1 pe-3 text-end item-subTotal" *ngIf="isEcom">
+          {{ item.subTotal | currency : 'USD' : 'symbol-narrow' : '0.0-2' }}
+        </div>
+      </div>
+    </div>
+    <div class="m-3" *ngIf="cartList.length < 1">Tu carro esta vacio</div>
+  </div>
+
+  <div *ngIf="cartList.length > 0" class="footer d-flex flex-column">
+    <div *ngIf="isEcom">
+      <div class="subTotal d-flex justify-content-between pt-3">
+        <span class="ms-2 ps-3 fw-bold">Sub Total</span>
+        <span class="me-2 pe-3">
+          {{
+            qObj?.subTotal || 0 | currency : 'USD' : 'symbol-narrow' : '0.0-2'
+          }}</span
+        >
+      </div>
+      <div class="ms-2 ps-3 pb-3 me-2 pe-3 subtotal-note">
+        No incluye impuestos ni costos de envio
+      </div>
+    </div>
+    <button
+      *ngIf="forSideNav"
+      class="buy-btn"
+      mat-flat-button
+      color="primary"
+      (click)="endSale()">
+      Cerrar presupuesto
+    </button>
+  </div>
+</div>

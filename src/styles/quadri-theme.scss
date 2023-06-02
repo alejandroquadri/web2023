@@ -1,0 +1,239 @@
+//  *********************
+//  Quadri Theme for Material
+//  *********************
+
+:root {
+  // con esto sobrescribo las fonts que por default asigna bootstrap reboot
+  --fonts: Mulish, /*Lato, Poppins,*/ Roboto, 'Helvetica Neue', sans-serif;
+}
+
+body {
+  font-family: var(--fonts);
+  background-color: white;
+}
+
+app-language,
+app-landing,
+app-quoter,
+app-stepper-wrapper,
+app-not-found,
+app-lookbook,
+app-blog-list,
+app-collections-menu {
+  background-color: white;
+  flex: 1 1 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+// esto andba bien con Lato
+// .title {
+//   font-size: 5rem;
+//   font-weight: 300;
+// }
+
+.title {
+  font-size: 4rem;
+  font-weight: 200;
+}
+
+.oneLiner {
+  font-size: 2rem;
+  font-weight: 200;
+}
+
+.btn-outline-white {
+  border-color: white !important;
+  color: white !important;
+}
+
+.sub-title {
+  font-size: 2rem;
+  font-weight: 300;
+}
+
+.feature-text {
+  font-weight: 300;
+  white-space: pre-line;
+  font-size: 1.1rem;
+  text-align: justify;
+}
+
+.link-item {
+  font-size: 1rem;
+  font-weight: 300;
+  font-family: var(--fonts);
+}
+
+.router-link-active {
+  font-weight: bold !important;
+}
+
+.internal-link {
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: var(--grey-600);
+  .mat-button {
+    padding: 0 8px;
+  }
+}
+
+.translucid-snack {
+  background-color: rgba(255, 255, 255, 0.5);
+  -webkit-backdrop-filter: blur(2px);
+  -o-backdrop-filter: blur(2px);
+  -moz-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  color: black;
+}
+
+// **********************************
+// !!!! Markup para el blog
+
+.blog-content {
+  h3 {
+    font-size: 1.4rem;
+    font-weight: 400;
+    padding-top: 0.8rem;
+  }
+
+  p {
+    font-weight: 300;
+    white-space: pre-line;
+    font-size: 1rem;
+    text-align: justify;
+  }
+
+  li {
+    font-weight: 300;
+    font-size: 1rem;
+  }
+
+  img {
+    max-width: calc(100% - 5px);
+    height: auto;
+    display: block;
+    margin: auto;
+    border-radius: 0.25rem;
+  }
+}
+
+// ****************************************************
+// !!!! Modificaciones de CSS para Angular Material
+
+// esto es para que para que alinee el sufijo de modo correcto
+.mat-form-field-appearance-outline .mat-form-field-prefix,
+.mat-form-field-appearance-outline .mat-form-field-suffix {
+  top: 0 !important;
+}
+
+.quote-tabs {
+  .mat-tab-body-wrapper {
+    flex: 1;
+  }
+
+  .mat-tab-body-content {
+    display: flex;
+  }
+}
+.send-quote-btn {
+  .mat-progress-spinner circle,
+  .mat-spinner circle {
+    stroke: white;
+  }
+}
+
+.lang-change {
+  font-family: var(--fonts);
+
+  &.mat-form-field-appearance-outline .mat-form-field-outline {
+    color: white;
+  }
+  &.mat-form-field {
+    .mat-hint,
+    input,
+    ::placeholder,
+    .mat-form-field-label {
+      color: white;
+    }
+  }
+  .mat-select-value {
+    color: white;
+    font-family: var(--fonts);
+  }
+}
+
+.color-info-tooltip {
+  background: var(--triadic1-600);
+  font-size: 0.9rem;
+}
+
+.lg-btn {
+  .mat-mdc-button {
+    font-family: var(--fonts);
+    height: 40px !important;
+  }
+}
+
+.full-screen-modal .mat-dialog-container {
+  padding: 1em;
+  width: 100%;
+  height: 100%;
+}
+
+// .product-gallery {
+//   .mat-grid-tile-content {
+//     flex-direction: column !important;
+//   }
+// }
+
+// esto es para que el menu desplegable ocupe el 100%  del espacio
+// .mat-menu-panel{
+//   width: 100vw !important;
+//   max-width: 100vw !important;
+//   border-radius: 0px !important;
+//   box-shadow: none !important;
+// }
+
+@media (max-width: 576px) {
+  .title-wrapper {
+    padding: 5rem 2rem 3rem 2rem;
+  }
+
+  .title {
+    font-size: 2.4rem;
+  }
+
+  .oneLiner {
+    font-size: 1rem;
+  }
+
+  .sub-title {
+    font-size: 1.5rem;
+    font-weight: 100;
+  }
+
+  .feature-text {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .title {
+    font-size: 2rem;
+    font-weight: 100;
+  }
+}
+
+// para todo lo que no es mobile
+@media (min-width: 768px) {
+  .lg-btn {
+    padding: 4px 16px !important;
+    font-size: 18px !important;
+    font-weight: 300;
+
+    .white {
+      padding: 4px 15px !important;
+    }
+  }
+}

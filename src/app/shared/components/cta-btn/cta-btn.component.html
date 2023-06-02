@@ -1,0 +1,29 @@
+<button
+  mat-flat-button
+  *ngIf="!fab && !listItem"
+  color="primary"
+  (click)="toQuote()"
+  type="button"
+  [ngClass]="{
+    'lg-btn': !small,
+    'header-btn': header,
+    'full-width': fullWidth
+  }">
+  {{ text }}
+</button>
+<button
+  mat-fab
+  *ngIf="fab"
+  color="primary"
+  (click)="toQuote()"
+  type="button"
+  [ngClass]="{
+    'lg-btn': !small,
+    'header-btn': header
+  }">
+  {{ text }}
+</button>
+<mat-list-item *ngIf="listItem" (click)="toQuote()" class="list-item">
+  {{ text }}
+  <mat-list-item></mat-list-item
+></mat-list-item>

@@ -1,0 +1,138 @@
+*{ 
+  --swiper-theme-color: var(--primary-600);
+}
+
+.wrapper {
+  min-height: 100vh;
+}
+
+.feature-wrapper {
+  position: relative;
+  // min-height: 50vh;
+  margin-top: 64px;
+}
+
+.imagen-presentacion {
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  min-height: 50vh;
+  // margin-top: 64px;
+}
+
+.title-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: white;
+
+  // height: auto;
+}
+
+.price-text {
+  font-size: 1rem;
+  min-height: 56px;
+}
+
+.description {
+  margin-top: 4rem;
+}
+
+.swiper {
+  margin: 0px auto;
+  max-width: 450px;
+}
+
+.carrousel-img{
+  width: 100%;
+  max-width: 450px;
+}
+
+.accordion-item-header {
+  border-bottom: 0.5px solid black;
+  line-height: 2.5rem;
+}
+
+.mat-icon {
+  transform: scale(0.8);
+}
+
+//  css del onboarding dialog
+
+.dialog-title {
+  font-size: 1.7rem;
+}
+
+.content {
+  font-size: 1rem;
+}
+
+.steps {
+  margin: auto;
+  width: 90%;
+  padding: 0px;
+}
+
+.numbers {
+  // background-color: var(--primary-400);
+  // color: white;
+  color: var(--primary-600);
+  font-weight: 500;
+  border-radius: 100%;
+  border: 1px solid var(--primary-600);
+  padding: 0.1rem 0.5rem 0.1rem 0.5rem;
+  margin-right: 10px;
+  font-size: 0.8rem;
+}
+
+ul li::marker {
+  color: white;
+}
+
+li {
+  // width: 100%; 
+  text-align: left;
+}
+
+.link {
+  color: var(--primary-600);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+
+@media (max-width: 576px) {
+
+  .feature-wrapper {
+    margin-top: 56px;
+  }
+
+  .imagen-presentacion {
+    min-height: 35vh;
+  }
+  
+  .title-wrapper {
+    padding: 5rem 2rem 3rem 2rem;
+  }
+
+  .swiper {
+    margin: 0px 20px;
+  }
+
+  .floating {
+    display: inline-block;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 99;
+  }
+
+  // onboarding
+  .steps {
+    margin: 0px;
+  }
+
+}

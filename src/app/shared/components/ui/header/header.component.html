@@ -1,0 +1,51 @@
+<mat-toolbar
+  class="nav px-3 px-lg-4"
+  [ngClass]="{
+    nav: !isSticky(),
+    'sticky-nav': isSticky(),
+    'abs-nav': !isSticky() && isAbs()
+  }">
+  <button
+    class="d-sm-none"
+    type="button"
+    aria-label="Toggle sidenav"
+    mat-icon-button
+    (click)="openSide()">
+    <mat-icon class="material-icons-outlined" aria-label="Side nav toggle icon"
+      >menu</mat-icon
+    >
+  </button>
+  <a [routerLink]="['/' + langSc.currentLang]"
+    ><img class="logo" alt="logo" [src]="logo"
+  /></a>
+  <span class="spacer"></span>
+  <div class="links-container d-none d-sm-block">
+    <app-menu-list type="header"></app-menu-list>
+  </div>
+  <button
+    *ngIf="showCartBtn()"
+    [@cartBadge]="!cartState ? 'idle' : 'adding'"
+    type="button"
+    aria-label="cart"
+    mat-icon-button
+    (click)="openCart()">
+    <mat-icon
+      [matBadge]="cartLength"
+      matBadgeSize="small"
+      [matBadgeHidden]="cartLength === 0"
+      class="material-icons-outlined"
+      aria-label="Side nav shopping cart"
+      >shopping_cart</mat-icon
+    >
+  </button>
+</mat-toolbar>
+
+<!-- <app-cta-btn
+    class="d-none d-sm-block"
+    [text]="langSc.currentLang === 'es' ? 'Cotizar' : 'Quote'"
+    [origin]="'header'"
+    [lang]="langSc.currentLang"
+    [small]="true"
+    [header]="true"
+    *ngIf="showQuoteBtn()">
+  </app-cta-btn> -->

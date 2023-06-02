@@ -1,0 +1,59 @@
+<div mat-dialog-content class="wrapper d-flex flex-column">
+  <div class="d-flex align-items-center mb-1 w-100">
+    <div class="flex-fill">
+      <!-- {{ card.text }}
+      <span class="subtitle"> - y aca tambien </span> -->
+    </div>
+
+    <button mat-icon-button (click)="closeDialog()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <div class="img-wrapper">
+    <div
+      *ngIf="showSpinner"
+      class="loader d-flex flex-column justify-content-center align-items-center">
+      <mat-spinner diameter="50"></mat-spinner>
+      <div class="mt-4">Cargando imagen</div>
+    </div>
+
+    <div class="img-div flex-fill">
+      <div
+        class="row w-100"
+        [ngClass]="{
+          'h-100': (isMobile$ | async) === false,
+          'm-auto': (isMobile$ | async) === true
+        }">
+        <div class="col-12 col-lg-8 img-col">
+          <img
+            (load)="onImageLoad()"
+            class="img-fluid rounded image"
+            [src]="card.url"
+            alt="" />
+        </div>
+        <div class="col-12 col-lg-4">
+          <div
+            *ngFor="let prod of card.products; let f = first"
+            role="button"
+            class="product d-flex mb-3"
+            [ngClass]="{ 'mt-3': (isMobile$ | async) === true && f }"
+            (click)="toProd(prod)">
+            <img
+              [src]="colors[prod.color].url"
+              alt=""
+              class="img-fluid rounded color-image" />
+            <div
+              *ngIf="!showSpinner"
+              class="text flex-fill d-flex flex-column justify-content-center ps-3">
+              <div>{{ colors[prod.color].name }}</div>
+              <div>{{ prod.size }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="mt-2">un pie</div> -->
+</div>

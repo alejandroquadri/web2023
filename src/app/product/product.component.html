@@ -1,0 +1,236 @@
+<!-- <div *ngIf="copy$ | async as copy" class="wrapper"
+[ngClass]="{'mobile': isMobile$ | async, 'desktop': !(isMobile$ | async) }"> -->
+
+<div *ngIf="ids$ | async" class="wrapper">
+  <div
+    class="imagen-presentacion mb-3 mx-3 mb-lg-4 mx-lg-4"
+    [ngStyle]="{
+      'background-image':
+        'linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+      url(' +
+        copy.featureImg +
+        ')'
+    }">
+    <div class="container title-wrapper pt-5 pb-5">
+      <h1 class="title">{{ copy[lang].title }}</h1>
+      <!-- <div class="oneLiner">{{ copy[lang].oneLiner }}</div> -->
+      <div class="price-text pt-2 pb-4">
+        <span *ngIf="prices$ | async">
+          {{ copy[lang].piceText.pre }} {{ currencySymbol() }}
+          {{ setPrices()[copy.refPrice]?.price }}
+          {{ copy[lang].piceText.post }}
+        </span>
+      </div>
+      <app-cta-btn
+        [text]="copy[lang].ctaBtn"
+        [origin]="id"
+        [lang]="lang"
+        (ret)="getRet($event)">
+      </app-cta-btn>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12 internal-link">
+        <app-internal-link [intRoutes]="internalLinks"></app-internal-link>
+      </div>
+    </div>
+  </div>
+
+  <app-subnav
+    *ngIf="copy.subProds"
+    [subProds]="copy.subProds"
+    [prodRoute]="id"
+    (selected)="selectSubProd($event)">
+  </app-subnav>
+
+  <div class="container my-4 my-md-3">
+    <div class="row">
+      <div class="col-12 order-1 col-md-6 order-md-0 my-4 my-md-0">
+        <swiper
+          [slidesPerView]="1"
+          [spaceBetween]="0"
+          [autoplay]="{ delay: 3000, disableOnInteraction: false }"
+          (swiper)="onSwiper($event)"
+          (slideChange)="onSlideChange()"
+          [navigation]="false"
+          [pagination]="{ clickable: true }"
+          [scrollbar]="{ draggable: true }"
+          [centeredSlides]="true">
+          <ng-template *ngFor="let img of copy.carrouselImgs" swiperSlide>
+            <img [src]="img.url" class="img-fluid carrousel-img" alt="" />
+          </ng-template>
+        </swiper>
+      </div>
+      <div class="col-12 order-0 col-md-6 order-md-1 px-3">
+        <div class="sub-title pb-3">{{ copy[lang].carrouselTitle }}</div>
+        <div class="text-break feature-text">
+          {{ copy[lang].carrouselCopy }}
+        </div>
+        <div class="mt-3">
+          <cdk-accordion multi>
+            <cdk-accordion-item
+              #dimItem="cdkAccordionItem"
+              role="button"
+              class="accordion-item">
+              <div
+                class="accordion-item-header d-flex"
+                (click)="dimItem.toggle()">
+                <div class="flex-grow-1">
+                  {{ lang === 'es' ? 'Dimensiones' : 'Sizes' }}
+                </div>
+                <div>
+                  <mat-icon *ngIf="!dimItem.expanded" class="align-middle"
+                    >add</mat-icon
+                  >
+                  <mat-icon *ngIf="dimItem.expanded" class="align-middle"
+                    >remove</mat-icon
+                  >
+                </div>
+              </div>
+              <div
+                class="accordion-item-body"
+                [style.display]="dimItem.expanded ? '' : 'none'">
+                <app-sizes
+                  [sizes]="copy.sizes"
+                  [thickness]="copy.thickness"></app-sizes>
+              </div>
+            </cdk-accordion-item>
+
+            <cdk-accordion-item
+              #usesItem="cdkAccordionItem"
+              role="button"
+              class="accordion-item">
+              <div
+                class="accordion-item-header d-flex"
+                (click)="usesItem.toggle()">
+                <div class="flex-grow-1">
+                  {{ lang === 'es' ? 'Usos' : 'Uses' }}
+                </div>
+                <div>
+                  <mat-icon *ngIf="!usesItem.expanded" class="align-middle"
+                    >add</mat-icon
+                  >
+                  <mat-icon *ngIf="usesItem.expanded" class="align-middle"
+                    >remove</mat-icon
+                  >
+                </div>
+              </div>
+              <div
+                class="accordion-item-body"
+                [style.display]="usesItem.expanded ? '' : 'none'">
+                <app-uses [uses]="copy.uses"></app-uses>
+              </div>
+            </cdk-accordion-item>
+
+            <cdk-accordion-item
+              *ngIf="copy.special_pieces?.has"
+              #specialPiecesItem="cdkAccordionItem"
+              role="button"
+              class="accordion-item">
+              <div
+                class="accordion-item-header d-flex"
+                (click)="specialPiecesItem.toggle()">
+                <div class="flex-grow-1">
+                  {{ lang === 'es' ? 'Piezas especiales' : 'Special pieces' }}
+                </div>
+                <div>
+                  <mat-icon
+                    *ngIf="!specialPiecesItem.expanded"
+                    class="align-middle"
+                    >add</mat-icon
+                  >
+                  <mat-icon
+                    *ngIf="specialPiecesItem.expanded"
+                    class="align-middle"
+                    >remove</mat-icon
+                  >
+                </div>
+              </div>
+              <div
+                class="accordion-item-body"
+                [style.display]="specialPiecesItem.expanded ? '' : 'none'">
+                <app-special-pieces
+                  [pieces]="copy.special_pieces.pieces"></app-special-pieces>
+              </div>
+            </cdk-accordion-item>
+
+            <cdk-accordion-item
+              #pricingItem="cdkAccordionItem"
+              role="button"
+              class="accordion-item">
+              <div
+                class="accordion-item-header d-flex"
+                (click)="pricingItem.toggle()">
+                <div class="flex-grow-1">
+                  {{ lang === 'es' ? 'Precios' : 'Pricing' }}
+                </div>
+                <div>
+                  <mat-icon *ngIf="!pricingItem.expanded" class="align-middle"
+                    >add</mat-icon
+                  >
+                  <mat-icon *ngIf="pricingItem.expanded" class="align-middle"
+                    >remove</mat-icon
+                  >
+                </div>
+              </div>
+              <div
+                class="accordion-item-body"
+                [style.display]="pricingItem.expanded ? '' : 'none'">
+                <app-prices
+                  *ngIf="prices$ | async"
+                  [refPrices]="setPrices()"
+                  [pricing]="copy[lang].pricing"
+                  [currencySymbol]="currencySymbol()"></app-prices>
+              </div>
+            </cdk-accordion-item>
+
+            <cdk-accordion-item
+              #specItem="cdkAccordionItem"
+              role="button"
+              class="accordion-item">
+              <div
+                class="accordion-item-header d-flex"
+                (click)="specItem.toggle()">
+                <div class="flex-grow-1">
+                  {{ lang === 'es' ? 'Especificaciones' : 'Specifications' }}
+                </div>
+                <div>
+                  <mat-icon *ngIf="!specItem.expanded" class="align-middle"
+                    >add</mat-icon
+                  >
+                  <mat-icon *ngIf="specItem.expanded" class="align-middle"
+                    >remove</mat-icon
+                  >
+                </div>
+              </div>
+              <div
+                class="accordion-item-body"
+                [style.display]="specItem.expanded ? '' : 'none'">
+                <app-specs [specs]="copy[lang].specs"></app-specs>
+              </div>
+            </cdk-accordion-item>
+          </cdk-accordion>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 my-4">
+        <app-colors class="my-2" [colors]="copy.colors"></app-colors>
+      </div>
+    </div>
+  </div>
+
+  <div class="floating d-sm-none">
+    <app-cta-btn
+      class=""
+      [text]="lang === 'es' ? 'Cotizar' : 'Quote'"
+      [origin]="id"
+      [lang]="lang"
+      [small]="true"
+      [header]="true"
+      [fab]="true"></app-cta-btn>
+  </div>
+</div>

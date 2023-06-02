@@ -1,0 +1,29 @@
+<div class="contenedor" *ngIf="lookbook">
+  <div class="container">
+    <h1 class="title text-center py-3">{{ copy.title[lang] }}</h1>
+    <div class="pb-2 d-flex justify-content-evenly flex-wrap">
+      <span
+        *ngFor="let filter of filters"
+        class="p-2 filter"
+        [ngClass]="{ 'selected-filter': selFilter === filter.value }"
+        role="button"
+        (click)="setFilter(filter.value)"
+        >{{ filter[lang] }}</span
+      >
+    </div>
+
+    <div class="columns mb-4">
+      <div
+        class="masonry-column"
+        *ngFor="let col of colsAsIterable; index as i">
+        <div
+          class="card"
+          role="button"
+          *ngFor="let card of filterCards() | masonry: numCol:i + 1"
+          (click)="zoom(card)">
+          <img class="img-fluid rounded" [src]="card.url" alt="" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

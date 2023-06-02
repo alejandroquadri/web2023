@@ -1,0 +1,16 @@
+<div *ngIf="ids$ | async" class="wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 internal-link">
+        <app-internal-link [intRoutes]="internalLinks"></app-internal-link>
+      </div>
+    </div>
+  </div>
+  <app-product-detail
+    *ngIf="dbProducts"
+    [productObj]="productWebObj"
+    [colId]="colId"
+    [collection]="colData"
+    (add)="addToCart($event)"
+    [dbProducts]="dbProducts"></app-product-detail>
+</div>

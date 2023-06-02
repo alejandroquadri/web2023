@@ -1,0 +1,20 @@
+<div class="container px-0 py-4">
+  <div class="row mx-3 mx-lg-4" *ngIf="copy">
+    <div
+      class="col-12 col-lg-4 p-lg-1"
+      *ngFor="let feature of copy[lang].features; let f = first; let l = last">
+      <div
+        [ngClass]="{
+          'pe-lg-4': f,
+          'ps-lg-4': l,
+          'px-lg-4': !l && !f
+        }"
+        class="pb-4">
+        <div class="sub-title pb-3">{{ feature.title }}</div>
+        <div class="feature-text">
+          {{ feature.text }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,127 @@
+<ng-container *ngFor="let item of menu">
+  <ng-container *ngIf="type === 'side-menu'">
+    <a
+      class="link-item"
+      (click)="closeDrawer()"
+      mat-list-item
+      *ngIf="item[langSc.currentLang] && !item.submenu"
+      [routerLink]="[
+        '/' + langSc.currentLang + '/' + item.url[langSc.currentLang]
+      ]"
+      routerLinkActive="router-link-active">
+      {{ item[langSc.currentLang] }}
+    </a>
+    <div *ngIf="item[langSc.currentLang] && item.submenu">
+      <cdk-accordion>
+        <cdk-accordion-item
+          #dimItem="cdkAccordionItem"
+          class="accordion-item"
+          [expanded]="true">
+          <div
+            (click)="dimItem.toggle()"
+            role="button"
+            class="link-item acc-wrapper acc-title d-flex align-items-center">
+            <span class="flex-grow-1">{{ item[langSc.currentLang] }}</span>
+            <div>
+              <mat-icon *ngIf="!dimItem.expanded" class="align-middle acc-icon"
+                >add</mat-icon
+              >
+              <mat-icon *ngIf="dimItem.expanded" class="align-middle acc-icon"
+                >remove</mat-icon
+              >
+            </div>
+          </div>
+          <div
+            [@contentExpansion]="dimItem.expanded ? 'expanded' : 'collapsed'"
+            class="acc-item"
+            (click)="toCol(col); closeDrawer()"
+            *ngFor="let col of buildColArray()"
+            [style.display]="dimItem.expanded ? '' : 'none'">
+            {{ col[langSc.currentLang].title }}
+          </div>
+        </cdk-accordion-item>
+      </cdk-accordion>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="type === 'footer' || type === 'header'">
+    <a
+      class="link-item"
+      [ngClass]="{ 'd-block': type === 'footer' }"
+      mat-button
+      *ngIf="item[langSc.currentLang] && (!item.submenu || type !== 'header')"
+      [routerLink]="[
+        '/' + langSc.currentLang + '/' + item.url[langSc.currentLang]
+      ]"
+      routerLinkActive="router-link-active">
+      {{ item[langSc.currentLang] }}
+    </a>
+    <a
+      class="link-item"
+      mat-button
+      [ngClass]="{ 'cdk-focused': hover, 'cdk-program-focused': hover }"
+      *ngIf="item[langSc.currentLang] && item.submenu && type === 'header'"
+      [matMenuTriggerFor]="menu"
+      #colItem
+      (mouseenter)="mouseEnter()"
+      (mouseleave)="mouseLeave()"
+      [routerLink]="[
+        '/' + langSc.currentLang + '/' + item.url[langSc.currentLang]
+      ]"
+      routerLinkActive="router-link-active">
+      {{ item[langSc.currentLang] }}
+    </a>
+    <mat-menu #menu="matMenu" [hasBackdrop]="false">
+      <div (mouseenter)="mouseEnter()" (mouseleave)="mouseLeave()">
+        <button
+          mat-menu-item
+          class="link-item link-btn"
+          *ngFor="let col of buildColArray()"
+          (click)="toCol(col)">
+          {{ col[langSc.currentLang].title }}
+        </button>
+      </div>
+    </mat-menu>
+    <!-- <a
+      class="link-item"
+      mat-button
+      [ngClass]="{ 'cdk-focused': hover, 'cdk-program-focused': hover }"
+      *ngIf="item[langSc.currentLang] && item.submenu && type === 'header'"
+      [matMenuTriggerFor]="menu"
+      #colItem
+      (mouseenter)="mouseEnter()"
+      (mouseleave)="mouseLeave()">
+      {{ item[langSc.currentLang] }}
+    </a>
+    <mat-menu #menu="matMenu" [hasBackdrop]="false">
+      <div
+        (mouseenter)="mouseEnter()"
+        (mouseleave)="mouseLeave()"
+        class="int-menu-wrapper">
+        <div class="menu-col menu-col-first">
+          <button mat-menu-item class="link-item title-item">
+            Colecciones
+          </button>
+          <button
+            mat-menu-item
+            class="link-item link-btn"
+            *ngFor="let col of buildColArray()"
+            (click)="toCol(col)">
+            {{ col[langSc.currentLang].title }}
+          </button>
+        </div>
+        <div class="menu-col">
+          <button mat-menu-item class="link-item title-item">
+            Aplicaciones
+          </button>
+          <button
+            mat-menu-item
+            class="link-item link-btn"
+            *ngFor="let application of mackApplicationsArray">
+            {{ application }}
+          </button>
+        </div>
+      </div>
+    </mat-menu> -->
+  </ng-container>
+</ng-container>

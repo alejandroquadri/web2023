@@ -1,0 +1,26 @@
+<mat-sidenav-container>
+  <mat-sidenav
+    #sidenav
+    fixedInViewport="true"
+    [opened]="false"
+    position="start">
+    <app-side-menu></app-side-menu>
+  </mat-sidenav>
+  <mat-sidenav
+    #shoppingCart
+    fixedInViewport="true"
+    [opened]="false"
+    position="end">
+    <app-cart [forSideNav]="true"></app-cart>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div #wrapper class="wrapper">
+      <app-header></app-header>
+      <router-outlet></router-outlet>
+    </div>
+    <div class="footer">
+      <app-footer></app-footer>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

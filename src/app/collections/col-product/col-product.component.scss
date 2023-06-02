@@ -1,0 +1,11 @@
+.wrapper {
+  min-height: 100vh;
+  margin-top: 64px;
+}
+
+@media (max-width: 576px) {
+
+  .wrapper {
+    margin-top: 56px;
+  }
+}

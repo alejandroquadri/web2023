@@ -1,0 +1,38 @@
+<div mat-dialog-content class="wrapper d-flex flex-column">
+  <div class="d-flex align-items-center mb-1 w-100">
+    <div class="flex-fill">
+      {{ color.name }}
+      <span class="subtitle" *ngIf="color.subTitle">
+        - {{ color.subTitle }}
+      </span>
+    </div>
+
+    <button mat-icon-button (click)="closeDialog()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <div class="img-wrapper">
+    <div
+      class="loader d-flex flex-column justify-content-center align-items-center">
+      <mat-spinner diameter="50"></mat-spinner>
+      <div class="mt-4">Cargando imagen</div>
+    </div>
+
+    <div
+      class="img-div flex-fill"
+      [ngStyle]="{
+        'background-image': 'url(' + color.url + ')'
+      }"></div>
+  </div>
+
+  <div class="mt-2" *ngIf="!hideQuoteBtn">
+    <app-cta-btn
+      [text]="lang === 'es' ? 'Cotizar' : 'Quote'"
+      [origin]="'color'"
+      [lang]="lang"
+      [small]="true"
+      [header]="true">
+    </app-cta-btn>
+  </div>
+</div>

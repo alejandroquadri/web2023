@@ -1,0 +1,81 @@
+<!-- <div class="" *ngIf="allColors$ | async as allColors"> -->
+<div class="" *ngIf="allColors">
+  <div *ngIf="!hideTitle" class="sub-title mb-4">Blends</div>
+
+  <div class="mx-2 mx-lg-0">
+    <!-- <div
+      class="mb-3"
+      *ngFor="
+        let collection of colors.collections
+          | keyvalue
+          | sort: 'asc':'order':true
+      "> -->
+    <div
+      class="mb-3"
+      *ngFor="let collection of colors.collections | sort: 'asc':'order':false">
+      <div
+        *ngIf="!(collection.hideName && collection.hideName === true)"
+        [id]="camelize(collection.name)"
+        class="collection-title">
+        {{ collection.name }}
+        <span class="collection-subtitle" *ngIf="collection.subtitle">
+          - {{ collection.subtitle }}
+        </span>
+      </div>
+
+      <mat-grid-list
+        [cols]="(isL$ | async) ? 4 : 3"
+        gutterSize="20px"
+        rowHeight="1:1">
+        <mat-grid-tile
+          *ngFor="let color of collection.colors"
+          [colspan]="1"
+          [rowspan]="1">
+          <div
+            class="d-flex flex-column color p-2"
+            (click)="
+              stdClick(color, allColors[color.name || color], collection)
+            "
+            (contextmenu)="
+              context(color, allColors[color.name || color]);
+              $event.preventDefault()
+            "
+            (press)="
+              secAction(color, allColors[color.name || color]);
+              $event.preventDefault()
+            "
+            [ngClass]="{
+              selected: isSelected(color, collection)
+            }">
+            <!-- color === selectedColor -->
+            <div
+              class="color-img-wrapper d-flex flex-column justify-content-center align-items-center">
+              <div
+                class="loader d-flex flex-column justify-content-center align-items-center">
+                <mat-spinner diameter="40"></mat-spinner>
+              </div>
+              <div
+                class="color-img"
+                [style.background-image]="
+                  'url(' + allColors[color.name || color].url + ')'
+                "
+                [style.background-size]="
+                  collection.zoom ? collection.zoom + 'px' : 'cover'
+                "></div>
+            </div>
+
+            <div
+              class="text-center color-names mt-2"
+              [ngClass]="{
+                'small-font':
+                  (isMobile() | async) === true &&
+                  allColors[color.name || color].name.length > 10
+              }">
+              {{ allColors[color.name || color].name }}
+            </div>
+          </div>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+  </div>
+</div>

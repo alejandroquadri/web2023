@@ -1,0 +1,22 @@
+<mat-toolbar
+  class="subProd-nav justify-content-center align-items-center"
+  [ngClass]="{ mobile: (isMobile$ | async), desktop: !(isMobile$ | async) }">
+  <a
+    mat-button
+    class="subProd-links d-flex flex-column justify-content-start align-items-center"
+    *ngFor="let link of subProds"
+    (click)="select(link.name)"
+    [routerLink]="[buildRoute(link.key)]"
+    [queryParams]="{ subProd: link.key }"
+    routerLinkActive="active-btn">
+    <img [src]="link.url" class="link-img pt-3" />
+    <div class="mt-2">{{ link.name }}</div>
+  </a>
+</mat-toolbar>
+
+<!-- <a class="subProd-links d-flex flex-column justify-content-start align-items-center" *ngFor="let link of subProds" mat-button 
+  (click)="select(link.name)" 
+  [routerLink]="[buildRoute(link.key)]" routerLinkActive="active-btn" >
+    <img [src]="link.url" class="link-img pt-3">
+    <div class="mt-2" >{{ link.name }} </div>
+  </a> -->

@@ -1,0 +1,10 @@
+// allows you to override some of the Bootstrap styles you don't want. That's why you've added it after all Bootstrap imports.
+// https://www.amadousall.com/the-best-parts-of-bootstrap-you-are-missing-in-angular-material/
+
+a {
+  &.mat-button, &.mat-raised-button, &.mat-fab, &.mat-mini-fab, &.mat-list-item {
+    &:hover {
+      color: currentColor
+    }
+  }
+}

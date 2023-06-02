@@ -1,0 +1,37 @@
+<div class="contenedor d-flex flex-column flex-md-row align-items-md-stretch">
+  <div class="p-4 item mx-auto d-flex flex-column">
+    <div class="flex-fill">
+      <app-form [origin]="'contacto'" (submitEmiter)="submitted()"></app-form>
+    </div>
+    <div class="d-flex align-items-center mt-4 py-1 border-top contact-data">
+      <div class="d-flex align-items-center">
+        <mat-icon class="me-1">phone</mat-icon>
+        <a style="color: #212529" id="call-mobile" href="tel:+541148610450"
+          >+54 11 4861 0450</a
+        >
+      </div>
+      <div class="d-flex align-items-center px-3">
+        <mat-icon class="me-1">email</mat-icon>
+        <a
+          style="color: #212529"
+          [href]="'mailto:info@quadri.com.ar'"
+          id="email-link"
+          >info@quadri.com.ar</a
+        >
+      </div>
+    </div>
+  </div>
+
+  <div class="p-4 item d-flex flex-column">
+    <ng-container *ngIf="apiLoaded$ | async">
+      <google-map
+        width="100%"
+        [height]="(isMobile$ | async) ? '400px' : '100%'"
+        [zoom]="zoom"
+        [center]="center"
+        [options]="options">
+        <map-marker #marker [position]="center" [label]="label"> </map-marker>
+      </google-map>
+    </ng-container>
+  </div>
+</div>

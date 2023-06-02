@@ -1,0 +1,12 @@
+<div class="mt-3 mb-4 d-flex flex-column">
+  <div *ngFor="let piece of pieces" class="d-flex flex-row m-3">
+    <div class="m-auto">
+      <img
+        [width]="allPieces[piece].width * 120"
+        [src]="allPieces[piece].url" />
+    </div>
+    <div class="flex-fill feature-text text-div text-start ps-3">
+      {{ allPieces[piece][lang].name }}: {{ allPieces[piece][lang].desc }}
+    </div>
+  </div>
+</div>

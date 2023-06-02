@@ -1,0 +1,10 @@
+<div class="mt-3 mb-4 feature-text">
+  <ul class="price-list">
+    <li *ngFor="let item of pricing.list || pricing">
+      {{ item.before }} - {{ currencySymbol }}
+      {{ refPrices[item.price]?.price | number: '1.0-0':defLocale()
+      }}{{ item.after }}
+    </li>
+  </ul>
+  <div *ngIf="pricing.note" class="note mt-3">{{ pricing.note }}</div>
+</div>

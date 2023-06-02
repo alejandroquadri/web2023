@@ -1,0 +1,16 @@
+<div class="example-accordion-item">
+  <div class="example-accordion-item-header" (click)="toggle()">
+    {{ header }}
+    <span class="example-accordion-item-description">
+      {{ description }}
+    </span>
+  </div>
+  <div
+    [class.expanded]="expandedChange | async"
+    [@bodyExpansion]="getExpandedState()"
+    class="example-accordion-item-body"
+    role="region"
+    [style.display]="expanded ? '' : 'none'">
+    {{ body }}
+  </div>
+</div>
