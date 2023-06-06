@@ -2,7 +2,7 @@
   <swiper
     [slidesPerView]="1"
     [spaceBetween]="0"
-    [autoplay]="{ delay: 8000, disableOnInteraction: false }"
+    [autoplay]="{ delay: 10000, disableOnInteraction: true }"
     [navigation]="false"
     [pagination]="{ clickable: true }"
     [scrollbar]="{ draggable: true }"
@@ -27,35 +27,19 @@
 
             <div class="btns-wrapper">
               <app-cta-btn
-                class="btn"
+                class="btn-disp"
                 [text]="copy.cta_btn1[lang]"
                 [origin]="'landing'"
                 [lang]="lang"
                 [fullWidth]="true">
               </app-cta-btn>
               <button
-                mat-stroked-button
-                class="lg-btn ms-0 ms-md-3 mt-3 mt-md-0 btn-outline-white btn"
+                mat-button
+                class="btn-disp lg-btn btn-outline-white ms-0 ms-md-3 mt-3 mt-md-0"
                 (click)="toCol(slide.cta_btn2.url)">
-                {{ slide.cta_btn2[lang] }}
+                {{ slide.cta_btn2[lang] }} >
               </button>
             </div>
-
-            <!-- botones viejos -->
-            <!-- <div class="d-flex justify-content-center">
-              <app-cta-btn
-                class="mx-2"
-                [text]="copy.cta_btn1[lang]"
-                [origin]="'landing'"
-                [lang]="lang">
-              </app-cta-btn>
-              <button
-                mat-stroked-button
-                class="lg-btn mx-2 btn-outline-white"
-                (click)="toCol(slide.cta_btn2.url)">
-                {{ slide.cta_btn2[lang] }}
-              </button>
-            </div> -->
           </div>
         </div>
 

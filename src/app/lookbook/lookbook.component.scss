@@ -7,13 +7,12 @@
   grid-auto-flow: column;
 }
 
-.card {
-  margin: 5px;
-  padding: 5px;
+.card-div {
+  margin: 10px 5px 10px 5px;
 }
 
 .filter {
-  color: var(--grey-700)
+  color: var(--grey-700);
 }
 
 .selected-filter {

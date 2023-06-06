@@ -42,11 +42,6 @@ app-collections-menu {
   font-weight: 200;
 }
 
-.btn-outline-white {
-  border-color: white !important;
-  color: white !important;
-}
-
 .sub-title {
   font-size: 2rem;
   font-weight: 300;
@@ -63,6 +58,7 @@ app-collections-menu {
   font-size: 1rem;
   font-weight: 300;
   font-family: var(--fonts);
+  letter-spacing: normal;
 }
 
 .router-link-active {
@@ -121,6 +117,23 @@ app-collections-menu {
 // ****************************************************
 // !!!! Modificaciones de CSS para Angular Material
 
+// botones
+
+.mdc-button {
+  letter-spacing: normal !important;
+  // --mdc-typography-button-letter-spacing: normal !important;
+}
+
+.full-width-btn {
+  width: 100% !important;
+  min-width: unset !important;
+}
+
+.btn-outline-white {
+  border-color: white !important;
+  color: white !important;
+}
+
 // esto es para que para que alinee el sufijo de modo correcto
 .mat-form-field-appearance-outline .mat-form-field-prefix,
 .mat-form-field-appearance-outline .mat-form-field-suffix {
@@ -143,24 +156,48 @@ app-collections-menu {
   }
 }
 
+// lo de abajo para que el select otuline sea blanco
 .lang-change {
   font-family: var(--fonts);
 
-  &.mat-form-field-appearance-outline .mat-form-field-outline {
-    color: white;
-  }
-  &.mat-form-field {
-    .mat-hint,
+  &.mat-mdc-form-field {
+    .mat-mdc-hint,
     input,
     ::placeholder,
-    .mat-form-field-label {
+    .mat-mdc-form-field-label,
+    .mdc-floating-label,
+    .mat-mdc-floating-label {
       color: white;
     }
   }
-  .mat-select-value {
+
+  .mdc-text-field--outlined:not(.mdc-text-field--disabled)
+    .mdc-notched-outline__leading,
+  .mdc-text-field--outlined:not(.mdc-text-field--disabled)
+    .mdc-notched-outline__notch,
+  .mdc-text-field--outlined:not(.mdc-text-field--disabled)
+    .mdc-notched-outline__trailing {
+    border-color: white;
+  }
+
+  .mat-mdc-select-value {
     color: white;
     font-family: var(--fonts);
   }
+  .mat-mdc-select-arrow {
+    color: white;
+  }
+}
+
+// Para que cuando uso iconos desde SVG queden bien centrados
+.mat-mdc-icon-button svg {
+  vertical-align: super !important;
+}
+
+// Para que la font del dialog container sea segun la que use
+.mat-mdc-dialog-container {
+  --mdc-dialog-subhead-font: var(--fonts) !important;
+  --mdc-dialog-supporting-text-font: var(--fonts) !important;
 }
 
 .color-info-tooltip {
@@ -168,14 +205,7 @@ app-collections-menu {
   font-size: 0.9rem;
 }
 
-.lg-btn {
-  .mat-mdc-button {
-    font-family: var(--fonts);
-    height: 40px !important;
-  }
-}
-
-.full-screen-modal .mat-dialog-container {
+.full-screen-modal .mat-mdc-dialog-container {
   padding: 1em;
   width: 100%;
   height: 100%;
@@ -228,12 +258,8 @@ app-collections-menu {
 // para todo lo que no es mobile
 @media (min-width: 768px) {
   .lg-btn {
-    padding: 4px 16px !important;
+    padding: 5px 16px !important;
     font-size: 18px !important;
-    font-weight: 300;
-
-    .white {
-      padding: 4px 15px !important;
-    }
+    font-family: var(--fonts);
   }
 }

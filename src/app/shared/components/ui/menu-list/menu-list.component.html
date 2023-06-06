@@ -47,7 +47,10 @@
   <ng-container *ngIf="type === 'footer' || type === 'header'">
     <a
       class="link-item"
-      [ngClass]="{ 'd-block': type === 'footer' }"
+      [ngClass]="{
+        'd-block': type === 'footer',
+        'footer-link': type === 'footer'
+      }"
       mat-button
       *ngIf="item[langSc.currentLang] && (!item.submenu || type !== 'header')"
       [routerLink]="[

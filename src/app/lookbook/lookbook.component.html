@@ -17,9 +17,9 @@
         class="masonry-column"
         *ngFor="let col of colsAsIterable; index as i">
         <div
-          class="card"
+          class="card-div"
           role="button"
-          *ngFor="let card of filterCards() | masonry: numCol:i + 1"
+          *ngFor="let card of filterCards() | masonry : numCol : i + 1"
           (click)="zoom(card)">
           <img class="img-fluid rounded" [src]="card.url" alt="" />
         </div>

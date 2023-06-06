@@ -1,32 +1,44 @@
-
 .foot {
-	background-color: black;
-	color: white;
-	font-size: 1rem;
+  background-color: black;
+  color: white;
+  font-size: 1rem;
 }
 
 .contact-link {
-	display: block;
+  display: block;
 }
 
-.contact-link, .links {
-	text-decoration: none;
+.contact-link,
+.links {
+  text-decoration: none;
 }
 
-mat-icon {
-	transform: scale(2);
+.social-icons {
+  font-size: 50px;
+  height: 50px;
+  width: 50px;
+  --mdc-icon-button-icon-size: 50px;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .nota {
-	font-size: 0.7rem;
+  font-size: 0.7rem;
   margin-left: auto;
 }
 
 .ofertas {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 .lang-sel {
-	max-width: 230px;
-	margin: auto;
+  max-width: 230px;
+  margin: auto;
+}
+
+.mat-mdc-icon-button svg,
+.mat-mdc-icon-button img {
+  width: var(--mdc-icon-button-icon-size);
+  height: var(--mdc-icon-button-icon-size);
 }

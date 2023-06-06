@@ -1,4 +1,4 @@
-*{ 
+* {
   --swiper-theme-color: var(--primary-600);
 }
 
@@ -46,7 +46,7 @@
   max-width: 450px;
 }
 
-.carrousel-img{
+.carrousel-img {
   width: 100%;
   max-width: 450px;
 }
@@ -63,7 +63,8 @@
 //  css del onboarding dialog
 
 .dialog-title {
-  font-size: 1.7rem;
+  font-size: 1.7rem !important;
+  font-weight: 300 !important;
 }
 
 .content {
@@ -83,7 +84,7 @@
   font-weight: 500;
   border-radius: 100%;
   border: 1px solid var(--primary-600);
-  padding: 0.1rem 0.5rem 0.1rem 0.5rem;
+  padding: 0.1rem 0.6rem 0.1rem 0.6rem;
   margin-right: 10px;
   font-size: 0.8rem;
 }
@@ -93,7 +94,7 @@ ul li::marker {
 }
 
 li {
-  // width: 100%; 
+  // width: 100%;
   text-align: left;
 }
 
@@ -103,9 +104,7 @@ li {
   font-weight: bold;
 }
 
-
 @media (max-width: 576px) {
-
   .feature-wrapper {
     margin-top: 56px;
   }
@@ -113,7 +112,7 @@ li {
   .imagen-presentacion {
     min-height: 35vh;
   }
-  
+
   .title-wrapper {
     padding: 5rem 2rem 3rem 2rem;
   }
@@ -134,5 +133,4 @@ li {
   .steps {
     margin: 0px;
   }
-
 }
