@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import {
   BrowserModule,
   // BrowserTransferStateModule,
@@ -26,6 +26,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/modules/shared.module';
 import { LanguageComponent } from './language/language.component';
 import { NavigatorComponent } from './navigator/navigator.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [AppComponent, NavigatorComponent, LanguageComponent],
@@ -46,12 +47,12 @@ import { NavigatorComponent } from './navigator/navigator.component';
     provideStorage(() => getStorage()),
     // HammerModule, // tambien tuve que cargar en el main.ts
     SharedModule,
-    // ServiceWorkerModule.register('ngsw-worker.js', {
-    //   enabled: environment.production,
-    //   // Register the ServiceWorker as soon as the application is stable
-    //   // or after 30 seconds (whichever comes first).
-    //   registrationStrategy: 'registerWhenStable:30000',
-    // }),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000',
+    }),
   ],
   providers: [
     // lo de abajo es para que funcionen los gestos de Hammer

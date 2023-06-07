@@ -8,7 +8,7 @@ import {
 
 import {
   ServerDetectService,
-  // ServiceWorkerService,
+  ServiceWorkerService,
 } from 'src/app/shared/services';
 
 @Component({
@@ -24,26 +24,26 @@ export class AppComponent {
   constructor(
     public platform: Platform,
     private serverDetSc: ServerDetectService,
-    // private serviceWSc: ServiceWorkerService,
-    private snackBar: MatSnackBar
-  ) {
-    // this.serviceWSc.checkForUpdates();
-    // this.update();
+    private serviceWSc: ServiceWorkerService
+  ) // private snackBar: MatSnackBar
+  {
+    this.serviceWSc.checkForUpdates();
+    this.update();
   }
 
   isServer() {
     return this.serverDetSc.isServerSide();
   }
 
-  // update() {
-  //   this.update$ = this.serviceWSc.update$;
-  //   this.update$.subscribe(ret => {
-  //     console.log('actualizando nueva version');
-  //     // if (ret) {
-  //     //   this.openSnackBar('¡Actualizando a nueva version! 🍾   🎉   🥳 ');
-  //     // }
-  //   });
-  // }
+  update() {
+    this.update$ = this.serviceWSc.update$;
+    this.update$.subscribe(ret => {
+      console.log('actualizando nueva version');
+      // if (ret) {
+      //   this.openSnackBar('¡Actualizando a nueva version! 🍾   🎉   🥳 ');
+      // }
+    });
+  }
 
   // openSnackBar(message?: string) {
   //   this.snackBarRef = this.snackBar.open(message, null, {

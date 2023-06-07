@@ -9,7 +9,7 @@ export * from './server-detect.service';
 export * from './pdf.service';
 export * from './api.service';
 export * from './ck-api.service';
-// export * from './service-worker.service';
+export * from './service-worker.service';
 export * from './data-state.service';
 export * from './ecom.service';
 export * from './quoter.service';
