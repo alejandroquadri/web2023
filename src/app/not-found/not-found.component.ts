@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { isPlatformServer, DOCUMENT } from '@angular/common';
 import { Router } from '@angular/router';
-// import { RESPONSE, REQUEST } from '@nguniversal/express-engine/tokens';
+import { RESPONSE, REQUEST } from '@nguniversal/express-engine/tokens';
 import { Request, Response } from 'express';
 
 import { LanguageService } from 'src/app/shared/services';
@@ -26,15 +26,15 @@ export class NotFoundComponent implements OnInit {
     private router: Router,
     private langSc: LanguageService,
     // @Optional() @Inject(REQUEST) private request: Request,
-    // @Optional() @Inject(RESPONSE) private response: Response,
+    @Optional() @Inject(RESPONSE) private response: Response,
     @Inject(PLATFORM_ID) private platformId: any // @Inject(DOCUMENT) private document: Document
   ) {}
 
   ngOnInit() {
     this.langSc.setLanguage(this.router.url);
     this.lang = this.langSc.currentLang;
-    // if (isPlatformServer(this.platformId)) {
-    //   this.response.status(404);
-    // }
+    if (isPlatformServer(this.platformId)) {
+      this.response.status(404);
+    }
   }
 }

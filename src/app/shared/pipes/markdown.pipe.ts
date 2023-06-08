@@ -10,7 +10,11 @@ export class MarkdownPipe implements PipeTransform {
 
   transform(content: string): SafeHtml | string {
     if (content) {
-      const htmlContent: string = marked(content);
+      // estas opciones de abajo ademas del content, son para que no salgan advertencias
+      const htmlContent: string = marked(content, {
+        mangle: false,
+        headerIds: false,
+      });
       return this.sanitizer.bypassSecurityTrustHtml(htmlContent);
     } else {
       return '';

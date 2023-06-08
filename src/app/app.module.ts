@@ -1,13 +1,10 @@
 import { NgModule, isDevMode } from '@angular/core';
 import {
   BrowserModule,
-  // BrowserTransferStateModule,
-  // HammerModule,
-  // HAMMER_GESTURE_CONFIG,
-  // HammerGestureConfig,
+  provideClientHydration,
 } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-// import { ServiceWorkerModule } from '@angular/service-worker';
+import { ServiceWorkerModule } from '@angular/service-worker';
 import { DecimalPipe, registerLocaleData } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -26,21 +23,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/modules/shared.module';
 import { LanguageComponent } from './language/language.component';
 import { NavigatorComponent } from './navigator/navigator.component';
-import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [AppComponent, NavigatorComponent, LanguageComponent],
   imports: [
-    // BrowserModule.withServerTransition({ appId: 'quadri-web-new' }),
     BrowserModule,
+    // BrowserModule.withServerTransition({ appId: 'quadri-web-new' }),
     // BrowserTransferStateModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    // AngularFireModule.initializeApp(environment.firebase),
-    // AngularFirestoreModule,
-    // AngularFireDatabaseModule,
-    // AngularFireStorageModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
     provideDatabase(() => getDatabase()),
@@ -54,11 +46,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
       registrationStrategy: 'registerWhenStable:30000',
     }),
   ],
-  providers: [
-    // lo de abajo es para que funcionen los gestos de Hammer
-    // { provide: HAMMER_GESTURE_CONFIG, useClass: HammerGestureConfig, deps: [] },
-    DecimalPipe,
-  ],
+  providers: [provideClientHydration(), DecimalPipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
