@@ -11,12 +11,14 @@ import {
 
 import { CartItem, Producto, CompObj, QObj } from '../interfaces';
 import { ProdImgs } from '../constants';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class EcomService {
   private firestore: Firestore = inject(Firestore);
+  isEcom = environment.init.eCom;
   products: Record<string, Producto>;
   prodCrude: Array<Producto>;
   cart: CartItem[] = [];

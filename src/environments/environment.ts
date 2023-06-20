@@ -10,4 +10,8 @@ export const environment = {
     messagingSenderId: '872720422739',
     measurementId: 'G-SMK26SR75C',
   },
+  init: {
+    eCom: true,
+    lang: 'en',
+  },
 };

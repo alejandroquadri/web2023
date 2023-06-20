@@ -14,7 +14,11 @@ import { map } from 'rxjs/operators';
 
 import { Colors } from 'src/app/shared/copy';
 import { Color, Producto } from 'src/app/shared/interfaces';
-import { LanguageService, LayoutService } from 'src/app/shared/services';
+import {
+  EcomService,
+  LanguageService,
+  LayoutService,
+} from 'src/app/shared/services';
 
 @Component({
   selector: 'app-gallery',
@@ -31,13 +35,16 @@ export class GalleryComponent implements OnInit, OnChanges {
   allColors: Record<string, Color> = Colors;
   builtProd;
 
-  isEcom = false;
+  isEcom: boolean;
   selectedProducts: Array<any>;
 
   constructor(
     private layOutSc: LayoutService,
-    private langSc: LanguageService
-  ) {}
+    private langSc: LanguageService,
+    private ecomSc: EcomService
+  ) {
+    this.isEcom = ecomSc.isEcom;
+  }
 
   ngOnInit(): void {
     this.isL$ = this.layOutSc.detectL();

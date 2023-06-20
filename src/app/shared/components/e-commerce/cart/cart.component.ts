@@ -16,14 +16,16 @@ import { CartItem } from 'src/app/shared/interfaces';
 export class CartComponent implements OnInit {
   @Input() forSideNav: boolean;
   lang;
-  isEcom = false;
+  isEcom: boolean;
 
   constructor(
     private sideNavSc: SidenavService,
     public eComSc: EcomService,
     private router: Router,
     private langSc: LanguageService
-  ) {}
+  ) {
+    this.isEcom = this.eComSc.isEcom;
+  }
 
   ngOnInit(): void {
     this.lang = this.langSc.currentLang;

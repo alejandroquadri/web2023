@@ -3,6 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { LanguageComponent } from './language/language.component';
 import { DataResolver } from './language/data.resolver';
+import { environment } from '../environments/environment';
+
+const LANG = '../';
 
 const routes: Routes = [
   // redirecciones practicas
@@ -147,7 +150,7 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'es',
+    redirectTo: environment.init.lang,
   },
   // Anything else will route to not found
   { path: '**', redirectTo: 'es/not-found' },
@@ -156,11 +159,11 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
-    // initialNavigation: 'enabled',
-    onSameUrlNavigation: 'reload',
-    scrollPositionRestoration: 'enabled',
-    initialNavigation: 'enabledBlocking'
-}),
+      // initialNavigation: 'enabled',
+      onSameUrlNavigation: 'reload',
+      scrollPositionRestoration: 'enabled',
+      initialNavigation: 'enabledBlocking',
+    }),
   ],
   exports: [RouterModule],
 })

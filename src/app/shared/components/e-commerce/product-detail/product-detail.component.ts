@@ -48,7 +48,7 @@ export class ProductDetailComponent
   @Output() add = new EventEmitter();
   unsuscribe$ = new Subject();
   lang: string;
-  isEcom = false;
+  isEcom: boolean;
 
   // form variables
   qForm: FormGroup;
@@ -77,7 +77,9 @@ export class ProductDetailComponent
     private ecomSc: EcomService,
     private fb: FormBuilder,
     private langSc: LanguageService
-  ) {}
+  ) {
+    this.isEcom = ecomSc.isEcom;
+  }
 
   ngOnInit(): void {
     this.buildForm();
