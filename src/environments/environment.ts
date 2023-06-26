@@ -11,7 +11,7 @@ export const environment = {
     measurementId: 'G-SMK26SR75C',
   },
   init: {
-    eCom: true,
-    lang: 'en',
+    eCom: false,
+    lang: 'es',
   },
 };
