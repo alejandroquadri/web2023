@@ -11,6 +11,7 @@
     "serve:ssr": "node dist/quadri-web/server/main.js",
     "build:ssr": "ng build && ng run quadri-web:server",
     "prerender": "ng run quadri-web:prerender",
+    "server:prerender": "http-server dist/quadri-web/browser",
     "build:docker": "docker build -t quadri_web .",
     "build:docker:linux": "docker buildx build --platform linux/amd64 -t quadri_web .",
     "serve:docker": "docker run -p 4500:4000 quadri_web"
