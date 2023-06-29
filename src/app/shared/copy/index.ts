@@ -18,3 +18,5 @@ export * from './product-specs';
 export * from './pricing';
 export * from './blog';
 export * from './all-collections';
+export * from './signup-nl';
+export * from './thanks';

@@ -10,6 +10,9 @@ export const environment = {
     messagingSenderId: '872720422739',
     measurementId: 'G-SMK26SR75C',
   },
+  googleMaps: {
+    key: 'AIzaSyADqo_qHiIMLvwZ1H5w4S2MaPiGfrq2IHI',
+  },
   init: {
     eCom: false,
     lang: 'es',

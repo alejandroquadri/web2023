@@ -1,0 +1,48 @@
+<div class="wrapper border shadow rounded p-3">
+  <button class="btn btn-sm close-btn" (click)="close()">x</button>
+  <div class="text-form" *ngIf="showForm">
+    <div class="text pb-3">{{ copy[lang].text }}</div>
+    <form
+      class="row gy-2 gx-3 align-items-center"
+      (ngSubmit)="onSubmit()"
+      [formGroup]="form">
+      <div class="col-4 col-lg-auto">
+        <input
+          type="text"
+          class="form-control form-control-sm"
+          id="autoSizingInput"
+          formControlName="name"
+          [ngClass]="{
+            'is-invalid':
+              !form.controls['name'].valid && form.controls['name'].touched
+          }"
+          [placeholder]="copy[lang].name" />
+      </div>
+      <div class="col-5 col-lg">
+        <div class="input-group">
+          <input
+            type="email"
+            formControlName="email"
+            class="form-control form-control-sm"
+            id="autoSizingInputGroup"
+            [ngClass]="{
+              'is-invalid':
+                !form.controls['email'].valid && form.controls['email'].touched
+            }"
+            [placeholder]="copy[lang].email" />
+        </div>
+      </div>
+      <div class="col-auto">
+        <button
+          type="submit"
+          class="btn btn-sm submit-btn"
+          [disabled]="!form.valid">
+          {{ copy[lang].submit }}
+        </button>
+      </div>
+    </form>
+  </div>
+  <div class="thanks" *ngIf="showThanks">
+    {{ copy[lang].thanks }}
+  </div>
+</div>

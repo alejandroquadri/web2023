@@ -98,11 +98,11 @@ export class CheckoutComponent implements OnInit {
   }
 
   async saveQuote(): Promise<Quote> {
-    await this.mockTimeout();
-    const num = 1111;
+    // await this.mockTimeout();
+    // const num = 1111;
 
-    // this.suscribeToCloseSeq();
-    // const num = await this.quoterSc.getQuoteNum();
+    this.suscribeToCloseSeq();
+    const num = await this.quoterSc.getQuoteNum();
     const quoteObj: Quote = this.quoterSc.buildQuoteForm(
       this.cart,
       this.contactForm.value,
@@ -117,7 +117,7 @@ export class CheckoutComponent implements OnInit {
       this.contactForm.value,
       quoteObj.number
     );
-    // await this.quoterSc.save(quoteObj, queryObj);
+    await this.quoterSc.save(quoteObj, queryObj);
     return quoteObj;
   }
 

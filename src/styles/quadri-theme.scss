@@ -17,6 +17,7 @@ app-landing,
 app-quoter,
 app-stepper-wrapper,
 app-not-found,
+app-thanks,
 app-lookbook,
 app-blog-list,
 app-collections-menu {
@@ -224,6 +225,12 @@ app-collections-menu {
 //   border-radius: 0px !important;
 //   box-shadow: none !important;
 // }
+
+// ****************************************************
+// !!!! Modificaciones de CSS para Bootstrap
+
+.invalid-form {
+}
 
 @media (max-width: 576px) {
   .title-wrapper {

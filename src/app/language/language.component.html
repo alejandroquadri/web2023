@@ -22,5 +22,11 @@
     <div class="footer">
       <app-footer></app-footer>
     </div>
+    <ng-container *ngIf="addNewsLetter">
+      <app-signup-nl
+        [@slideInOut]
+        (closeDialog)="closeNlDialog()"
+        class="sign-up-nl"></app-signup-nl>
+    </ng-container>
   </mat-sidenav-content>
 </mat-sidenav-container>

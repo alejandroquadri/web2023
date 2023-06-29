@@ -6,11 +6,15 @@
 /es/inspiracion
 /es/checkout
 /es/placas
+/es/not-found
+/es/thanks
 
 /en/home
 /en/contact
 /en/lookbook
 /en/checkout
+/en/not-found
+/en/thanks
 /en/tiles
 
 /es/colecciones

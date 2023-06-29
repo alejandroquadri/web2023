@@ -16,14 +16,6 @@ const routes: Routes = [
     redirectTo: 'es/colecciones/pisos-elevados',
     pathMatch: 'full',
   },
-  // { path: 'raised-floors', redirectTo: 'en/raised-floors', pathMatch: 'full' },
-  // { path: 'losetas', redirectTo: 'es/losetas', pathMatch: 'full' },
-  // { path: 'pavers', redirectTo: 'en/pavers', pathMatch: 'full' },
-  // { path: 'contacto', pathMatch: 'full', redirectTo: 'es/contacto' },
-  // { path: 'contact', pathMatch: 'full', redirectTo: 'en/contact' },
-  // { path: 'consultas', pathMatch: 'full', redirectTo: 'es/contacto' },
-  // { path: 'queries', pathMatch: 'full', redirectTo: 'en/contacto' },
-  // { path: 'quote', pathMatch: 'full', redirectTo: 'es/quote' },
 
   // // redirecciones de web vieja
   { path: 'mosaicos', redirectTo: 'es/colecciones/todos', pathMatch: 'full' },
@@ -39,6 +31,11 @@ const routes: Routes = [
           import('./not-found/not-found.module').then(m => m.NotFoundModule),
       },
       { path: '404', redirectTo: 'not-found', pathMatch: 'full' },
+      {
+        path: 'thanks',
+        loadChildren: () =>
+          import('./thanks/thanks.module').then(m => m.ThanksModule),
+      },
       {
         path: 'home',
         loadChildren: () =>
@@ -60,11 +57,6 @@ const routes: Routes = [
         loadChildren: () =>
           import('./blog/blog.module').then(m => m.BlogModule),
       },
-      // {
-      //   path: 'quote',
-      //   loadChildren: () =>
-      //     import('./quoter/quoter.module').then(m => m.QuoterModule),
-      // },
       { path: 'lookbook', pathMatch: 'full', redirectTo: 'inspiracion' },
       {
         path: 'inspiracion',
@@ -79,12 +71,6 @@ const routes: Routes = [
             m => m.CollectionsModule
           ),
       },
-      // {
-      //   path: ':id',
-      //   canActivate: [NotFoundGuard],
-      //   loadChildren: () =>
-      //     import('./product/product.module').then(m => m.ProductModule),
-      // },
       { path: '', pathMatch: 'full', redirectTo: 'home' },
     ],
   },
@@ -98,6 +84,11 @@ const routes: Routes = [
           import('./not-found/not-found.module').then(m => m.NotFoundModule),
       },
       { path: '404', redirectTo: 'not-found', pathMatch: 'full' },
+      {
+        path: 'thanks',
+        loadChildren: () =>
+          import('./thanks/thanks.module').then(m => m.ThanksModule),
+      },
       {
         path: 'home',
         loadChildren: () =>
@@ -119,11 +110,6 @@ const routes: Routes = [
         loadChildren: () =>
           import('./blog/blog.module').then(m => m.BlogModule),
       },
-      // {
-      //   path: 'quote',
-      //   loadChildren: () =>
-      //     import('./quoter/quoter.module').then(m => m.QuoterModule),
-      // },
       { path: 'inspiracion', pathMatch: 'full', redirectTo: 'lookbook' },
       {
         path: 'lookbook',
@@ -138,12 +124,6 @@ const routes: Routes = [
             m => m.CollectionsModule
           ),
       },
-      // {
-      //   path: ':id',
-      //   canActivate: [NotFoundGuard],
-      //   loadChildren: () =>
-      //     import('./product/product.module').then(m => m.ProductModule),
-      // },
       { path: '', pathMatch: 'full', redirectTo: 'home' },
     ],
   },
@@ -159,7 +139,6 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
-      // initialNavigation: 'enabled',
       onSameUrlNavigation: 'reload',
       scrollPositionRestoration: 'enabled',
       initialNavigation: 'enabledBlocking',

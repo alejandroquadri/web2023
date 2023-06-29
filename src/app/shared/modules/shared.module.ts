@@ -38,6 +38,7 @@ import {
 } from '../components';
 import { SortPipe } from '../pipes';
 import { LazyImgDirective } from '../directives';
+import { SignupNlComponent } from '../components/signup-nl/signup-nl.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { LazyImgDirective } from '../directives';
     GalleryComponent,
     ProductDetailComponent,
     CartComponent,
+    SignupNlComponent,
     SortPipe,
     DateFnsPipe,
     LazyImgDirective,
@@ -116,6 +118,7 @@ import { LazyImgDirective } from '../directives';
     GalleryComponent,
     ProductDetailComponent,
     CartComponent,
+    SignupNlComponent,
     SortPipe,
     DateFnsPipe,
     LazyImgDirective,

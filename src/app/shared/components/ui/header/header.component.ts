@@ -21,14 +21,6 @@ import {
 } from 'src/app/shared/services';
 import { Platform } from '@angular/cdk/platform';
 
-const ShakeAnimation = [
-  style({ transform: 'rotate(0)' }),
-  animate('0.1s', style({ transform: 'rotate(2deg)' })),
-  animate('0.1s', style({ transform: 'rotate(-2deg)' })),
-  animate('0.1s', style({ transform: 'rotate(2deg)' })),
-  animate('0.1s', style({ transform: 'rotate(0)' })),
-];
-
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',

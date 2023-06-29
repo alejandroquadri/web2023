@@ -1,6 +1,5 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ApiService } from 'src/app/shared/services';
 
 @Injectable({
   providedIn: 'root',
@@ -10,8 +9,9 @@ export class CkApiService {
   api_key = 'Tm6C6zi5XftVev5cbgc31g';
   api_secret = 'FsKmVxwmrcHExjxah7zmPIdwC5Zk7I1uuBNjGyZpCrg';
   quoteFormId = '3407886';
+  newSuscribedTagId = '3947734'; // la id de la tag NewSuscribed
 
-  constructor(private apiSc: ApiService, private http: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
   addToQuoteForm(email: string, first_name: string) {
     const options = {
@@ -25,6 +25,18 @@ export class CkApiService {
       `${this.url}forms/${this.quoteFormId}/subscribe`,
       null,
       options
+    );
+  }
+
+  addSuscribedTag(email: string, first_name: string) {
+    const body = {
+      api_key: this.api_key,
+      email,
+      first_name,
+    };
+    return this.http.post(
+      `${this.url}tags/${this.newSuscribedTagId}/subscribe`,
+      body
     );
   }
 }

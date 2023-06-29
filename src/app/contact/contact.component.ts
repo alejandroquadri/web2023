@@ -10,6 +10,7 @@ import {
   SeoService,
   LanguageService,
 } from 'src/app/shared/services';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-contact',
@@ -22,6 +23,7 @@ export class ContactComponent implements OnInit {
   lang: string;
   showMap = false;
 
+  googleMapsKey = environment.googleMaps.key;
   zoom = 18;
   center: google.maps.LatLngLiteral = {
     lat: -34.6062565425857,
@@ -65,7 +67,7 @@ export class ContactComponent implements OnInit {
       // this.showMap = true;
       this.apiLoaded$ = this.httpClient
         .jsonp(
-          'https://maps.googleapis.com/maps/api/js?key=AIzaSyADqo_qHiIMLvwZ1H5w4S2MaPiGfrq2IHI',
+          `https://maps.googleapis.com/maps/api/js?key=${this.googleMapsKey}`,
           'callback'
         )
         .pipe(
