@@ -5,6 +5,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { Observable } from 'rxjs';
 
 import { ServerDetectService, SidenavService } from 'src/app/shared/services';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-language',
@@ -37,7 +38,8 @@ export class LanguageComponent implements AfterViewInit {
 
   constructor(
     private sidenavSc: SidenavService,
-    private serverDetSc: ServerDetectService
+    private serverDetSc: ServerDetectService,
+    private router: Router
   ) {}
 
   ngAfterViewInit(): void {
@@ -47,14 +49,22 @@ export class LanguageComponent implements AfterViewInit {
   }
 
   openNlDialog() {
-    if (this.serverDetSc.isBrowserSide()) {
+    if (this.serverDetSc.isBrowserSide() && this.shouldShowNlDialog()) {
       setTimeout(() => {
         this.addNewsLetter = true;
       }, 30000);
+    } else {
+      console.log('not showing');
     }
   }
 
   closeNlDialog() {
     this.addNewsLetter = false;
+  }
+
+  shouldShowNlDialog() {
+    const url = this.router.url;
+    const parsedUrl = url.replace(/\//g, '').substring(2);
+    return !(parsedUrl === 'thanks' || parsedUrl === 'not-found');
   }
 }

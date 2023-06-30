@@ -39,12 +39,6 @@ export class FooterComponent implements OnInit {
   ngOnInit(): void {
     this.lang = this.langSc.currentLang;
     this.isMobile$ = this.layoutSc.detectMobile();
-    // this.getCopy();
-    // this.copy = this.copySc.initCopy.footer;
-  }
-
-  getCopy() {
-    // this.copy$ = this.copySc.getCopyStd('footer');
   }
 
   addIcons() {
@@ -65,17 +59,4 @@ export class FooterComponent implements OnInit {
       return item.countries.includes(this.langSc.currentLangObj.countrycode);
     }
   }
-
-  // addIcons() {
-  //   const p = this.getPath();
-  //   console.log(p);
-  //   const isServer = isPlatformServer(this.platformId);
-  //   this.ig = this.copySc.registerIcon(`${p}${this.icons.ig}`, 'instagram', isServer);
-  //   this.fb = this.copySc.registerIcon(`${p}${this.icons.fb}`, 'facebook', isServer);
-  //   this.pin = this.copySc.registerIcon(`${p}${this.icons.pinterest}`, 'pinterest', isServer);
-  // }
-
-  // getPath() {
-  //   return this.serverDetSc.isServerSide() ? 'http://localhost:4200/' : '';
-  // }
 }

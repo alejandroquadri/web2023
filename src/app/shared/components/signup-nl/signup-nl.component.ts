@@ -1,5 +1,5 @@
 import { firstValueFrom } from 'rxjs';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { SignUpNlCopy } from '../../copy';
@@ -11,6 +11,7 @@ import { CkApiService, LanguageService } from '../../services';
   styleUrls: ['./signup-nl.component.scss'],
 })
 export class SignupNlComponent implements OnInit {
+  @Input() forFooter: boolean;
   @Output() closeDialog = new EventEmitter();
   copy = SignUpNlCopy;
   lang: string;
@@ -38,14 +39,14 @@ export class SignupNlComponent implements OnInit {
   }
 
   onSubmit() {
-    // firstValueFrom(
-    //   this.ckSc.addSuscribedTag(this.form.value.email, this.form.value.name)
-    // ).then(_ => console.log('done'));
+    firstValueFrom(
+      this.ckSc.addSuscribedTag(this.form.value.email, this.form.value.name)
+    ).then(_ => console.log('done'));
     this.showForm = false;
     this.showThanks = true;
     setTimeout(() => {
       this.close();
-    }, 5000);
+    }, 30000);
   }
 
   close() {

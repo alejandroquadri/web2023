@@ -1,8 +1,9 @@
-<div class="wrapper border shadow rounded p-3">
+<div *ngIf="!forFooter" class="wrapper border shadow rounded p-3">
   <button class="btn btn-sm close-btn" (click)="close()">x</button>
-  <div class="text-form" *ngIf="showForm">
+  <div class="text-form">
     <div class="text pb-3">{{ copy[lang].text }}</div>
     <form
+      *ngIf="showForm"
       class="row gy-2 gx-3 align-items-center"
       (ngSubmit)="onSubmit()"
       [formGroup]="form">
@@ -37,6 +38,48 @@
           type="submit"
           class="btn btn-sm submit-btn"
           [disabled]="!form.valid">
+          {{ copy[lang].submit }}
+        </button>
+      </div>
+    </form>
+  </div>
+  <div class="thanks" *ngIf="showThanks">
+    {{ copy[lang].thanks }}
+  </div>
+</div>
+
+<div *ngIf="forFooter" class="footer-wrapper">
+  <div class="text-form">
+    <div class="text pb-3">{{ copy[lang].text }}</div>
+    <form
+      *ngIf="showForm"
+      class="d-flex flex-column align-items-center"
+      (ngSubmit)="onSubmit()"
+      [formGroup]="form">
+      <div class="mb-2 div-input">
+        <input
+          type="text"
+          class="form-control form-control-sm"
+          formControlName="name"
+          [ngClass]="{
+            'is-invalid':
+              !form.controls['name'].valid && form.controls['name'].touched
+          }"
+          [placeholder]="copy[lang].name" />
+      </div>
+      <div class="mb-2 div-input">
+        <input
+          type="email"
+          formControlName="email"
+          class="form-control form-control-sm"
+          [ngClass]="{
+            'is-invalid':
+              !form.controls['email'].valid && form.controls['email'].touched
+          }"
+          [placeholder]="copy[lang].email" />
+      </div>
+      <div class="div-subbtn text-start">
+        <button type="submit" class="btn submit-btn" [disabled]="!form.valid">
           {{ copy[lang].submit }}
         </button>
       </div>

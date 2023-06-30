@@ -5,7 +5,27 @@
   margin: 0 10px 10px 0;
 }
 
-.text {
+.footer-wrapper {
+  background-color: transparent;
+  color: white;
+
+  .div-input,
+  .text,
+  .div-subbtn {
+    width: 80%;
+  }
+
+  .text {
+    margin: auto;
+  }
+
+  .submit-btn {
+    border: none;
+  }
+}
+
+.text,
+.thanks {
   font-size: 0.9rem;
 }
 
