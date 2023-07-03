@@ -45,6 +45,7 @@
 /es/blog/diferentes-tipos-terrazo
 /es/blog/wabi-sabi-terrazo
 /es/blog/piso-adecuado-para-tu-espacio
+/es/blog/terrazo-adecuado-para-mi
 
 /en/blog
 /en/blog/que-es-el-terrazo
@@ -53,6 +54,7 @@
 /en/blog/diferentes-tipos-terrazo
 /en/blog/wabi-sabi-terrazo
 /en/blog/piso-adecuado-para-tu-espacio
+/en/blog/terrazo-adecuado-para-mi
 
 
 /es/colecciones/volcan/pucon

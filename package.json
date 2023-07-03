@@ -11,13 +11,13 @@
     "serve:ssr": "node dist/quadri-web/server/main.js",
     "build:ssr": "ng build && ng run quadri-web:server",
     "prerender": "ng run quadri-web:prerender",
-    "total:build": "npm run build:ssr && npm run prerender && npm run create404",
+    "total:build": "npm run build:ssr && npm run prerender && npm run create404 && npm run upload:ftp",
     "serve:prerender": "http-server dist/quadri-web/browser",
     "build:docker": "docker build -t quadri_web .",
     "build:docker:linux": "docker buildx build --platform linux/amd64 -t quadri_web .",
     "serve:docker": "docker run -p 4500:4000 quadri_web",
     "create404": "cp /Users/ale/dev/quadri-web/dist/quadri-web/browser/es/not-found/index.html /Users/ale/dev/quadri-web/dist/quadri-web/browser/404.shtml",
-    "upload:ftp": "duck --upload ftp://ftp.quadri.com.ar/public_html/ /Users/ale/dev/quadri-web/dist/quadri-web/browser/"
+    "upload:ftp": "./deploy.sh"
   },
   "private": true,
   "dependencies": {
