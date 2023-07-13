@@ -1,12 +1,15 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Cart } from 'src/app/shared/copy/cart';
 
 import {
   SidenavService,
   EcomService,
   LanguageService,
 } from 'src/app/shared/services';
-import { CartItem } from 'src/app/shared/interfaces';
+import { CartItem, MPitem } from 'src/app/shared/interfaces';
+import { firstValueFrom } from 'rxjs';
+import { MpService } from 'src/app/shared/services/mp.service';
 
 @Component({
   selector: 'app-cart',
@@ -17,12 +20,15 @@ export class CartComponent implements OnInit {
   @Input() forSideNav: boolean;
   lang;
   isEcom: boolean;
+  copy = Cart;
+  spinner = false;
 
   constructor(
     private sideNavSc: SidenavService,
     public eComSc: EcomService,
     private router: Router,
-    private langSc: LanguageService
+    private langSc: LanguageService,
+    private mpSc: MpService
   ) {
     this.isEcom = this.eComSc.isEcom;
   }
@@ -48,7 +54,71 @@ export class CartComponent implements OnInit {
   }
 
   endSale() {
-    this.close();
-    this.router.navigate([`/${this.lang}/checkout`]);
+    if (this.eComSc.carrySamples) {
+      if (!this.eComSc.isEcom) {
+        this.mpCheckout();
+      } else {
+        this.strippedCheckout();
+      }
+    } else {
+      this.close();
+      this.router.navigate([`/${this.lang}/checkout`]);
+    }
+  }
+
+  mpCheckout() {
+    this.spinner = true;
+    const title =
+      this.cartList.length > 1
+        ? 'Productos Quadri'
+        : this.cartList[0].product.descripcion;
+    let description = '';
+    this.cartList.forEach(item => {
+      description += `${item.product.descripcion} x ${item.quantity} ;`;
+    });
+    const items: Array<MPitem> = [
+      {
+        title,
+        quantity: 1,
+        unit_price: this.qObj!.subTotal,
+        description,
+        catalog_product_id: 'MLA1375998543',
+      },
+    ];
+    // const items: Array<MPitem> = [];
+    // this.cartList.forEach(item => {
+    //   const mpItem: MPitem = {
+    //     title: item.product.descripcion,
+    //     quantity: item.quantity,
+    //     unit_price: item.product.precioActual,
+    //     id: item.product.codigo,
+    //     catalog_product_id: 'MLA1375998543',
+    //     // picture_url: item.imageUrl,
+    //   };
+    //   items.push(mpItem);
+    // });
+    firstValueFrom(this.mpSc.buyItem(items, true)).then((res: any) => {
+      // para que abra en otra tab
+      // window.open(res.all.init_point, '_blank');
+      // window.open(res.sandbox_init_point, '_blank');
+      // this.eComSc.cart = [];
+      // this.close();
+
+      // para que abra en la misma ventana
+      window.location.href = res.all.init_point;
+      this.spinner = false;
+    });
+  }
+
+  strippedCheckout() {
+    // todo
+  }
+
+  showPrices() {
+    if (this.eComSc.isEcom) {
+      return true;
+    } else {
+      return this.eComSc.carrySamples;
+    }
   }
 }

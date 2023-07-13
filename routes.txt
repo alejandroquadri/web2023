@@ -4,6 +4,7 @@
 /es/home
 /es/contacto
 /es/inspiracion
+/es/muestras
 /es/checkout
 /es/placas
 /es/not-found
@@ -12,6 +13,7 @@
 /en/home
 /en/contact
 /en/lookbook
+/en/samples
 /en/checkout
 /en/not-found
 /en/thanks

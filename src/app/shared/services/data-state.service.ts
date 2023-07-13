@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
 import {
-  TransferState,
+  Injectable,
   makeStateKey,
   StateKey,
-} from '@angular/platform-browser';
+  TransferState,
+} from '@angular/core';
 
 import { Observable, of, Subject, take } from 'rxjs';
 import { switchMap, tap, startWith, filter } from 'rxjs/operators';
@@ -19,6 +19,8 @@ export class DataStateService {
     private serverDetectSc: ServerDetectService
   ) {}
 
+  // esto no se usa mas en favor aparentemente del Hydration
+
   checkAndGetData(
     key: string,
     getDataObservable: Observable<any>
@@ -31,7 +33,7 @@ export class DataStateService {
       return getDataObservable.pipe(
         tap(data => {
           if (this.serverDetectSc.isServerSide()) {
-            console.log('guardo state key');
+            // console.log('guardo state key');
             this.tState.set(stateKey, data);
           }
         })

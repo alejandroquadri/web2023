@@ -2,7 +2,7 @@
   <swiper
     [slidesPerView]="1"
     [spaceBetween]="0"
-    [autoplay]="{ delay: 10000, disableOnInteraction: true }"
+    [autoplay]="{ delay: 20000, disableOnInteraction: true }"
     [navigation]="false"
     [pagination]="{ clickable: true }"
     [scrollbar]="{ draggable: true }"
@@ -26,18 +26,18 @@
             </div>
 
             <div class="btns-wrapper">
-              <app-cta-btn
-                class="btn-disp"
-                [text]="copy.cta_btn1[lang]"
-                [origin]="'landing'"
-                [lang]="lang"
-                [fullWidth]="true">
-              </app-cta-btn>
+              <button
+                mat-flat-button
+                color="primary"
+                class="lg-btn me-md-3 mb-2 mb-md-0 cta-btn"
+                (click)="routeTo(slide.cta_btn1[lang].url)">
+                {{ slide.cta_btn1[lang].text[eCom ? 'eCom' : 'quote'] }}
+              </button>
               <button
                 mat-button
-                class="btn-disp lg-btn btn-outline-white ms-0 ms-md-3 mt-3 mt-md-0"
-                (click)="toCol(slide.cta_btn2.url)">
-                {{ slide.cta_btn2[lang] }} >
+                class="lg-btn btn-outline-white cta-btn"
+                (click)="routeTo(slide.cta_btn2[lang].url)">
+                {{ slide.cta_btn2[lang].text }} >
               </button>
             </div>
           </div>

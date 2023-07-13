@@ -1,0 +1,18 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 internal-link">
+        <app-internal-link [intRoutes]="internalLinks"></app-internal-link>
+      </div>
+    </div>
+  </div>
+  <app-product-detail
+    *ngIf="dbProducts"
+    [productObj]="productWebObj"
+    [colId]="id"
+    [collection]="copy"
+    [dbProducts]="dbProducts"
+    [samples]="true"
+    [initQ]="1"
+    (add)="addToCart($event)"></app-product-detail>
+</div>

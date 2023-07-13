@@ -31,18 +31,26 @@ export class BlogResolver implements Resolve<any> {
   }
 
   getBlogList() {
-    return firstValueFrom(
-      this.stateSc
-        .checkAndGetData('blog-list', this.blogSc.getBlogEntries())
-        .pipe(take(1))
-    );
+    return firstValueFrom(this.blogSc.getBlogEntries().pipe(take(1)));
   }
 
   getBlogDetail(id) {
-    return firstValueFrom(
-      this.stateSc
-        .checkAndGetData('id', this.blogSc.getBlogEntry(id))
-        .pipe(take(1))
-    );
+    return firstValueFrom(this.blogSc.getBlogEntry(id).pipe(take(1)));
   }
 }
+
+// getBlogList() {
+//   return firstValueFrom(
+//     this.stateSc
+//       .checkAndGetData('blog-list', this.blogSc.getBlogEntries())
+//       .pipe(take(1))
+//   );
+// }
+
+// getBlogDetail(id) {
+//   return firstValueFrom(
+//     this.stateSc
+//       .checkAndGetData('id', this.blogSc.getBlogEntry(id))
+//       .pipe(take(1))
+//   );
+// }

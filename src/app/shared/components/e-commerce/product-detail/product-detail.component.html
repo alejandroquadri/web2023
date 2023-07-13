@@ -3,7 +3,8 @@
     <div class="col-12">
       <h1 class="d-inline-block">
         {{ setTitle() }}
-        {{ allColors[productObj.name].name }}
+        <span *ngIf="!samples">{{ allColors[productObj.name].name }}</span>
+        <span *ngIf="samples">{{ this.selectedSize.size }}</span>
       </h1>
     </div>
   </div>
@@ -11,7 +12,7 @@
     <div class="col-12 col-md-6 my-4 my-md-0 d-flex">
       <div class="thumbs d-lg-flex d-none flex-column me-2">
         <img
-          *ngFor="let img of imgArray; let i = index"
+          *ngFor="let img of setImgArray(); let i = index"
           [src]="img"
           class="img-thumbnail"
           alt="img"
@@ -25,7 +26,7 @@
         [pagination]="true"
         [scrollbar]="{ draggable: true }"
         [centeredSlides]="false">
-        <ng-template *ngFor="let img of imgArray" swiperSlide>
+        <ng-template *ngFor="let img of setImgArray()" swiperSlide>
           <img [src]="img" class="img-fluid carrousel-img" alt="" />
         </ng-template>
       </swiper>
@@ -34,11 +35,13 @@
       <div class="row d-none d-md-block">
         <div class="col-12">
           <h1 class="d-inline-block">
-            {{ setTitle() }} {{ allColors[productObj.name].name }}
+            {{ setTitle() }}
+            <span *ngIf="!samples">{{ allColors[productObj.name].name }}</span>
+            <span *ngIf="samples">{{ this.selectedSize.size }}</span>
           </h1>
         </div>
       </div>
-      <div class="row" *ngIf="isEcom">
+      <div class="row" *ngIf="isEcom || samples">
         <div class="col-12">
           <div class="price">
             <span *ngIf="selectedProduct"
@@ -46,8 +49,17 @@
                 selectedProduct.precioActual
                   | currency : 'USD' : 'symbol-narrow' : '0.0-2'
               }}
-              /{{ selectedProduct.unidad | lowercase }}</span
+              / {{ selectedProduct.unidad | lowercase }}</span
             >
+          </div>
+          <div
+            class="ms-3 stock"
+            *ngIf="samples"
+            [ngClass]="{
+              'have-stock': calcStock().stock,
+              'no-stock': !calcStock().stock
+            }">
+            <span *ngIf="selectedProduct">{{ calcStock().text }}</span>
           </div>
         </div>
       </div>
@@ -55,7 +67,7 @@
         <div class="col-12">
           <button
             mat-stroked-button
-            class="me-2"
+            class="me-2 mb-2"
             *ngFor="let sizeObj of productObj.sizes"
             (click)="chooseSize(sizeObj)"
             [ngClass]="{ 'slected-size': sizeObj.size === selectedSize.size }">
@@ -68,7 +80,9 @@
           <div class="col-6">
             <mat-form-field appearance="outline" class="q-field">
               <mat-label
-                >Cantidad ({{ selectedProduct.unidad | lowercase }})
+                >{{ copy.quantityReq[lang] }} ({{
+                  selectedProduct.unidad | lowercase
+                }})
               </mat-label>
               <input
                 matInput
@@ -78,17 +92,15 @@
                 mask="separator.2"
                 thousandSeparator=","
                 enterkeyhint="next" />
-              <mat-hint *ngIf="hasPackaging()"
-                >mínimo 1 caja ({{
-                  selectedProduct.uPorBulto
-                }}
-                unidades)</mat-hint
+              <mat-hint *ngIf="hasPackaging() && !samples"
+                >{{ copy.qHintStart[lang] }} ({{ selectedProduct.uPorBulto }}
+                {{ copy.units[lang] }})</mat-hint
               >
             </mat-form-field>
           </div>
-          <div class="col-6">
+          <div class="col-6" *ngIf="!samples">
             <mat-form-field appearance="outline" class="q-field">
-              <mat-label>Desperdicio</mat-label>
+              <mat-label>{{ copy.overage[lang] }}</mat-label>
               <input
                 matInput
                 formControlName="excess"
@@ -96,12 +108,12 @@
                 suffix=" %"
                 thousandSeparator=","
                 inputmode="decimal" />
-              <mat-hint>% de material en exceso</mat-hint>
+              <mat-hint>{{ copy.overageHint[lang] }}</mat-hint>
             </mat-form-field>
           </div>
         </div>
-        <div class="row feature-text mt-4 py-3">
-          <div class="col-6 col-lg first-row-sm">
+        <div class="row feature-text mt-4 py-3" *ngIf="!samples">
+          <!-- <div class="col-6 col-lg first-row-sm" *ngIf="!hasPackaging()">
             <div class="q-title">
               {{ selectedProduct.unidad | lowercase }} netos
               <mat-icon
@@ -112,8 +124,8 @@
               </mat-icon>
             </div>
             <div class="q-num">{{ netQ | number : '0.0-2' }}</div>
-          </div>
-          <div class="col-6 col-lg first-row-sm">
+          </div> -->
+          <!-- <div class="col-6 col-lg first-row-sm" *ngIf="!hasPackaging()">
             <div class="q-title">
               unidades
               <mat-icon
@@ -128,10 +140,26 @@
               </mat-icon>
             </div>
             <div class="q-num">{{ units | number : '0.0-2' }}</div>
+          </div> -->
+          <div class="col-6 col-lg">
+            <div class="q-title">
+              {{ selectedProduct.unidad | lowercase }} {{ copy.total[lang] }}
+              <mat-icon
+                class="material-icons-outlined info-icon"
+                [matTooltip]="
+                  (selectedProduct.unidad | lowercase) +
+                  ' en base a cajas requeridas'
+                "
+                matTooltipPosition="above">
+                info
+              </mat-icon>
+            </div>
+            <div class="q-num">{{ totalQ | number : '0.0-2' }}</div>
           </div>
+
           <div class="col-6 col-lg" *ngIf="hasPackaging()">
             <div class="q-title">
-              cajas
+              {{ copy.boxes[lang] }}
               <mat-icon
                 class="material-icons-outlined info-icon"
                 [matTooltip]="
@@ -145,60 +173,54 @@
             </div>
             <div class="q-num">{{ boxes | number : '0.0-0' }}</div>
           </div>
-          <div class="col-6 col-lg" *ngIf="hasPackaging()">
+
+          <div class="col-6 col-lg" *ngIf="!hasPackaging()">
             <div class="q-title">
-              {{ selectedProduct.unidad | lowercase }} finales
+              {{ copy.units[lang] }}
               <mat-icon
                 class="material-icons-outlined info-icon"
                 [matTooltip]="
+                  'conversion de unidades de ' +
                   (selectedProduct.unidad | lowercase) +
-                  ' en base a cajas requeridas'
+                  ' netos'
                 "
                 matTooltipPosition="above">
                 info
               </mat-icon>
             </div>
-            <div class="q-num">{{ totalQ | number : '0.0-2' }}</div>
+            <div class="q-num">{{ units | number : '0.0-2' }}</div>
           </div>
         </div>
-        <div class="row mt-2 mt-lg-3" *ngIf="isEcom">
+
+        <div class="row mt-2" *ngIf="isEcom || samples">
           <div class="col-12 col-lg-auto">
             <div class="q-title">subtotal</div>
             <div class="q-num sub-total">
               {{ subTotal | currency : 'USD' : 'symbol-narrow' : '0.0-2' }}
             </div>
           </div>
-          <div class="col-12 col-lg d-flex justify-content-lg-end mt-3 mt-lg-0">
-            <button
-              class="buy-btn"
-              mat-flat-button
-              color="primary"
-              [disabled]="!qForm.valid"
-              (click)="addToCart()">
-              <mat-icon class="material-icons-outlined"
-                >add_shopping_cart</mat-icon
-              >
-              Agregar a presupuesto
-            </button>
-          </div>
         </div>
-        <div class="row mt-2 mt-lg-3" *ngIf="!isEcom">
-          <div class="col d-flex justify-content-lg-start mt-3 mt-lg-0">
+        <div class="row mt-2">
+          <div class="col-12 d-flex justify-content-lg-start mt-2">
             <button
               class="buy-btn"
               mat-flat-button
               color="primary"
-              [disabled]="!qForm.valid"
+              [disabled]="disableBtn()"
               (click)="addToCart()">
-              <mat-icon class="material-icons-outlined"
+              <!-- <mat-icon class="material-icons-outlined"
                 >add_shopping_cart</mat-icon
-              >
-              Agregar a presupuesto
+              > -->
+              <span *ngIf="isEcom || samples">{{ copy.addToCart[lang] }}</span>
+              <span *ngIf="!isEcom && !samples">{{
+                copy.addToQuote[lang]
+              }}</span>
+              <!-- <span *ngIf="samples">{{ copy.buy[lang] }}</span> -->
             </button>
           </div>
         </div>
       </form>
-      <div class="row mt-3">
+      <div class="row mt-3" *ngIf="!samples">
         <div class="col d-flex">
           <mat-checkbox
             color="primary"

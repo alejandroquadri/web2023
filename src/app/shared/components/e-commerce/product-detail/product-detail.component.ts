@@ -25,10 +25,16 @@ import SwiperCore, {
 // install Swiper modules
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay, Thumbs]);
 
-import { Colors } from 'src/app/shared/copy';
+import { Colors, ProductDetail } from 'src/app/shared/copy';
 import { Color, Producto } from 'src/app/shared/interfaces';
 import { EcomService } from '../../../services/ecom.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  ValidatorFn,
+  Validators,
+} from '@angular/forms';
 import { LanguageService } from 'src/app/shared/services';
 
 @Component({
@@ -45,15 +51,18 @@ export class ProductDetailComponent
   @Input() collection: any;
   @Input() colId: any;
   @Input() dbProducts: Record<string, Producto>;
+  @Input() samples: boolean;
+  @Input() initQ: number;
   @Output() add = new EventEmitter();
   unsuscribe$ = new Subject();
   lang: string;
   isEcom: boolean;
+  copy = ProductDetail;
 
   // form variables
   qForm: FormGroup;
-  initQ = 20;
-  excess = 15;
+  // initQ = 20;
+  excess = 0;
   eq: number;
   netQ: number | null;
   totalQ: number;
@@ -69,6 +78,7 @@ export class ProductDetailComponent
   selectedSize;
   selectedProduct: Producto;
   imgArray: Array<string> = [];
+  imgObjArray: Record<string, Array<string>> = {};
 
   // copy & constants
   allColors: Record<string, Color> = Colors;
@@ -82,13 +92,16 @@ export class ProductDetailComponent
   }
 
   ngOnInit(): void {
-    this.buildForm();
     this.lang = this.langSc.currentLang;
+    if (!this.initQ) {
+      this.initQ = 20;
+      this.excess = 15;
+    }
+    this.buildForm();
     this.buildImgArray();
     this.selectedSize = this.productObj.sizes[0];
     this.selectedProduct = this.dbProducts[this.selectedSize.code];
     this.calcFinalQ();
-    console.log(this.colId);
   }
 
   ngOnDestroy(): void {
@@ -101,11 +114,38 @@ export class ProductDetailComponent
   }
 
   buildImgArray() {
+    if (this.samples) {
+      this.buildAltImgArray();
+    } else {
+      this.buildTerrazzoImgArray();
+    }
+  }
+
+  setImgArray() {
+    if (this.samples) {
+      return this.imgObjArray[this.selectedSize.code];
+    } else {
+      return this.imgArray;
+    }
+  }
+
+  buildTerrazzoImgArray() {
     const obj = this.allColors[this.productObj.name];
     this.imgArray.push(obj.url);
     if (obj.secImgs) {
       obj.secImgs.forEach(img => this.imgArray.push(img));
     }
+  }
+
+  buildAltImgArray() {
+    this.productObj.sizes.forEach(size => {
+      const obj = this.allColors[size.code];
+      this.imgObjArray[size.code] = [];
+      this.imgObjArray[size.code].push(obj.url);
+      if (obj.secImgs) {
+        obj.secImgs.forEach(img => this.imgObjArray[size.code].push(img));
+      }
+    });
   }
 
   toSlide(index) {
@@ -124,7 +164,10 @@ export class ProductDetailComponent
 
   buildForm() {
     this.qForm = this.fb.group({
-      quantity: [this.initQ, Validators.required],
+      quantity: [
+        this.initQ,
+        [Validators.required, this.greaterThanZeroValidator()],
+      ],
       excess: [
         this.excess,
         [Validators.required, Validators.max(99), Validators.min(0)],
@@ -135,6 +178,14 @@ export class ProductDetailComponent
       imageUrl: [null],
       isComplement: [null],
     });
+  }
+
+  greaterThanZeroValidator(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      const value = Number(control.value);
+      const isNotValid = value <= 0;
+      return isNotValid ? { greaterThanZero: { value: control.value } } : null;
+    };
   }
 
   watchForm() {
@@ -171,7 +222,7 @@ export class ProductDetailComponent
         totalQ: this.totalQ,
         product: this.selectedProduct,
         subTotal: this.subTotal,
-        imageUrl: this.imgArray[0],
+        imageUrl: this.setImgArray()[0],
         isComplement: false,
       });
     } else {
@@ -187,9 +238,41 @@ export class ProductDetailComponent
   }
 
   setTitle() {
-    const terrazzo = this.lang === 'es' ? 'Terrazo' : 'Terrazzo';
-    const raisedFloor =
-      this.lang === 'es' ? 'Piso técnico terrazo' : 'Terrazzo raised floor';
-    return this.colId === 'raisedFloors' ? raisedFloor : terrazzo;
+    if (this.samples) {
+      return `${this.copy.samples[this.lang]} - `;
+    } else {
+      return this.colId === 'raisedFloors'
+        ? this.copy.raisedFloor[this.lang]
+        : this.copy.terrazzo[this.lang];
+    }
+  }
+
+  calcStock(aprox?: number) {
+    if (!aprox) {
+      aprox = 0;
+    }
+    let stock = false;
+    const stockObj = this.selectedProduct.stock;
+    for (const [key, value] of Object.entries(stockObj)) {
+      if (value.disp > aprox) {
+        stock = true;
+        break;
+      }
+    }
+    const text = stock
+      ? this.copy.stock[this.lang]
+      : this.copy.noStock[this.lang];
+    return {
+      text,
+      stock,
+    };
+  }
+
+  disableBtn() {
+    if (this.samples) {
+      return !this.qForm.valid || !this.calcStock().stock;
+    } else {
+      return !this.qForm.valid;
+    }
   }
 }

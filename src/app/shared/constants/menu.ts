@@ -1,36 +1,16 @@
 export const MENU = {
   local: [
-    // {
-    //   en: 'Tiles',
-    //   es: 'Placas',
-    //   url: { es: 'placas', en: 'tiles' },
-    //   countries: ['AR'],
-    // },
-    // {
-    //   en: 'Raised floors',
-    //   es: 'Pisos elevados',
-    //   url: { es: 'pisos-elevados', en: 'raised-floors' },
-    //   countries: ['AR'],
-    // },
-    // {
-    //   en: 'Pavers',
-    //   es: 'Losetas',
-    //   url: { es: 'losetas', en: 'pavers' },
-    //   countries: ['AR'],
-    // },
     {
       en: 'Collections',
       es: 'Colecciones',
       url: { es: 'colecciones', en: 'collections' },
       submenu: true,
     },
-    // {
-    //   en: 'Products',
-    //   es: 'Productos',
-    //   url: { es: null, en: null },
-    //   btn: false,
-    //   submenu: true,
-    // },
+    {
+      en: 'Samples',
+      es: 'Muestras',
+      url: { es: 'muestras', en: 'samples' },
+    },
     {
       en: 'Lookbook',
       es: 'Inspiracion',
@@ -55,11 +35,6 @@ export const MENU = {
       url: { es: 'placas', en: 'tiles' },
       countries: ['AR'],
     },
-    // {
-    //   'en': 'Blog',
-    //   'es': 'Blog',
-    //   'url': '#'
-    // },
     {
       en: 'Contact us',
       es: 'Contacto',

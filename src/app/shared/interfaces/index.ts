@@ -4,3 +4,4 @@ export * from './query.interface';
 export * from './blog.interface';
 export * from './color.interface';
 export * from './cart-item.interface';
+export * from './mp.interface';

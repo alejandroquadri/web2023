@@ -19,6 +19,7 @@ import { environment } from 'src/environments/environment';
 export class EcomService {
   private firestore: Firestore = inject(Firestore);
   isEcom = environment.init.eCom;
+  carrySamples = false;
   products: Record<string, Producto>;
   prodCrude: Array<Producto>;
   cart: CartItem[] = [];
@@ -34,19 +35,27 @@ export class EcomService {
 
   constructor() {}
 
-  // from Firebase
+  // setting mode
 
-  // getProductsViejo(): Observable<Record<string, Producto>> {
-  //   return this.db
-  //     .colValue$<Producto[]>('products', ref =>
-  //       ref.where('tipo', 'in', ['producto', 'producto reventa', 'servicio'])
-  //     )
-  //     .pipe(
-  //       tap(products => (this.prodCrude = products)),
-  //       map(products => this.prodObj(products)),
-  //       tap(productsObj => (this.products = productsObj))
-  //     );
-  // }
+  switchToSamples() {
+    this.carrySamples = true;
+    this.cart = [];
+  }
+
+  switchToQuote() {
+    this.carrySamples = false;
+    this.cart = [];
+  }
+
+  showPrices() {
+    if (this.isEcom) {
+      return true;
+    } else {
+      return this.carrySamples;
+    }
+  }
+
+  // from Firebase
 
   getProducts() {
     const prodColRef = collection(this.firestore, 'products');
@@ -106,11 +115,18 @@ export class EcomService {
       this.qObj.subTotal = this.round(this.qObj.subTotal - itemSubTotal, 2);
       // lo remuevo del carrito
       this.cart.splice(i, 1);
+
+      // en caso que el articulo que este removiendo sea un producto entonces recalculo complementos
+      if (!val.isComplement) {
+        // remuevo los complementos
+        this.removeComplements();
+        // recalculo el total
+        this.calcTotal();
+      }
     }
   }
 
   calcTotal() {
-    console.log('calculo total');
     this.qObj = this.calcQ(this.cart);
     this.compObj = this.calcExtras(this.qObj);
     const extrasArr = this.addComplements(this.compObj);

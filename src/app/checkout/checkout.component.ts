@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { CartItem, Query, Quote } from 'src/app/shared/interfaces';
+import { CartItem, MPitem, Query, Quote } from 'src/app/shared/interfaces';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 
 import {
@@ -14,6 +14,8 @@ import {
   QuoterService,
 } from 'src/app/shared/services';
 import { firstValueFrom } from 'rxjs';
+import { CheckoutCopy } from 'src/app/shared/copy';
+import { MpService } from '../shared/services/mp.service';
 
 @Component({
   selector: 'app-checkout',
@@ -25,46 +27,18 @@ export class CheckoutComponent implements OnInit {
   lang: string;
   spinner = false;
 
-  copy = {
-    title: {
-      es: 'Datos de contacto',
-      en: 'Contact information',
-    },
-    email: {
-      en: 'Email',
-      es: 'Email',
-    },
-    emailHint: {
-      en: 'We will send you the quote to this address',
-      es: 'Enviaremos el presupuesto a esta direccion',
-    },
-    label: {
-      en: 'Contact data',
-      es: 'Datos de contacto',
-    },
-    name: {
-      en: 'Name & Surname',
-      es: 'Nombre & Apellido',
-    },
-    nameHint: {
-      en: 'Please give us your full name 😀',
-      es: 'Por favor decinos tu nombre completo 😀',
-    },
-    phone: {
-      en: 'Phone',
-      es: 'Teléfono',
-    },
-  };
+  copy = CheckoutCopy;
 
   constructor(
     private fb: FormBuilder,
     private langSc: LanguageService,
-    private ecomSc: EcomService,
+    public ecomSc: EcomService,
     private router: Router,
     private quoterSc: QuoterService,
     private quotePdf: QuotePdfService,
     private pdfSc: PdfService,
     private ckSc: CkApiService,
+    private mpSc: MpService,
     public dialog: MatDialog
   ) {}
 
@@ -84,6 +58,41 @@ export class CheckoutComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       phone: ['', Validators.required],
     });
+  }
+
+  submit() {
+    if (this.ecomSc.carrySamples) {
+      if (!this.ecomSc.isEcom) {
+        this.mpCheckout();
+      } else {
+        this.strippedCheckout();
+      }
+    } else {
+      this.sendQuote();
+    }
+  }
+
+  mpCheckout() {
+    const items: Array<MPitem> = [];
+    this.cart.forEach(item => {
+      const mpItem: MPitem = {
+        title: item.product.descripcion,
+        quantity: item.quantity,
+        unit_price: item.product.precioActual,
+        id: item.product.codigo,
+        picture_url: item.imageUrl,
+      };
+      items.push(mpItem);
+    });
+    firstValueFrom(this.mpSc.buyItem(items, true)).then((res: any) => {
+      console.log(res);
+      window.open(res.all.init_point, '_blank');
+      // window.open(res.sandbox_init_point, '_blank');
+    });
+  }
+
+  strippedCheckout() {
+    // todo
   }
 
   async sendQuote() {

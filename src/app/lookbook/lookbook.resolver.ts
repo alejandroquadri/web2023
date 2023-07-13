@@ -1,6 +1,7 @@
+import { take } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
-import { Observable, firstValueFrom } from 'rxjs';
+import { Resolve } from '@angular/router';
+import { firstValueFrom } from 'rxjs';
 
 import { ServerDetectService } from 'src/app/shared/services';
 import { LookbookService } from './lookbook.service';
@@ -16,7 +17,7 @@ export class LookbookResolver implements Resolve<any> {
     if (this.serverDetectSc.isBrowserSide()) {
       return Promise.resolve(null);
     } else {
-      return firstValueFrom(this.lookbookSc.getLookbook());
+      return firstValueFrom(this.lookbookSc.getLookbook().pipe(take(1)));
     }
   }
 }

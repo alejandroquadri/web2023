@@ -63,6 +63,12 @@ const routes: Routes = [
         loadChildren: () =>
           import('./lookbook/lookbook.module').then(m => m.LookbookModule),
       },
+      { path: 'samples', pathMatch: 'full', redirectTo: 'muestras' },
+      {
+        path: 'muestras',
+        loadChildren: () =>
+          import('./samples/samples.module').then(m => m.SamplesModule),
+      },
       { path: 'collections', redirectTo: 'colecciones' },
       {
         path: 'colecciones',
@@ -115,6 +121,13 @@ const routes: Routes = [
         path: 'lookbook',
         loadChildren: () =>
           import('./lookbook/lookbook.module').then(m => m.LookbookModule),
+      },
+      { path: 'muestras', pathMatch: 'full', redirectTo: 'samples' },
+
+      {
+        path: 'samples',
+        loadChildren: () =>
+          import('./samples/samples.module').then(m => m.SamplesModule),
       },
       { path: 'colecciones', redirectTo: 'collections' },
       {

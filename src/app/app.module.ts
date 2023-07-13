@@ -28,8 +28,6 @@ import { NavigatorComponent } from './navigator/navigator.component';
   declarations: [AppComponent, NavigatorComponent, LanguageComponent],
   imports: [
     BrowserModule,
-    // BrowserModule.withServerTransition({ appId: 'quadri-web-new' }),
-    // BrowserTransferStateModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
@@ -37,7 +35,6 @@ import { NavigatorComponent } from './navigator/navigator.component';
     provideFirestore(() => getFirestore()),
     provideDatabase(() => getDatabase()),
     provideStorage(() => getStorage()),
-    // HammerModule, // tambien tuve que cargar en el main.ts
     SharedModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),

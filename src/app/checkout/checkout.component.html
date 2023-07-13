@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-12 col-lg-6">
       <h1 class="sub-title py-3">Datos de contacto</h1>
-      <form *ngIf="copy" [formGroup]="contactForm" (ngSubmit)="sendQuote()">
+      <form *ngIf="copy" [formGroup]="contactForm" (ngSubmit)="submit()">
         <mat-form-field appearance="outline">
           <mat-label>{{ copy.name[lang] }} </mat-label>
           <input matInput formControlName="name" type="text" tabindex="0" />
@@ -31,13 +31,16 @@
             color="primary"
             class="lg-btn"
             type="submit"
-            [disabled]="!contactForm.valid || cart.length < 1">
-            Enviar prespuesto
+            [disabled]="!contactForm.valid || cart.length < 1 || spinner">
+            <span *ngIf="ecomSc.showPrices()">{{ copy.checkout[lang] }}</span>
+            <span *ngIf="!ecomSc.showPrices()">{{
+              copy.closeQuote[lang]
+            }}</span>
           </button>
           <span class="ms-2" *ngIf="spinner">
             <span class="">enviando</span>
             <span class="ms-2 align-middle">
-              <mat-spinner diameter="20"></mat-spinner>
+              <mat-spinner diameter="20" color="accent"></mat-spinner>
             </span>
           </span>
         </div>

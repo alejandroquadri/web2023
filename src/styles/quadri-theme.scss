@@ -125,6 +125,13 @@ app-collections-menu {
   // --mdc-typography-button-letter-spacing: normal !important;
 }
 
+.lg-btn {
+  // padding: 5px 16px !important;
+  font-size: 18px !important;
+  font-family: var(--fonts) !important;
+  height: 48px !important;
+}
+
 .full-width-btn {
   width: 100% !important;
   min-width: unset !important;
@@ -263,10 +270,10 @@ app-collections-menu {
 }
 
 // para todo lo que no es mobile
-@media (min-width: 768px) {
-  .lg-btn {
-    padding: 5px 16px !important;
-    font-size: 18px !important;
-    font-family: var(--fonts);
-  }
-}
+// @media (min-width: 768px) {
+//   .lg-btn {
+//     padding: 5px 16px !important;
+//     font-size: 18px !important;
+//     font-family: var(--fonts);
+//   }
+// }

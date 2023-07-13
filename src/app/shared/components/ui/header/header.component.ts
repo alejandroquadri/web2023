@@ -13,13 +13,12 @@ import {
 import { Observable } from 'rxjs';
 
 import {
-  CopyService,
   SidenavService,
   LanguageService,
-  LayoutService,
   EcomService,
 } from 'src/app/shared/services';
 import { Platform } from '@angular/cdk/platform';
+import { LOGOS } from 'src/app/shared/constants';
 
 @Component({
   selector: 'app-header',
@@ -51,10 +50,10 @@ import { Platform } from '@angular/cdk/platform';
           ])
         )
       ),
-      transition('void => *', [
-        style({ transform: 'translateX(200%)' }),
-        animate('300ms ease-in-out'),
-      ]),
+      // transition('void => *', [
+      //   style({ transform: 'translateX(200%)' }),
+      //   animate('300ms ease-in-out'),
+      // ]),
     ]),
   ],
 })
@@ -65,7 +64,7 @@ export class HeaderComponent implements OnInit {
   // layout$: Observable<boolean>;
   data$: Observable<any>;
   route$: Observable<boolean>;
-  logo: any;
+  logo = LOGOS.logoImg;
   lang: string;
   cartBadgeState = false;
 
@@ -96,7 +95,6 @@ export class HeaderComponent implements OnInit {
     private sidenavSc: SidenavService,
     // private layoutSc: LayoutService,
     public platform: Platform,
-    private copySc: CopyService,
     public langSc: LanguageService,
     private router: Router,
     public eComSc: EcomService
@@ -104,14 +102,7 @@ export class HeaderComponent implements OnInit {
     // this.obsLayout();
   }
 
-  ngOnInit(): void {
-    this.setLogo();
-    // this.obsLayout();
-  }
-
-  setLogo() {
-    this.logo = this.copySc.logos.logoImg;
-  }
+  ngOnInit(): void {}
 
   changeState() {
     this.cartBadgeState = true;

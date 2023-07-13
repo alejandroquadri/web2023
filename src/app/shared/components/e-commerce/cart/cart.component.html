@@ -1,6 +1,6 @@
 <div class="cart-wrapper d-flex flex-column">
   <mat-toolbar *ngIf="forSideNav">
-    <span>Carrito</span>
+    <span> {{ copy.title[lang] }}</span>
     <span class="spacer"></span>
     <button mat-icon-button class="" aria-label="close icon" (click)="close()">
       <mat-icon>close</mat-icon>
@@ -16,7 +16,7 @@
         </div>
         <div class="desc ms-1" [ngClass]="{ 'pe-3': !isEcom }">
           <div>{{ item.product.descripcion }}</div>
-          <div class="note-desc" *ngIf="isEcom">
+          <div class="note-desc" *ngIf="showPrices()">
             {{
               item.product.precioActual
                 | currency : 'USD' : 'symbol-narrow' : '0.0-2'
@@ -33,14 +33,14 @@
               mat-button
               aria-label="remove"
               (click)="remove(i)">
-              Remover
+              {{ copy.remove[lang] }}
               <mat-icon class="material-icons-outlined remove-icon"
                 >delete</mat-icon
               >
             </button>
           </div>
         </div>
-        <div class="ms-1 pe-3 text-end item-subTotal" *ngIf="isEcom">
+        <div class="ms-1 pe-3 text-end item-subTotal" *ngIf="showPrices()">
           {{ item.subTotal | currency : 'USD' : 'symbol-narrow' : '0.0-2' }}
         </div>
       </div>
@@ -49,7 +49,7 @@
   </div>
 
   <div *ngIf="cartList.length > 0" class="footer d-flex flex-column">
-    <div *ngIf="isEcom">
+    <div *ngIf="showPrices()">
       <div class="subTotal d-flex justify-content-between pt-3">
         <span class="ms-2 ps-3 fw-bold">Sub Total</span>
         <span class="me-2 pe-3">
@@ -68,7 +68,16 @@
       mat-flat-button
       color="primary"
       (click)="endSale()">
-      Cerrar presupuesto
+      <span *ngIf="eComSc.showPrices()">
+        <span>{{ copy.checkout[lang] }}</span>
+        <div
+          *ngIf="spinner"
+          class="ms-2 spinner-border text-light spinner-border-sm"
+          role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </span>
+      <span *ngIf="!eComSc.showPrices()">{{ copy.closeQuote[lang] }}</span>
     </button>
   </div>
 </div>

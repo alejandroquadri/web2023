@@ -1,4 +1,10 @@
-import { Component, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
+import {
+  Component,
+  ViewChild,
+  AfterViewInit,
+  ElementRef,
+  NgZone,
+} from '@angular/core';
 import { trigger, transition, animate, style } from '@angular/animations';
 
 import { MatSidenav } from '@angular/material/sidenav';
@@ -39,7 +45,8 @@ export class LanguageComponent implements AfterViewInit {
   constructor(
     private sidenavSc: SidenavService,
     private serverDetSc: ServerDetectService,
-    private router: Router
+    private router: Router,
+    private ngZone: NgZone
   ) {}
 
   ngAfterViewInit(): void {
@@ -50,11 +57,12 @@ export class LanguageComponent implements AfterViewInit {
 
   openNlDialog() {
     if (this.serverDetSc.isBrowserSide() && this.shouldShowNlDialog()) {
-      setTimeout(() => {
-        this.addNewsLetter = true;
-      }, 30000);
-    } else {
-      console.log('not showing');
+      // esto de incluir ngZone es para que este proceso corra por afuera y la aplicación se considere estable antes de que termine de correr el proceso. Caso contrario puede joder para el Hydration process
+      this.ngZone.runOutsideAngular(() => {
+        setTimeout(() => {
+          this.addNewsLetter = true;
+        }, 60000);
+      });
     }
   }
 

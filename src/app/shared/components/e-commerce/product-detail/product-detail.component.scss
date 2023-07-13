@@ -35,6 +35,27 @@
   font-size: 1.4rem;
   font-weight: 300;
   min-height: 36px;
+  display: inline-block;
+}
+
+.stock {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding-left: 2px;
+  padding-right: 2px;
+  border: 1px solid;
+  border-radius: 5px;
+}
+
+.have-stock {
+  border: 1px solid var(--primary-600);
+  color: var(--primary-600);
+}
+
+.no-stock {
+  border: 1px solid var(--complementary-600);
+  color: var(--complementary-600);
 }
 
 .q-title {
@@ -61,8 +82,11 @@
 .buy-btn {
   padding-top: 4px;
   padding-bottom: 4px;
+  min-width: 200px;
+  max-width: 250px;
   font-size: 1rem;
   align-self: center;
+  height: 48px;
 }
 
 .comp-check {
@@ -88,6 +112,7 @@
     font-size: 1rem;
     align-self: center;
     width: 100%;
+    max-width: none;
   }
 }
 
@@ -113,5 +138,6 @@
     font-size: 1rem;
     align-self: center;
     width: 100%;
+    max-width: none;
   }
 }

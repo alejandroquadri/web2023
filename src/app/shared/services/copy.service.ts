@@ -3,13 +3,10 @@ import { DomSanitizer } from '@angular/platform-browser';
 
 import { MatIconRegistry } from '@angular/material/icon';
 
-import { LOGOS } from 'src/app/shared/constants';
-
 @Injectable({
   providedIn: 'root',
 })
 export class CopyService {
-  logos = LOGOS;
   initData;
   initCopy: any;
 

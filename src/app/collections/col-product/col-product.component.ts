@@ -51,7 +51,8 @@ export class ColProductComponent implements OnInit, OnDestroy, AfterViewInit {
     this.langSc.setLanguage(this.router.url);
     this.lang = this.langSc.currentLang;
     this.getIds();
-    this.getProducts();
+    this.dbProducts = this.eComSc.products;
+    // this.getProducts();
   }
 
   ngOnDestroy(): void {
@@ -133,6 +134,9 @@ export class ColProductComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   addToCart(product) {
+    if (this.eComSc.carrySamples) {
+      this.eComSc.switchToQuote();
+    }
     this.eComSc.addItemCart(product.values, product.complements);
   }
 

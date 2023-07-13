@@ -24,6 +24,7 @@ import SwiperCore, {
   A11y,
   Autoplay,
 } from 'swiper';
+import { environment } from 'src/environments/environment';
 
 // install Swiper modules
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);
@@ -40,6 +41,7 @@ export class LandingComponent implements OnInit {
   imgs: any;
   init = true;
   wrapperHeight;
+  eCom = environment.init.eCom;
 
   copy = Landing;
   prodCopy = ProductMenu;
@@ -93,6 +95,10 @@ export class LandingComponent implements OnInit {
     } else {
       this.router.navigate([`${this.lang}/${colLang}/${col}`]);
     }
+  }
+
+  routeTo(url) {
+    this.router.navigate([`${this.lang}/${url}`]);
   }
 
   isServer() {

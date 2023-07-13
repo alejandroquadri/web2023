@@ -2,8 +2,6 @@ import { SharedModule } from 'src/app/shared/modules';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-// import { SwiperModule } from 'swiper/angular';
-
 import { CollectionsMenuComponent } from './collections-menu/collections-menu.component';
 import {
   CollectionComponent,

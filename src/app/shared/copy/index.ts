@@ -20,3 +20,7 @@ export * from './blog';
 export * from './all-collections';
 export * from './signup-nl';
 export * from './thanks';
+export * from './samples';
+export * from './product-detail';
+export * from './cart';
+export * from './checkout';

@@ -3,6 +3,12 @@ export const LOGOS = {
   logoImg: './assets/logos/logoSinDesdeImg.webp',
 };
 
+export const LocalImgs = {
+  slide1_dt: './assets/imgs/crudo_zip.webp',
+  slide1_mb: './assets/imgs/cocina-terrazo.webp',
+  rusticato: './assets/imgs/rusticato_boana_zip.webp',
+};
+
 export const ProdImgs = {
   impPol:
     'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fcolors%2Fvacri.webp?alt=media&token=45d9533e-95dd-44f0-a896-669f0038e769',
