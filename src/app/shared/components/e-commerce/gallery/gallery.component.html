@@ -38,11 +38,14 @@
               </button>
               <span *ngIf="isEcom && dbProducts">
                 {{
-                  dbProducts[selectedProducts[i]?.code].precioActual
+                  getPrice(dbProducts[selectedProducts[i]?.code])
                     | currency : 'USD' : 'symbol-narrow' : '0.0-2'
                 }}
                 /
-                {{ dbProducts[selectedProducts[i]?.code].unidad | lowercase }}
+                {{
+                  getUnit(dbProducts[selectedProducts[i].code].unidad)
+                    | lowercase
+                }}
               </span>
             </div>
           </div>
@@ -54,7 +57,7 @@
                 <option
                   *ngFor="let sizeObj of product.sizes"
                   [ngValue]="sizeObj">
-                  {{ sizeObj.size }}
+                  {{ getDim(sizeObj.size) }}
                 </option>
               </select>
               <!-- <span> {{ product.sizes[0] | json }} </span> -->
@@ -74,5 +77,4 @@
       </div>
     </mat-grid-tile>
   </mat-grid-list>
-  <!-- <div>{{ products | json }}</div> -->
 </div>

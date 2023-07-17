@@ -54,44 +54,7 @@
               ],
               "outputHashing": "all"
             },
-            "e-com-prod": {
-              "index": "src/index.ecom.html",
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.e-com.ts"
-                }
-              ],
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
-                }
-              ],
-              "outputHashing": "all"
-            },
             "development": {
-              "buildOptimizer": false,
-              "optimization": false,
-              "vendorChunk": true,
-              "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true
-            },
-            "e-com-dev": {
-              "index": "src/index.ecom.html",
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.e-com.ts"
-                }
-              ],
               "buildOptimizer": false,
               "optimization": false,
               "vendorChunk": true,
@@ -108,14 +71,8 @@
             "production": {
               "browserTarget": "quadri-web:build:production"
             },
-            "e-com-prod": {
-              "browserTarget": "quadri-web:build:e-com-prod"
-            },
             "development": {
               "browserTarget": "quadri-web:build:development"
-            },
-            "e-com-dev": {
-              "browserTarget": "quadri-web:build:e-com-dev"
             }
           },
           "defaultConfiguration": "development"
@@ -156,34 +113,12 @@
             "production": {
               "outputHashing": "media"
             },
-            "e-com-prod": {
-              "outputHashing": "media",
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.e-com.ts"
-                }
-              ]
-            },
             "development": {
               "buildOptimizer": false,
               "optimization": false,
               "sourceMap": true,
               "extractLicenses": false,
               "vendorChunk": true
-            },
-            "e-com-dev": {
-              "buildOptimizer": false,
-              "optimization": false,
-              "sourceMap": true,
-              "extractLicenses": false,
-              "vendorChunk": true,
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.e-com.ts"
-                }
-              ]
             }
           },
           "defaultConfiguration": "production"
@@ -198,14 +133,6 @@
             "production": {
               "browserTarget": "quadri-web:build:production",
               "serverTarget": "quadri-web:server:production"
-            },
-            "e-com-prod": {
-              "browserTarget": "quadri-web:build:e-com-prod",
-              "serverTarget": "quadri-web:server:e-com-prod"
-            },
-            "e-com-dev": {
-              "browserTarget": "quadri-web:build:e-com-dev",
-              "serverTarget": "quadri-web:server:e-com-dev"
             }
           },
           "defaultConfiguration": "development"
@@ -224,14 +151,6 @@
             "development": {
               "browserTarget": "quadri-web:build:development",
               "serverTarget": "quadri-web:server:development"
-            },
-            "e-com-prod": {
-              "browserTarget": "quadri-web:build:e-com-prod",
-              "serverTarget": "quadri-web:server:e-com-prod"
-            },
-            "e-com-dev": {
-              "browserTarget": "quadri-web:build:e-com-dev",
-              "serverTarget": "quadri-web:server:e-com-dev"
             }
           },
           "defaultConfiguration": "production"

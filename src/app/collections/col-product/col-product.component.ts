@@ -52,6 +52,7 @@ export class ColProductComponent implements OnInit, OnDestroy, AfterViewInit {
     this.lang = this.langSc.currentLang;
     this.getIds();
     this.dbProducts = this.eComSc.products;
+    console.log(this.dbProducts);
     // this.getProducts();
   }
 

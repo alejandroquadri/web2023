@@ -19,10 +19,6 @@ export interface LanguageObj {
   providedIn: 'root',
 })
 export class LanguageService {
-  // currentLangObj: LanguageObj;
-  // currentLang: string;
-  // countryCodes = CODES;
-
   currentLangObj: LanguageObj = DefaultLangObj;
   currentLang = 'es';
   countryCodes = CODES;
@@ -30,11 +26,11 @@ export class LanguageService {
   constructor(private http: HttpClient) {}
 
   getIp(): Observable<LanguageObj> {
+    console.log('coore esto?');
     return this.http.get<LanguageObj>('https://iplist.cc/api').pipe(
       startWith(DefaultLangObj),
       map((ip: LanguageObj) => {
         this.currentLangObj = ip;
-        // console.log('hay lang obj', this.currentLangObj);
         this.currentLang =
           this.countryCodes[this.currentLangObj.countrycode] || 'en';
         if (ip) {

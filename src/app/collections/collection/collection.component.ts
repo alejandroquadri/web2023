@@ -112,7 +112,11 @@ export class CollectionComponent implements OnInit, OnDestroy {
     this.getIds();
     this.getPrices();
     this.getProducts();
-    if (this.serverDetSc.isBrowserSide() && this.ecomSc.init) {
+    if (
+      this.serverDetSc.isBrowserSide() &&
+      this.ecomSc.init &&
+      this.ecomSc.isEcom === false
+    ) {
       this.openDialog();
       this.ecomSc.init = false;
     }

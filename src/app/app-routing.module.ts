@@ -83,6 +83,7 @@ const routes: Routes = [
   {
     path: 'en',
     component: LanguageComponent,
+    resolve: { lookbook: DataResolver },
     children: [
       {
         path: 'not-found',

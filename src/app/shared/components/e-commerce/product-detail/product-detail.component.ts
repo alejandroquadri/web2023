@@ -200,8 +200,24 @@ export class ProductDetailComponent
       .subscribe(q => this.calcFinalQ());
   }
 
+  getPrice() {
+    return this.isEcom
+      ? this.selectedProduct.precioEcom
+      : this.selectedProduct.precioActual;
+  }
+
+  getUnit(unit) {
+    return this.ecomSc.parseUnits(unit);
+  }
+
+  getDim(dim) {
+    return this.ecomSc.parseDim(dim);
+  }
+
   calcFinalQ() {
-    this.eq = this.selectedProduct?.eq;
+    this.eq = this.isEcom
+      ? this.selectedProduct?.eqEcom
+      : this.selectedProduct?.eq;
     const unitsPerPack = this.hasPackaging()
       ? this.selectedProduct.uPorBulto
       : 1;
@@ -214,10 +230,7 @@ export class ProductDetailComponent
       this.netQ = this.ecomSc.round(this.units * this.eq, 2);
       this.boxes = Math.ceil(this.units / unitsPerPack);
       this.totalQ = this.ecomSc.round(this.boxes * unitsPerPack * this.eq, 2);
-      this.subTotal = this.ecomSc.round(
-        this.totalQ * this.selectedProduct?.precioActual,
-        2
-      );
+      this.subTotal = this.ecomSc.round(this.totalQ * this.getPrice(), 2);
       this.qForm.patchValue({
         totalQ: this.totalQ,
         product: this.selectedProduct,

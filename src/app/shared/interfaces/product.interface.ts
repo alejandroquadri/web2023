@@ -5,12 +5,14 @@ export interface Producto {
   descripcion: string;
   dimension: string;
   eq: number;
+  eqEcom: number;
   eqSinCorte: number;
   eqPrensa?: number;
   familia: string;
   marca: string;
   moneda: 'Pesos' | 'Dólares';
   precioActual: number;
+  precioEcom: number;
   rutaProduccion?: string;
   spPrensa: string;
   spTerminacion: string;

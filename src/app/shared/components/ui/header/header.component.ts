@@ -93,14 +93,11 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private sidenavSc: SidenavService,
-    // private layoutSc: LayoutService,
     public platform: Platform,
     public langSc: LanguageService,
     private router: Router,
     public eComSc: EcomService
-  ) {
-    // this.obsLayout();
-  }
+  ) {}
 
   ngOnInit(): void {}
 
@@ -109,12 +106,7 @@ export class HeaderComponent implements OnInit {
     setTimeout(() => {
       this.cartBadgeState = false;
     }, 2000);
-    // this.cartBadgeState = !this.cartBadgeState;
   }
-
-  // obsLayout(): void {
-  //   this.layout$ = this.layoutSc.detectMobile();
-  // }
 
   openSide(): void {
     this.sidenavSc.toggle();
@@ -124,7 +116,6 @@ export class HeaderComponent implements OnInit {
     const url = this.router.url;
     const parsedUrl = url.replace(/\//g, '');
     return parsedUrl;
-    // return !this.stickyUrls.includes(parsedUrl)
   }
 
   isSticky() {

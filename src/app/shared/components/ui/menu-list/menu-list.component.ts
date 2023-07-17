@@ -18,6 +18,7 @@ import {
   SidenavService,
 } from 'src/app/shared/services';
 import { MatAnchor } from '@angular/material/button';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-menu-list',
@@ -45,19 +46,14 @@ export class MenuListComponent implements OnInit {
   @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
   @ViewChild('colItem') colItem: ElementRef<MatAnchor>;
 
-  menu;
+  isEcom = environment.init.eCom;
+
+  menu = MENU[this.isEcom ? 'ext' : 'local'];
   // lang: string;
   langObj: LanguageObj;
   timedOutCloser;
   collections = Collections;
   hover = false;
-
-  mackApplicationsArray = [
-    'Interiores',
-    'Revestimientos',
-    'Exteriores',
-    'Piletas',
-  ];
 
   constructor(
     public langSc: LanguageService,
@@ -67,16 +63,16 @@ export class MenuListComponent implements OnInit {
 
   ngOnInit(): void {
     this.langObj = this.langSc.currentLangObj;
-    if (this.isLocal()) {
-      this.menu = MENU.local;
-    } else {
-      this.menu = MENU.ext;
-    }
+    // if (this.isLocal()) {
+    //   this.menu = MENU.local;
+    // } else {
+    //   this.menu = MENU.ext;
+    // }
   }
 
-  isLocal() {
-    return this.langObj.countrycode === 'AR';
-  }
+  // isLocal() {
+  //   return this.langObj.countrycode === 'AR';
+  // }
 
   closeDrawer() {
     this.sidenavSc.close();

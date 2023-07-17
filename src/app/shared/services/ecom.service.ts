@@ -10,7 +10,7 @@ import {
 } from '@angular/fire/firestore';
 
 import { CartItem, Producto, CompObj, QObj } from '../interfaces';
-import { ProdImgs } from '../constants';
+import { DimParser, ProdImgs, UnitsParser } from '../constants';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -55,7 +55,18 @@ export class EcomService {
     }
   }
 
-  // from Firebase
+  parseUnits(unit) {
+    const unitParser = UnitsParser;
+    const config = this.isEcom ? 'ecom' : 'local';
+    return unitParser[config][unit];
+  }
+
+  parseDim(dim) {
+    const dimParser = DimParser;
+    return this.isEcom ? dimParser[dim] || dim : dim;
+  }
+
+  // Firebase functions
 
   getProducts() {
     const prodColRef = collection(this.firestore, 'products');
@@ -128,9 +139,11 @@ export class EcomService {
 
   calcTotal() {
     this.qObj = this.calcQ(this.cart);
-    this.compObj = this.calcExtras(this.qObj);
-    const extrasArr = this.addComplements(this.compObj);
-    this.cart = [...this.cart, ...extrasArr];
+    if (this.isEcom === false) {
+      this.compObj = this.calcExtras(this.qObj);
+      const extrasArr = this.addComplements(this.compObj);
+      this.cart = [...this.cart, ...extrasArr];
+    }
   }
 
   calcQ(array: CartItem[]) {

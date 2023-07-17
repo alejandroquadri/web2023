@@ -109,4 +109,16 @@ export class GalleryComponent implements OnInit, OnChanges {
   findProduct(producuts: Producto[], code: string) {
     return producuts.find(product => product.codigo === code);
   }
+
+  getPrice(product) {
+    return this.isEcom ? product.precioEcom : product.precioActual;
+  }
+
+  getUnit(unit) {
+    return this.ecomSc.parseUnits(unit);
+  }
+
+  getDim(dim) {
+    return this.ecomSc.parseDim(dim);
+  }
 }

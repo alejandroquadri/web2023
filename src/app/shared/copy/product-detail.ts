@@ -59,4 +59,8 @@ export const ProductDetail = {
     es: 'Sin stock',
     en: 'No stock',
   },
+  addCompsNote: {
+    es: 'Agregar al carrito productos complementarios para una correcta colocación',
+    en: 'Add to cart complementary products',
+  },
 };

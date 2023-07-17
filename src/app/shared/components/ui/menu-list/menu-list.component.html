@@ -4,14 +4,14 @@
       class="link-item"
       (click)="closeDrawer()"
       mat-list-item
-      *ngIf="item[langSc.currentLang] && !item.submenu"
+      *ngIf="item[langSc.currentLang] && !(item.submenu === true)"
       [routerLink]="[
         '/' + langSc.currentLang + '/' + item.url[langSc.currentLang]
       ]"
       routerLinkActive="router-link-active">
       {{ item[langSc.currentLang] }}
     </a>
-    <div *ngIf="item[langSc.currentLang] && item.submenu">
+    <div *ngIf="item[langSc.currentLang] && item.submenu === true">
       <cdk-accordion>
         <cdk-accordion-item
           #dimItem="cdkAccordionItem"
@@ -52,7 +52,10 @@
         'footer-link': type === 'footer'
       }"
       mat-button
-      *ngIf="item[langSc.currentLang] && (!item.submenu || type !== 'header')"
+      *ngIf="
+        item[langSc.currentLang] &&
+        (!(item.submenu === true) || type !== 'header')
+      "
       [routerLink]="[
         '/' + langSc.currentLang + '/' + item.url[langSc.currentLang]
       ]"
@@ -63,7 +66,9 @@
       class="link-item"
       mat-button
       [ngClass]="{ 'cdk-focused': hover, 'cdk-program-focused': hover }"
-      *ngIf="item[langSc.currentLang] && item.submenu && type === 'header'"
+      *ngIf="
+        item[langSc.currentLang] && item.submenu === true && type === 'header'
+      "
       [matMenuTriggerFor]="menu"
       #colItem
       (mouseenter)="mouseEnter()"
@@ -85,46 +90,5 @@
         </button>
       </div>
     </mat-menu>
-    <!-- <a
-      class="link-item"
-      mat-button
-      [ngClass]="{ 'cdk-focused': hover, 'cdk-program-focused': hover }"
-      *ngIf="item[langSc.currentLang] && item.submenu && type === 'header'"
-      [matMenuTriggerFor]="menu"
-      #colItem
-      (mouseenter)="mouseEnter()"
-      (mouseleave)="mouseLeave()">
-      {{ item[langSc.currentLang] }}
-    </a>
-    <mat-menu #menu="matMenu" [hasBackdrop]="false">
-      <div
-        (mouseenter)="mouseEnter()"
-        (mouseleave)="mouseLeave()"
-        class="int-menu-wrapper">
-        <div class="menu-col menu-col-first">
-          <button mat-menu-item class="link-item title-item">
-            Colecciones
-          </button>
-          <button
-            mat-menu-item
-            class="link-item link-btn"
-            *ngFor="let col of buildColArray()"
-            (click)="toCol(col)">
-            {{ col[langSc.currentLang].title }}
-          </button>
-        </div>
-        <div class="menu-col">
-          <button mat-menu-item class="link-item title-item">
-            Aplicaciones
-          </button>
-          <button
-            mat-menu-item
-            class="link-item link-btn"
-            *ngFor="let application of mackApplicationsArray">
-            {{ application }}
-          </button>
-        </div>
-      </div>
-    </mat-menu> -->
   </ng-container>
 </ng-container>

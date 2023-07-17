@@ -45,11 +45,8 @@
         <div class="col-12">
           <div class="price">
             <span *ngIf="selectedProduct"
-              >{{
-                selectedProduct.precioActual
-                  | currency : 'USD' : 'symbol-narrow' : '0.0-2'
-              }}
-              / {{ selectedProduct.unidad | lowercase }}</span
+              >{{ getPrice() | currency : 'USD' : 'symbol-narrow' : '0.0-2' }} /
+              {{ getUnit(selectedProduct.unidad) | lowercase }}</span
             >
           </div>
           <div
@@ -71,7 +68,7 @@
             *ngFor="let sizeObj of productObj.sizes"
             (click)="chooseSize(sizeObj)"
             [ngClass]="{ 'slected-size': sizeObj.size === selectedSize.size }">
-            {{ sizeObj.size }}
+            {{ getDim(sizeObj.size) }}
           </button>
         </div>
       </div>
@@ -81,7 +78,7 @@
             <mat-form-field appearance="outline" class="q-field">
               <mat-label
                 >{{ copy.quantityReq[lang] }} ({{
-                  selectedProduct.unidad | lowercase
+                  getUnit(selectedProduct.unidad) | lowercase
                 }})
               </mat-label>
               <input
@@ -115,7 +112,7 @@
         <div class="row feature-text mt-4 py-3" *ngIf="!samples">
           <!-- <div class="col-6 col-lg first-row-sm" *ngIf="!hasPackaging()">
             <div class="q-title">
-              {{ selectedProduct.unidad | lowercase }} netos
+              {{ getUnit(selectedProduct.unidad) | lowercase }} netos
               <mat-icon
                 class="material-icons-outlined info-icon"
                 matTooltip="m2 necesarios considerando desperdicio"
@@ -132,7 +129,7 @@
                 class="material-icons-outlined info-icon"
                 [matTooltip]="
                   'conversion de unidades de ' +
-                  (selectedProduct.unidad | lowercase) +
+                  (getUnit(selectedProduct.unidad) | lowercase) +
                   ' netos'
                 "
                 matTooltipPosition="above">
@@ -143,11 +140,12 @@
           </div> -->
           <div class="col-6 col-lg">
             <div class="q-title">
-              {{ selectedProduct.unidad | lowercase }} {{ copy.total[lang] }}
+              {{ getUnit(selectedProduct.unidad) | lowercase }}
+              {{ copy.total[lang] }}
               <mat-icon
                 class="material-icons-outlined info-icon"
                 [matTooltip]="
-                  (selectedProduct.unidad | lowercase) +
+                  (getUnit(selectedProduct.unidad) | lowercase) +
                   ' en base a cajas requeridas'
                 "
                 matTooltipPosition="above">
@@ -164,7 +162,7 @@
                 class="material-icons-outlined info-icon"
                 [matTooltip]="
                   'cajas necesarias en base a ' +
-                  (selectedProduct.unidad | lowercase) +
+                  (getUnit(selectedProduct.unidad) | lowercase) +
                   ' netos'
                 "
                 matTooltipPosition="above">
@@ -181,7 +179,7 @@
                 class="material-icons-outlined info-icon"
                 [matTooltip]="
                   'conversion de unidades de ' +
-                  (selectedProduct.unidad | lowercase) +
+                  (getUnit(selectedProduct.unidad) | lowercase) +
                   ' netos'
                 "
                 matTooltipPosition="above">
@@ -220,7 +218,7 @@
           </div>
         </div>
       </form>
-      <div class="row mt-3" *ngIf="!samples">
+      <div class="row mt-3" *ngIf="!(samples === true || isEcom === true)">
         <div class="col d-flex">
           <mat-checkbox
             color="primary"

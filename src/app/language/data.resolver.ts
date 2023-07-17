@@ -8,23 +8,11 @@ import { EcomService, ServerDetectService } from 'src/app/shared/services';
 
 @Injectable({ providedIn: 'root' })
 export class DataResolver implements Resolve<any> {
-  constructor(
-    private serverDetectSc: ServerDetectService,
-    private ecomSc: EcomService
-  ) {}
+  constructor(private ecomSc: EcomService) {}
 
   resolve(): Promise<any> | any {
-    // if (this.serverDetectSc.isBrowserSide()) {
-    //   console.log('no es server, voy derecho en lang service');
-    //   return Promise.resolve(null);
-    // } else {
-    //   return firstValueFrom(this.ecomSc.getProducts());
-    // }
     if (!this.ecomSc.products) {
-      // console.log('nadie busco productos, los busco');
       return firstValueFrom(this.ecomSc.getProducts().pipe(take(1)));
-    } else {
-      // console.log('ya estan los productos');
     }
   }
 }
