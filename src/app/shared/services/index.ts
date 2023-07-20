@@ -15,3 +15,5 @@ export * from './ecom.service';
 export * from './quoter.service';
 export * from './quote-pdf.service';
 export * from './upload.service';
+export * from './auth.service';
+export * from './mp.service';

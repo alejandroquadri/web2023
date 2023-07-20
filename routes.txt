@@ -48,6 +48,7 @@
 /es/blog/wabi-sabi-terrazo
 /es/blog/piso-adecuado-para-tu-espacio
 /es/blog/terrazo-adecuado-para-mi
+/es/blog/mitos-terrazo-dementidos
 
 /en/blog
 /en/blog/que-es-el-terrazo
@@ -57,7 +58,7 @@
 /en/blog/wabi-sabi-terrazo
 /en/blog/piso-adecuado-para-tu-espacio
 /en/blog/terrazo-adecuado-para-mi
-
+/en/blog/mitos-terrazo-dementidos
 
 /es/colecciones/volcan/pucon
 /es/colecciones/volcan/lanin

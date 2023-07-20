@@ -85,7 +85,7 @@ export class FormComponent implements OnInit {
     this.formSc
       .saveQuery(query)
       .then(() => {
-        this.cookiesSc.deleteCookie();
+        this.cookiesSc.deleteCookie('__reff');
         this.sending = false;
         this.submitEmiter.emit('submit');
         this.form.reset();

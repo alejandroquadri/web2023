@@ -6,7 +6,8 @@ export const LOGOS = {
 export const LocalImgs = {
   slide1_dt: './assets/imgs/crudo_zip.webp',
   slide1_mb: './assets/imgs/cocina-terrazo.webp',
-  rusticato: './assets/imgs/rusticato_boana_zip.webp',
+  rusticato:
+    'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fprojects%2Frusticato_boana_zip.webp?alt=media&token=7e1ba532-59da-41fa-9338-75ed9123e44e',
 };
 
 export const ProdImgs = {

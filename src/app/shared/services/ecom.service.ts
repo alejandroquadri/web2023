@@ -1,17 +1,23 @@
-import { Injectable, inject } from '@angular/core';
-import { Observable, map, tap } from 'rxjs';
+import { filter, first } from 'rxjs/operators';
+import { Injectable, NgZone, inject } from '@angular/core';
+import { Observable, firstValueFrom, map, tap } from 'rxjs';
 
 import {
   Firestore,
   collection,
   collectionData,
+  doc,
+  getDoc,
   query,
+  setDoc,
   where,
 } from '@angular/fire/firestore';
 
 import { CartItem, Producto, CompObj, QObj } from '../interfaces';
 import { DimParser, ProdImgs, UnitsParser } from '../constants';
 import { environment } from 'src/environments/environment';
+import { AuthService } from './auth.service';
+import { User } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root',
@@ -32,8 +38,9 @@ export class EcomService {
 
   // animation
   cartState = false;
+  saveCartDebounce: number | null = null;
 
-  constructor() {}
+  constructor(private authSc: AuthService, private ngZone: NgZone) {}
 
   // setting mode
 
@@ -66,8 +73,9 @@ export class EcomService {
     return this.isEcom ? dimParser[dim] || dim : dim;
   }
 
-  // Firebase functions
+  // **** Firebase functions
 
+  // esta funcion corre en el resolver al cargar la web
   getProducts() {
     const prodColRef = collection(this.firestore, 'products');
     const q = query(
@@ -79,7 +87,10 @@ export class EcomService {
     return data.pipe(
       tap(products => (this.prodCrude = products)),
       map(products => this.prodObj(products)),
-      tap(productsObj => (this.products = productsObj))
+      tap(productsObj => {
+        this.products = productsObj;
+        // es importante recien ahora cargar el carrito porque si no no estan los productos disponibles para mirar.
+      })
     );
   }
 
@@ -89,36 +100,23 @@ export class EcomService {
     return prodObj;
   }
 
-  // Helper funcs
-
-  round(value: number, decimals: number): number {
-    let d: string | number = '1';
-    for (let i = 0; i < decimals; i++) {
-      d += '0';
-    }
-    d = Number(d);
-    return Math.round((value + Number.EPSILON) * d) / d;
-  }
+  // *** Modifications to cart
 
   addItemCart(item, complements): void {
     this.removeComplements();
     this.qObj = null;
     this.compObj = null;
     this.cart.push(item);
+    this.calcTotal();
     if (complements) {
-      this.calcTotal();
+      this.addCompToCart();
     }
     this.changeCartState();
-  }
-
-  changeCartState() {
-    this.cartState = true;
-    setTimeout(() => {
-      this.cartState = false;
-    }, 1000);
+    this.saveCart();
   }
 
   removeItem(i: number): void {
+    console.log('trato de borrar');
     if (this.qObj) {
       const val = this.cart[i];
       const itemSubTotal = val.subTotal;
@@ -133,17 +131,71 @@ export class EcomService {
         this.removeComplements();
         // recalculo el total
         this.calcTotal();
+        this.addCompToCart();
       }
+      console.log(this.cart);
+      this.saveCart();
     }
   }
 
+  removeComplements() {
+    // esta funcion borra los articulos que son complementos del carrito
+    const spliceIndexes = new Array();
+    this.cart.forEach((val, index) => {
+      if (val.isComplement) {
+        spliceIndexes.push(index);
+      }
+    });
+
+    this.cart = this.cart.filter((val, index) => {
+      return !val.isComplement;
+      // return spliceIndexes.indexOf(index) == -1;
+    });
+    this.saveCart();
+  }
+
+  emptyCart() {
+    this.cart = [];
+    this.saveCart();
+  }
+
+  // *** Helper funcs
+
   calcTotal() {
     this.qObj = this.calcQ(this.cart);
+  }
+
+  addCompToCart() {
     if (this.isEcom === false) {
       this.compObj = this.calcExtras(this.qObj);
-      const extrasArr = this.addComplements(this.compObj);
+      const extrasArr = this.buildCompArray(this.compObj);
       this.cart = [...this.cart, ...extrasArr];
     }
+  }
+
+  // calcTotal() {
+  //   this.qObj = this.calcQ(this.cart);
+  //   if (this.isEcom === false) {
+  //     this.compObj = this.calcExtras(this.qObj);
+  //     const extrasArr = this.addComplements(this.compObj);
+  //     this.cart = [...this.cart, ...extrasArr];
+  //   }
+  // }
+
+  round(value: number, decimals: number): number {
+    let d: string | number = '1';
+    for (let i = 0; i < decimals; i++) {
+      d += '0';
+    }
+    d = Number(d);
+    return Math.round((value + Number.EPSILON) * d) / d;
+  }
+
+  changeCartState() {
+    this.cartState = true;
+    setTimeout(() => {
+      this.cartState = false;
+    }, 1000);
   }
 
   calcQ(array: CartItem[]) {
@@ -231,11 +283,7 @@ export class EcomService {
     return sop;
   }
 
-  findProduct(code: string): Producto | undefined {
-    return this.prodCrude.find(product => product.codigo === code);
-  }
-
-  addComplements(complements: CompObj) {
+  buildCompArray(complements: CompObj) {
     const compArray = [] as CartItem[];
     Object.keys(complements).forEach(name => {
       const q = complements[name];
@@ -277,25 +325,48 @@ export class EcomService {
     return this.findProduct(code);
   }
 
-  removeComplements() {
-    const spliceIndexes = new Array();
-    this.cart.forEach((val, index) => {
-      if (val.isComplement) {
-        spliceIndexes.push(index);
+  findProduct(code: string): Producto | undefined {
+    return this.prodCrude.find(product => product.codigo === code);
+  }
+
+  // persist Ecom funcs
+
+  saveCart(): Promise<any> | void {
+    // if (this.saveCartDebounce !== null) {
+    //   clearTimeout(this.saveCartDebounce);
+    // }
+    // this.saveCartDebounce = window.setTimeout(() => {
+    const user = this.authSc.currentUser;
+    if (user) {
+      // lo corro fuera del ciclo de deteccion de angular. No es necesario que termine de guardar el carro para que angular acualice ninguna vista
+      return this.ngZone.runOutsideAngular(() => {
+        setDoc(
+          doc(this.firestore, 'web_users', user.uid),
+          { cart: this.cart },
+          { merge: true }
+        )
+          .then(() => console.log('cart saved'))
+          .catch(err => console.log('error saving cart', err));
+      });
+    }
+    // }, 500); // delay of 1 second
+  }
+
+  async setCart() {
+    const user = (await firstValueFrom(
+      this.authSc.authState$.pipe(
+        filter(user => user !== null),
+        first()
+      )
+    )) as User;
+    const cart = await getDoc(doc(this.firestore, 'web_users', user.uid));
+    if (cart.exists()) {
+      const savedCart = cart.data()['cart'] as CartItem[];
+      this.cart = savedCart;
+      if (this.cart.length > 0 && this.cart[0].product.familia === 'muestras') {
+        this.carrySamples = true;
       }
-    });
-
-    this.removeIndexes(spliceIndexes);
-  }
-
-  removeIndexes(spliceIndexes) {
-    this.cart = this.cart.filter((val, index) => {
-      return !val.isComplement;
-      // return spliceIndexes.indexOf(index) == -1;
-    });
-  }
-
-  emptyCart() {
-    this.cart = [];
+      this.calcTotal();
+    }
   }
 }

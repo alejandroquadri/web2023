@@ -15,6 +15,22 @@ export class CookiesService {
     // this.getCookieObj();
   }
 
+  setCookie(name, obj) {
+    return this.cookieSc.set(name, obj);
+  }
+
+  getCookie(name) {
+    return this.cookieSc.get(name);
+  }
+
+  getAllCookies() {
+    return this.cookieSc.getAll();
+  }
+
+  deleteCookie(name: string) {
+    this.cookieSc.delete(name);
+  }
+
   getCookieObj() {
     const reff = this.cookieSc.get('__reff');
     const googleCookie = this.cookieSc.get('_ga');
@@ -23,10 +39,6 @@ export class CookiesService {
       gaid: googleCookie,
     };
     return cookieObj;
-  }
-
-  deleteCookie() {
-    this.cookieSc.delete('__reff');
   }
 
   parseCookie(cookie: string) {

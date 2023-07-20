@@ -49,3 +49,7 @@ Thumbs.db
 # deploy credentials
 deploy.sh
 deployEcom.sh
+
+#env variables
+environment.e-com.ts
+environment.ts

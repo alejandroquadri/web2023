@@ -6,10 +6,11 @@ import {
   SidenavService,
   EcomService,
   LanguageService,
+  ServerDetectService,
+  MpService,
 } from 'src/app/shared/services';
 import { CartItem, MPitem } from 'src/app/shared/interfaces';
 import { firstValueFrom } from 'rxjs';
-import { MpService } from 'src/app/shared/services/mp.service';
 
 @Component({
   selector: 'app-cart',
@@ -28,13 +29,18 @@ export class CartComponent implements OnInit {
     public eComSc: EcomService,
     private router: Router,
     private langSc: LanguageService,
-    private mpSc: MpService
+    private mpSc: MpService,
+    private serverDetSc: ServerDetectService
   ) {
     this.isEcom = this.eComSc.isEcom;
   }
 
   ngOnInit(): void {
+    this.langSc.setLanguage(this.router.url);
     this.lang = this.langSc.currentLang;
+    if (this.serverDetSc.isBrowserSide()) {
+      this.eComSc.setCart();
+    }
   }
 
   close(): void {
@@ -47,6 +53,18 @@ export class CartComponent implements OnInit {
 
   get qObj() {
     return this.eComSc.qObj;
+  }
+
+  getPrice(product) {
+    return this.isEcom ? product.precioEcom : product.precioActual;
+  }
+
+  getUnit(unit) {
+    return this.eComSc.parseUnits(unit);
+  }
+
+  getDim(dim) {
+    return this.eComSc.parseDim(dim);
   }
 
   remove(i: number): void {

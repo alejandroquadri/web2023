@@ -35,7 +35,6 @@ export class SamplesComponent implements OnInit {
     this.lang = this.langSc.currentLang;
     this.id = this.location.path().substring(4);
     this.productWebObj = this.copy.products[0];
-    console.log(this.id);
   }
 
   addToCart(product) {

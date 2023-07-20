@@ -224,7 +224,6 @@ export class ProductDetailComponent
     const qCtrl = this.qForm.get('quantity')!;
     const qExcess = this.qForm.get('excess')!;
     const q = this.ecomSc.round(qCtrl.value * (qExcess.value / 100 + 1), 3);
-
     if (q) {
       this.units = Math.ceil(q / this.eq);
       this.netQ = this.ecomSc.round(this.units * this.eq, 2);

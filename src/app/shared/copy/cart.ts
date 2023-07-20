@@ -15,4 +15,16 @@ export const Cart = {
     es: 'Remover',
     en: 'Remove',
   },
+  taxShipping: {
+    es: 'Costos de envio calculados al finalizar compra',
+    en: 'Shipping & taxes calculated at checkout',
+  },
+  empty: {
+    es: 'Tu carrito está vacío',
+    en: 'Your cart is empty',
+  },
+  total: {
+    es: 'Total',
+    en: 'Subtotal',
+  },
 };

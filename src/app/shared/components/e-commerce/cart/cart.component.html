@@ -18,14 +18,14 @@
           <div>{{ item.product.descripcion }}</div>
           <div class="note-desc" *ngIf="showPrices()">
             {{
-              item.product.precioActual
+              getPrice(item.product)
                 | currency : 'USD' : 'symbol-narrow' : '0.0-2'
             }}
-            /{{ item.product.unidad | lowercase }}
+            / {{ getUnit(item.product.unidad) | lowercase }}
           </div>
           <div class="note-desc">
             {{ item.totalQ | number : '0.0-2' }}
-            {{ item.product.unidad | lowercase }}
+            {{ getUnit(item.product.unidad) | lowercase }}
           </div>
           <div class="note-desc">
             <button
@@ -41,25 +41,47 @@
           </div>
         </div>
         <div class="ms-1 pe-3 text-end item-subTotal" *ngIf="showPrices()">
-          {{ item.subTotal | currency : 'USD' : 'symbol-narrow' : '0.0-2' }}
+          {{ item.subTotal | currency : 'USD' : 'symbol-narrow' : '0.2-2' }}
         </div>
       </div>
     </div>
-    <div class="m-3" *ngIf="cartList.length < 1">Tu carro esta vacio</div>
+    <div class="m-3" *ngIf="cartList.length < 1">{{ copy.empty[lang] }}</div>
   </div>
 
   <div *ngIf="cartList.length > 0" class="footer d-flex flex-column">
     <div *ngIf="showPrices()">
       <div class="subTotal d-flex justify-content-between pt-3">
-        <span class="ms-2 ps-3 fw-bold">Sub Total</span>
+        <span class="ms-2 ps-3">Sub Total</span>
         <span class="me-2 pe-3">
           {{
-            qObj?.subTotal || 0 | currency : 'USD' : 'symbol-narrow' : '0.0-2'
+            qObj!.subTotal || 0 | currency : 'USD' : 'symbol-narrow' : '0.2-2'
           }}</span
         >
       </div>
-      <div class="ms-2 ps-3 pb-3 me-2 pe-3 subtotal-note">
-        No incluye impuestos ni costos de envio
+      <div
+        class="subTotal d-flex justify-content-between pt-1"
+        *ngIf="isEcom === false">
+        <span class="ms-2 ps-3">IVA</span>
+        <span class="me-2 pe-3">
+          {{
+            qObj!.subTotal * 0.21 || 0
+              | currency : 'USD' : 'symbol-narrow' : '0.2-2'
+          }}</span
+        >
+      </div>
+      <div
+        class="subTotal d-flex justify-content-between pt-1"
+        *ngIf="isEcom === false">
+        <span class="ms-2 ps-3 fw-bold">{{ copy.total[lang] }}</span>
+        <span class="me-2 pe-3 fw-bold">
+          {{
+            qObj!.subTotal * 1.21 || 0
+              | currency : 'USD' : 'symbol-narrow' : '0.2-2'
+          }}</span
+        >
+      </div>
+      <div class="ms-2 ps-3 pt-1 pb-3 me-2 pe-3 subtotal-note">
+        {{ copy.taxShipping[lang] }}
       </div>
     </div>
     <button

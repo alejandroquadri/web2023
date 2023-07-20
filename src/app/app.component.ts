@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Platform } from '@angular/cdk/platform';
 import {
   MatSnackBar,
@@ -6,7 +6,11 @@ import {
   TextOnlySnackBar,
 } from '@angular/material/snack-bar';
 
+import { Observable, Subscription } from 'rxjs';
+import { User } from '@angular/fire/auth';
+
 import {
+  AuthService,
   ServerDetectService,
   ServiceWorkerService,
 } from 'src/app/shared/services';
@@ -16,7 +20,7 @@ import {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnDestroy {
   update$: any;
   scrHeight: any;
   snackBarRef: MatSnackBarRef<TextOnlySnackBar>;
@@ -24,15 +28,26 @@ export class AppComponent {
   constructor(
     public platform: Platform,
     private serverDetSc: ServerDetectService,
-    private serviceWSc: ServiceWorkerService
-  ) // private snackBar: MatSnackBar
-  {
+    private serviceWSc: ServiceWorkerService,
+    private authSc: AuthService // private snackBar: MatSnackBar
+  ) {
     this.serviceWSc.checkForUpdates();
     this.update();
+    this.initAuth();
   }
 
-  isServer() {
-    return this.serverDetSc.isServerSide();
+  ngOnDestroy(): void {
+    if (this.serverDetSc.isBrowserSide() === true) {
+      this.authSc.authStateSubs$.unsubscribe();
+      this.authSc.userSubs$.unsubscribe();
+    }
+  }
+
+  initAuth() {
+    if (this.serverDetSc.isBrowserSide() === true) {
+      this.authSc.getState();
+    }
+    // this.authSc.getUser();
   }
 
   update() {

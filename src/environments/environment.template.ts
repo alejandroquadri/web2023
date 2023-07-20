@@ -11,10 +11,10 @@ export const environment = {
     measurementId: 'G-SMK26SR75C',
   },
   googleMaps: {
-    key: 'AIzaSyADqo_qHiIMLvwZ1H5w4S2MaPiGfrq2IHI',
+    key: 'aca va la key de google maps',
   },
   init: {
-    eCom: true,
-    lang: 'en',
+    eCom: false,
+    lang: 'es',
   },
 };
