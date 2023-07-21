@@ -36,6 +36,7 @@ import {
   LanguageObj,
   EcomService,
   ServerDetectService,
+  CookiesService,
 } from 'src/app/shared/services';
 import {
   AllCollections,
@@ -100,13 +101,15 @@ export class CollectionComponent implements OnInit, OnDestroy {
     public dialog: MatDialog,
     private scroller: ViewportScroller,
     private ecomSc: EcomService,
-    private serverDetSc: ServerDetectService
+    private serverDetSc: ServerDetectService,
+    private coockieSc: CookiesService
   ) {}
 
   ngOnInit(): void {
     this.langSc.setLanguage(this.router.url);
     this.lang = this.langSc.currentLang;
     this.langObj = this.langSc.currentLangObj;
+    // this.coockieSc.deleteCookie('_onboarding');
 
     this.isMobile$ = this.layoutSc.detectMobile();
     this.getIds();
@@ -114,17 +117,21 @@ export class CollectionComponent implements OnInit, OnDestroy {
     this.getProducts();
     if (
       this.serverDetSc.isBrowserSide() &&
-      this.ecomSc.init &&
+      !this.onboardingShown() &&
       this.ecomSc.isEcom === false
     ) {
       this.openDialog();
-      this.ecomSc.init = false;
+      this.coockieSc.setCookie('_onboarding', 'yes');
     }
   }
 
   ngOnDestroy(): void {
     this.unsuscribe$.next(true);
     this.unsuscribe$.complete();
+  }
+
+  onboardingShown() {
+    return this.coockieSc.getCookie('_onboarding') === 'yes' ? true : false;
   }
 
   getIds(): Observable<any> {
@@ -271,6 +278,12 @@ export class CollectionComponent implements OnInit, OnDestroy {
 
   openDialog() {
     this.dialog.open(OnboardingComponent);
+  }
+
+  buildBgStyle(img) {
+    return {
+      'background-image': `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${img})`,
+    };
   }
 }
 

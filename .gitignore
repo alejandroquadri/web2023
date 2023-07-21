@@ -53,3 +53,4 @@ deployEcom.sh
 #env variables
 environment.e-com.ts
 environment.ts
+quadritile.pem

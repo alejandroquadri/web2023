@@ -45,11 +45,13 @@
   </ng-container>
 
   <ng-container *ngIf="type === 'footer' || type === 'header'">
+    <!-- link comun -->
     <a
       class="link-item"
       [ngClass]="{
         'd-block': type === 'footer',
-        'footer-link': type === 'footer'
+        'footer-link': type === 'footer',
+        'mx-1': type === 'header'
       }"
       mat-button
       *ngIf="
@@ -62,8 +64,10 @@
       routerLinkActive="router-link-active">
       {{ item[langSc.currentLang] }}
     </a>
+
+    <!-- link con submenu -->
     <a
-      class="link-item"
+      class="link-item mx-1"
       mat-button
       [ngClass]="{ 'cdk-focused': hover, 'cdk-program-focused': hover }"
       *ngIf="

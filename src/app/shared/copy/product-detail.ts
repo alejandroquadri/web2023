@@ -63,4 +63,12 @@ export const ProductDetail = {
     es: 'Agregar al carrito productos complementarios para una correcta colocación',
     en: 'Add to cart complementary products',
   },
+  totalHint: {
+    es: 'cantidad requerida + desperdicio, aproximado a caja completa',
+    en: 'quantity required + overage, approximated to a full box ',
+  },
+  boxHint: {
+    es: 'todas las placas se venden por caja completa',
+    en: 'all tiles sold by the full box',
+  },
 };

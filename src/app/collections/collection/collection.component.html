@@ -1,51 +1,27 @@
 <div *ngIf="ids$ | async" class="wrapper">
-  <!-- <div
-    class="imagen-presentacion mb-3 mx-3 mb-lg-4 mx-lg-4"
-    [ngStyle]="{
-      'background-image':
-        'linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-      url(' +
-        copy.featureImg +
-        ')'
-    }"> -->
   <div class="feature-wrapper mb-3 mx-3 mb-lg-4 mx-lg-4" *ngIf="id !== 'all'">
     <!-- mobile feature img -->
     <div
       class="imagen-presentacion d-sm-none"
-      [ngStyle]="{
-        'background-image':
-          'linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-    url(' +
-          copy.featureImgMobile +
-          ')'
-      }"></div>
+      [ngStyle]="buildBgStyle(copy.featureImgMobile)"></div>
 
     <!-- desktop feature img -->
     <div
       class="imagen-presentacion d-none d-sm-block"
-      [ngStyle]="{
-        'background-image':
-          'linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-      url(' +
-          copy.featureImgLg +
-          ')'
-      }"></div>
+      [ngStyle]="buildBgStyle(copy.featureImgLg)"></div>
+
     <div class="container title-wrapper pt-5 pb-5 ms-0 ms-lg-5">
       <h1 class="title">{{ copy[lang].pageTitle || copy[lang].title }}</h1>
       <!-- <div class="oneLiner">{{ copy[lang].oneLiner }}</div> -->
       <div class="price-text pt-2 pb-4">
         <span *ngIf="prices$ | async">
           {{ copy[lang].piceText.pre }} {{ currencySymbol() }}
-          {{ setPrices()[copy.refPrice]?.price | number: '1.0-0':defLocale() }}
+          {{
+            setPrices()[copy.refPrice]?.price | number : '1.0-0' : defLocale()
+          }}
           {{ copy[lang].piceText.post }}
         </span>
       </div>
-      <!-- <app-cta-btn
-        [text]="copy[lang].ctaBtn"
-        [origin]="id"
-        [lang]="lang"
-        (ret)="getRet($event)">
-      </app-cta-btn> -->
       <button
         mat-flat-button
         color="primary"
@@ -54,6 +30,15 @@
         [ngClass]="{ 'lg-btn': !((isMobile$ | async) === true) }">
         Cotizar online
       </button>
+
+      <button
+        mat-icon-button
+        class="ms-2 btn-outline-white"
+        (click)="openDialog()"
+        type="button"
+        [ngClass]="{ 'lg-btn': !((isMobile$ | async) === true) }">
+        <mat-icon class="material-icons-outlined">info</mat-icon>
+      </button>
     </div>
   </div>
 
@@ -61,24 +46,13 @@
     <!-- mobile feature img -->
     <div
       class="imagen-presentacion d-sm-none"
-      [ngStyle]="{
-        'background-image':
-          'linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-    url(' +
-          copy.featureImgMobile +
-          ')'
-      }"></div>
+      [ngStyle]="buildBgStyle(copy.featureImgMobile)"></div>
 
     <!-- desktop feature img -->
     <div
       class="imagen-presentacion d-none d-sm-block"
-      [ngStyle]="{
-        'background-image':
-          'linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-      url(' +
-          copy.featureImgLg +
-          ')'
-      }"></div>
+      [ngStyle]="buildBgStyle(copy.featureImgLg)"></div>
+
     <div class="container title-wrapper pt-5 pb-5 ms-0 ms-lg-5">
       <h1 class="title">{{ copy[lang].pageTitle || copy[lang].title }}</h1>
       <div class="oneLiner">{{ copy[lang].oneLiner }}</div>
@@ -213,39 +187,6 @@
               </div>
             </cdk-accordion-item>
 
-            <!-- <cdk-accordion-item
-              #pricingItem="cdkAccordionItem"
-              role="button"
-              class="accordion-item">
-              <div
-                class="accordion-item-header d-flex"
-                (click)="pricingItem.toggle()">
-                <div class="flex-grow-1">
-                  {{ lang === 'es' ? 'Precios' : 'Pricing' }}
-                </div>
-                <div>
-                  <mat-icon *ngIf="!pricingItem.expanded" class="align-middle"
-                    >add</mat-icon
-                  >
-                  <mat-icon *ngIf="pricingItem.expanded" class="align-middle"
-                    >remove</mat-icon
-                  >
-                </div>
-              </div>
-              <div
-              [@contentExpansion]="
-                  pricingItem.expanded ? 'expanded' : 'collapsed'
-                "
-                class="accordion-item-body"
-                [style.display]="pricingItem.expanded ? '' : 'none'">
-                <app-prices
-                  *ngIf="prices$ | async"
-                  [refPrices]="setPrices()"
-                  [pricing]="priceCopy[copy.priceCopy][lang]"
-                  [currencySymbol]="currencySymbol()"></app-prices>
-              </div>
-            </cdk-accordion-item> -->
-
             <cdk-accordion-item
               #specItem="cdkAccordionItem"
               role="button"
@@ -279,12 +220,6 @@
       </div>
     </div>
 
-    <!-- <div class="row">
-      <div class="col-12 my-4">
-        <app-colors class="my-2" [colors]="copy.colors"></app-colors>
-      </div>
-    </div> -->
-
     <div class="row" id="products" *ngIf="id !== 'all'">
       <div class="col-12 my-4">
         <app-gallery
@@ -298,7 +233,7 @@
 
     <div class="row" id="products" *ngIf="id === 'all'">
       <div class="col-12 my-4" *ngIf="dbProducts">
-        <div *ngFor="let item of collections | keyvalue: originalOrder">
+        <div *ngFor="let item of collections | keyvalue : originalOrder">
           <h2 class="ps-3 ps-lg-5 sub-title">{{ item.value[lang].title }}</h2>
           <app-gallery
             class="my-2"

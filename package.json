@@ -25,7 +25,9 @@
     "create404": "cp /Users/ale/dev/quadri-web/dist/quadri-web/browser/es/not-found/index.html /Users/ale/dev/quadri-web/dist/quadri-web/browser/404.shtml",
     "create404:ecom": "cp /Users/ale/dev/quadri-web/dist/quadri-web/browser/en/not-found/index.html /Users/ale/dev/quadri-web/dist/quadri-web/browser/404.shtml",
     "upload:ftp": "./deploy.sh",
-    "upload:ftp:ecom": "./deployEcom.sh"
+    "upload:ftp:ecom": "./deployEcom.sh",
+    "sync": "rsync -avz /Users/ale/dev/quadri-web/dist/quadri-web/browser/ quadri@quadri.com.ar:~/public_html/",
+    "sync:ecom": "rsync -avz /Users/ale/dev/quadri-web/dist/quadri-web/browser/ quadritile@quadritile.com:~/public_html/"
   },
   "private": true,
   "dependencies": {

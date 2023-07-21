@@ -93,10 +93,14 @@
   white-space: pre-line;
 }
 
+:root {
+  --mat-icon-size: 50px;
+}
+
 .info-icon {
-  font-size: 0.8rem !important;
-  height: 0px !important;
-  width: 0px !important;
+  font-size: 15px !important;
+  height: 15px !important;
+  width: 15px !important;
 }
 
 @media (max-width: 992px) {

@@ -103,28 +103,10 @@ export class CartComponent implements OnInit {
         catalog_product_id: 'MLA1375998543',
       },
     ];
-    // const items: Array<MPitem> = [];
-    // this.cartList.forEach(item => {
-    //   const mpItem: MPitem = {
-    //     title: item.product.descripcion,
-    //     quantity: item.quantity,
-    //     unit_price: item.product.precioActual,
-    //     id: item.product.codigo,
-    //     catalog_product_id: 'MLA1375998543',
-    //     // picture_url: item.imageUrl,
-    //   };
-    //   items.push(mpItem);
-    // });
     firstValueFrom(this.mpSc.buyItem(items, true)).then((res: any) => {
-      // para que abra en otra tab
-      // window.open(res.all.init_point, '_blank');
-      // window.open(res.sandbox_init_point, '_blank');
-      // this.eComSc.cart = [];
-      // this.close();
-
-      // para que abra en la misma ventana
       window.location.href = res.all.init_point;
       this.spinner = false;
+      this.eComSc.emptyCart();
     });
   }
 
