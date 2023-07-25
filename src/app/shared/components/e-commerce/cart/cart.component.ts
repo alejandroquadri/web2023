@@ -8,8 +8,9 @@ import {
   LanguageService,
   ServerDetectService,
   MpService,
+  StripeService,
 } from 'src/app/shared/services';
-import { CartItem, MPitem } from 'src/app/shared/interfaces';
+import { CartItem, MPitem, StripeItem } from 'src/app/shared/interfaces';
 import { firstValueFrom } from 'rxjs';
 
 @Component({
@@ -30,6 +31,7 @@ export class CartComponent implements OnInit {
     private router: Router,
     private langSc: LanguageService,
     private mpSc: MpService,
+    private stripeSc: StripeService,
     private serverDetSc: ServerDetectService
   ) {
     this.isEcom = this.eComSc.isEcom;
@@ -79,8 +81,12 @@ export class CartComponent implements OnInit {
         this.strippedCheckout();
       }
     } else {
+      // if (this.eComSc.isEcom) {
+      //   this.strippedCheckout();
+      // } else {
       this.close();
       this.router.navigate([`/${this.lang}/checkout`]);
+      // }
     }
   }
 
@@ -112,6 +118,21 @@ export class CartComponent implements OnInit {
 
   strippedCheckout() {
     // todo
+    const items: Array<StripeItem> = [];
+    this.cartList.forEach(item => {
+      items.push({
+        code: item.product.codigo,
+        quantity: 1,
+        unit_price: item.subTotal,
+        description: item.product.descripcion,
+      });
+    });
+    firstValueFrom(this.stripeSc.stripeCheckout(items)).then((res: any) => {
+      console.log(res);
+      window.location.href = res.url;
+      this.spinner = false;
+      this.eComSc.emptyCart();
+    });
   }
 
   showPrices() {

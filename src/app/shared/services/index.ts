@@ -17,3 +17,4 @@ export * from './quote-pdf.service';
 export * from './upload.service';
 export * from './auth.service';
 export * from './mp.service';
+export * from './stripe.service';
