@@ -75,6 +75,8 @@ export class HeaderComponent implements OnInit {
     'escontacto',
     'escheckout',
     'encheckout',
+    'encheckout-us',
+    'escheckout-us',
     'esquote',
     'enquote',
     'blog',

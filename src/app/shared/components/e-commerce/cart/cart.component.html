@@ -22,10 +22,21 @@
                 | currency : 'USD' : 'symbol-narrow' : '0.0-2'
             }}
             / {{ getUnit(item.product.unidad) | lowercase }}
+            <span *ngIf="item.product.packaging === 'caja'">
+              |
+              {{
+                item.product.precioCajaEcom
+                  | currency : 'USD' : 'symbol-narrow' : '0.0-2'
+              }}
+              {{ copy.box[lang] }}
+            </span>
           </div>
           <div class="note-desc">
             {{ item.totalQ | number : '0.0-2' }}
             {{ getUnit(item.product.unidad) | lowercase }}
+            <span *ngIf="item.product.packaging === 'caja'">
+              | {{ item.boxes }} {{ copy.boxes[lang] }}
+            </span>
           </div>
           <div class="note-desc">
             <button

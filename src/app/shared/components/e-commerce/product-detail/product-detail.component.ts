@@ -173,6 +173,8 @@ export class ProductDetailComponent
         [Validators.required, Validators.max(99), Validators.min(0)],
       ],
       totalQ: [null, Validators.required],
+      units: [null, Validators.required],
+      boxes: [null, Validators.required],
       product: [null, Validators.required],
       subTotal: [null, Validators.required],
       imageUrl: [null],
@@ -229,9 +231,12 @@ export class ProductDetailComponent
       this.netQ = this.ecomSc.round(this.units * this.eq, 2);
       this.boxes = Math.ceil(this.units / unitsPerPack);
       this.totalQ = this.ecomSc.round(this.boxes * unitsPerPack * this.eq, 2);
-      this.subTotal = this.ecomSc.round(this.totalQ * this.getPrice(), 2);
+      // this.subTotal = this.ecomSc.round(this.totalQ * this.getPrice(), 2);
+      this.subTotal = this.calcSubTotal();
       this.qForm.patchValue({
         totalQ: this.totalQ,
+        units: this.units,
+        boxes: this.boxes,
         product: this.selectedProduct,
         subTotal: this.subTotal,
         imageUrl: this.setImgArray()[0],
@@ -239,6 +244,17 @@ export class ProductDetailComponent
       });
     } else {
       this.netQ = this.boxes = this.units = null;
+    }
+  }
+
+  calcSubTotal() {
+    if (this.isEcom && !this.samples) {
+      return this.ecomSc.round(
+        this.boxes! * this.selectedProduct.precioCajaEcom!,
+        2
+      );
+    } else {
+      return this.ecomSc.round(this.totalQ * this.getPrice(), 2);
     }
   }
 
@@ -257,6 +273,12 @@ export class ProductDetailComponent
         ? this.copy.raisedFloor[this.lang]
         : this.copy.terrazzo[this.lang];
     }
+  }
+
+  boxHintEcom() {
+    return `$${this.selectedProduct.precioCajaEcom} per box. ${
+      this.copy.boxHint[this.lang]
+    }`;
   }
 
   calcStock(aprox?: number) {

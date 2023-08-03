@@ -22,6 +22,7 @@ export const UnitsParser = {
   ecom: {
     M2: 'ft²',
     Ml: 'lft',
+    caja: 'boxes',
     Unidad: 'unit',
     'Bolsa 20 kg': '20 kg bag',
     'Bolsa 5 kg': '5 kg bag',
@@ -29,6 +30,7 @@ export const UnitsParser = {
   local: {
     M2: 'm²',
     Ml: 'ml',
+    caja: 'cajas',
     Unidad: 'unidad',
     'Bolsa 20 kg': 'Bolsa 20 kg',
     'Bolsa 5 kg': 'Bolsa 5 kg',

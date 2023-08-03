@@ -331,7 +331,7 @@ export const Colors = {
     name: 'Seleccion',
     url: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fcolors%2Fseleccion.webp?alt=media&token=da561f02-279a-4d33-9af7-3ea6684125a0',
     secImgs: [
-      'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fcolors%2Fcaja_calcos.webp?alt=media&token=96227e9c-31de-4730-b8cf-69c45e2da96d',
+      // 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fcolors%2Fcaja_calcos.webp?alt=media&token=96227e9c-31de-4730-b8cf-69c45e2da96d',
       'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fcolors%2Fcaja_arriba.webp?alt=media&token=8d2e7c5b-5afe-45ba-9c93-d32470e06dda',
       'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fcolors%2Fcaja_iso.webp?alt=media&token=a016aa9a-e536-482c-b861-33d914c6dcb0',
     ],
@@ -340,7 +340,7 @@ export const Colors = {
     name: 'Volcan + Splash',
     url: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fcolors%2Fsplash_volcan.webp?alt=media&token=14e53347-cee6-4a08-b432-9b6f4a1b1574',
     secImgs: [
-      'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fcolors%2Fcaja_calcos.webp?alt=media&token=96227e9c-31de-4730-b8cf-69c45e2da96d',
+      // 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fcolors%2Fcaja_calcos.webp?alt=media&token=96227e9c-31de-4730-b8cf-69c45e2da96d',
       'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fcolors%2Fcaja_arriba.webp?alt=media&token=8d2e7c5b-5afe-45ba-9c93-d32470e06dda',
       'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fcolors%2Fcaja_iso.webp?alt=media&token=a016aa9a-e536-482c-b861-33d914c6dcb0',
     ],
@@ -349,7 +349,7 @@ export const Colors = {
     name: 'Rusticato',
     url: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fcolors%2Frusticato.webp?alt=media&token=e5a1d0b2-e950-4473-9412-542658e84ea4',
     secImgs: [
-      'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fcolors%2Fcaja_calcos.webp?alt=media&token=96227e9c-31de-4730-b8cf-69c45e2da96d',
+      // 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fcolors%2Fcaja_calcos.webp?alt=media&token=96227e9c-31de-4730-b8cf-69c45e2da96d',
       'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fcolors%2Fcaja_arriba.webp?alt=media&token=8d2e7c5b-5afe-45ba-9c93-d32470e06dda',
       'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fcolors%2Fcaja_iso.webp?alt=media&token=a016aa9a-e536-482c-b861-33d914c6dcb0',
     ],
@@ -358,7 +358,7 @@ export const Colors = {
     name: 'Chromatic + Clasica',
     url: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fcolors%2Fchromatic_clasica.webp?alt=media&token=2ffe232f-1ec8-4be2-9b31-4ab22b10f922',
     secImgs: [
-      'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fcolors%2Fcaja_calcos.webp?alt=media&token=96227e9c-31de-4730-b8cf-69c45e2da96d',
+      // 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fcolors%2Fcaja_calcos.webp?alt=media&token=96227e9c-31de-4730-b8cf-69c45e2da96d',
       'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fcolors%2Fcaja_arriba.webp?alt=media&token=8d2e7c5b-5afe-45ba-9c93-d32470e06dda',
       'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fcolors%2Fcaja_iso.webp?alt=media&token=a016aa9a-e536-482c-b861-33d914c6dcb0',
     ],

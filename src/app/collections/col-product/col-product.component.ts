@@ -107,10 +107,21 @@ export class ColProductComponent implements OnInit, OnDestroy, AfterViewInit {
       this.colData = this.collections[this.colId];
     }
     this.productWebObj = this.findProduct();
+    console.log(this.productWebObj);
+    this.filterSizes();
+    console.log(this.productWebObj);
   }
 
   findProduct() {
     return this.colData.products.find(product => product.name === this.prodId);
+  }
+
+  filterSizes() {
+    if (this.eComSc.isEcom) {
+      this.productWebObj.sizes = this.productWebObj.sizes.filter(item => {
+        return this.dbProducts[item.code].packaging === 'caja';
+      });
+    }
   }
 
   buildInternalLinks(): Array<{ name: string; route: string }> {

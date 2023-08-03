@@ -55,7 +55,7 @@
                 [(ngModel)]="selectedProducts[i]"
                 [value]="product.sizes[0]">
                 <option
-                  *ngFor="let sizeObj of product.sizes"
+                  *ngFor="let sizeObj of filterSizes(product.sizes)"
                   [ngValue]="sizeObj">
                   {{ getDim(sizeObj.size) }}
                 </option>

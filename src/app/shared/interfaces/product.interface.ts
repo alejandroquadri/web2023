@@ -13,6 +13,7 @@ export interface Producto {
   moneda: 'Pesos' | 'Dólares';
   precioActual: number;
   precioEcom: number;
+  precioCajaEcom?: number;
   rutaProduccion?: string;
   spPrensa: string;
   spTerminacion: string;

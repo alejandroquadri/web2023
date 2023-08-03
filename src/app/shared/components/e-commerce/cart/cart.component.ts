@@ -10,7 +10,12 @@ import {
   MpService,
   StripeService,
 } from 'src/app/shared/services';
-import { CartItem, MPitem, StripeItem } from 'src/app/shared/interfaces';
+import {
+  CartItem,
+  MPitem,
+  Producto,
+  StripeItem,
+} from 'src/app/shared/interfaces';
 import { firstValueFrom } from 'rxjs';
 
 @Component({
@@ -57,9 +62,13 @@ export class CartComponent implements OnInit {
     return this.eComSc.qObj;
   }
 
-  getPrice(product) {
+  getPrice(product: Producto): number {
     return this.isEcom ? product.precioEcom : product.precioActual;
   }
+
+  // getBoxPrice(item: CartItem): number {
+  //   return this.eComSc.round(item.subTotal / item.boxes, 2);
+  // }
 
   getUnit(unit) {
     return this.eComSc.parseUnits(unit);
@@ -79,14 +88,18 @@ export class CartComponent implements OnInit {
         this.mpCheckout();
       } else {
         this.strippedCheckout();
+        // this.close();
+        // this.router.navigate([`/${this.lang}/checkout-us`]);
       }
     } else {
-      // if (this.eComSc.isEcom) {
-      //   this.strippedCheckout();
-      // } else {
-      this.close();
-      this.router.navigate([`/${this.lang}/checkout`]);
-      // }
+      if (this.eComSc.isEcom) {
+        this.strippedCheckout();
+        // this.close();
+        // this.router.navigate([`/${this.lang}/checkout-us`]);
+      } else {
+        this.close();
+        this.router.navigate([`/${this.lang}/checkout`]);
+      }
     }
   }
 
@@ -104,34 +117,36 @@ export class CartComponent implements OnInit {
       {
         title,
         quantity: 1,
-        unit_price: this.qObj!.subTotal,
+        unit_price: this.qObj!.subTotal * 1.21,
         description,
         catalog_product_id: 'MLA1375998543',
       },
     ];
     firstValueFrom(this.mpSc.buyItem(items, true)).then((res: any) => {
       window.location.href = res.all.init_point;
-      this.spinner = false;
+      // this.spinner = false;
       this.eComSc.emptyCart();
     });
   }
 
   strippedCheckout() {
-    // todo
-    const items: Array<StripeItem> = [];
+    this.spinner = true;
+    const items: Array<any> = [];
     this.cartList.forEach(item => {
       items.push({
         code: item.product.codigo,
-        quantity: 1,
-        unit_price: item.subTotal,
-        description: item.product.descripcion,
+        quantity: item.boxes,
+        name: item.product.descripcion,
+        unit_price: item.product.precioCajaEcom!,
+        description: `${item.boxes} ${this.copy.boxes[this.lang]}`,
+        picture_url: item.imageUrl,
       });
     });
-    firstValueFrom(this.stripeSc.stripeCheckout(items)).then((res: any) => {
+    firstValueFrom(this.stripeSc.simpleCheckout(items)).then((res: any) => {
       console.log(res);
       window.location.href = res.url;
-      this.spinner = false;
-      this.eComSc.emptyCart();
+      // this.spinner = false;
+      // this.eComSc.emptyCart();
     });
   }
 

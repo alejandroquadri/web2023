@@ -103,6 +103,11 @@
   width: 15px !important;
 }
 
+.desc {
+  font-size: 0.9rem;
+  max-width: 500px;
+}
+
 @media (max-width: 992px) {
   .sub-total {
     text-align: center;

@@ -234,12 +234,14 @@
     <div class="row" id="products" *ngIf="id === 'all'">
       <div class="col-12 my-4" *ngIf="dbProducts">
         <div *ngFor="let item of collections | keyvalue : originalOrder">
-          <h2 class="ps-3 ps-lg-5 sub-title">{{ item.value[lang].title }}</h2>
-          <app-gallery
-            class="my-2"
-            [products]="item.value.products"
-            [dbProducts]="dbProducts"
-            (selected)="selectedProduct($event, item.key)"></app-gallery>
+          <ng-container *ngIf="showCollection(item)">
+            <h2 class="ps-3 ps-lg-5 sub-title">{{ item.value[lang].title }}</h2>
+            <app-gallery
+              class="my-2"
+              [products]="item.value.products"
+              [dbProducts]="dbProducts"
+              (selected)="selectedProduct($event, item.key)"></app-gallery>
+          </ng-container>
         </div>
       </div>
     </div>

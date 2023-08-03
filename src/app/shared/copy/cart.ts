@@ -27,4 +27,12 @@ export const Cart = {
     es: 'Total',
     en: 'Subtotal',
   },
+  boxes: {
+    es: 'cajas',
+    en: 'boxes',
+  },
+  box: {
+    es: 'por caja',
+    en: 'per box',
+  },
 };

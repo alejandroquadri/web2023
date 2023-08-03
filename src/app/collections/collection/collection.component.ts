@@ -170,6 +170,19 @@ export class CollectionComponent implements OnInit, OnDestroy {
     return 0;
   };
 
+  showCollection(item) {
+    return this.ecomSc.isEcom ? item.value.ecom : true;
+  }
+
+  filterSizes(products) {
+    return products.map(product => ({
+      ...product,
+      sizes: product.sizes.filter(
+        size => this.dbProducts[size.code].packaging === 'caja'
+      ),
+    }));
+  }
+
   setCopy() {
     if (this.id === 'all') {
       this.copy = this.allCollections;

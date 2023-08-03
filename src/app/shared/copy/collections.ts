@@ -18,6 +18,7 @@ export const Collections = {
     products: [
       {
         name: 'pucon',
+        ecom: true,
         sizes: [
           { size: '40x40', code: 'DurPuc4040' },
           { size: '10x40', code: 'DurPuc1040' },
@@ -26,6 +27,7 @@ export const Collections = {
       },
       {
         name: 'lanin',
+        ecom: true,
         sizes: [
           { size: '40x40', code: 'DurLan4040' },
           { size: '10x40', code: 'DurLan1040' },
@@ -34,6 +36,7 @@ export const Collections = {
       },
       {
         name: 'llaoLlao',
+        ecom: true,
         sizes: [
           { size: '40x40', code: 'DurLla4040' },
           { size: '10x40', code: 'DurLla1040' },
@@ -42,6 +45,7 @@ export const Collections = {
       },
       {
         name: 'fitzRoy',
+        ecom: true,
         sizes: [
           { size: '40x40', code: 'DurFRo4040' },
           { size: '10x40', code: 'DurFRo1040' },
@@ -50,6 +54,7 @@ export const Collections = {
       },
       {
         name: 'ceppoOscuro',
+        ecom: true,
         sizes: [
           { size: '40x40', code: 'DurCOs4040' },
           { size: '10x40', code: 'DurCOs1040' },
@@ -58,6 +63,7 @@ export const Collections = {
       },
       {
         name: 'cumelen',
+        ecom: true,
         sizes: [
           { size: '40x40', code: 'DurCum4040' },
           { size: '10x40', code: 'DurCum1040' },
@@ -66,6 +72,7 @@ export const Collections = {
       },
       {
         name: 'frey',
+        ecom: true,
         sizes: [
           { size: '40x40', code: 'DurFre4040' },
           { size: '10x40', code: 'DurFre1040' },
@@ -73,6 +80,7 @@ export const Collections = {
         ],
       },
     ],
+    ecom: true,
     colors: {
       collections: [
         {
@@ -133,6 +141,7 @@ export const Collections = {
     uses: ['exteriores', 'interiores', 'revestimientos'],
   },
   splash: {
+    ecom: true,
     specs: 'compact40',
     priceCopy: 'stdCompact',
     key: { es: 'splash', en: 'splash' },
@@ -172,6 +181,7 @@ export const Collections = {
     products: [
       {
         name: 'guggenheim',
+        ecom: true,
         sizes: [
           { size: '40x40', code: 'DurGug4040' },
           { size: '10x40', code: 'DurGug1040' },
@@ -180,6 +190,7 @@ export const Collections = {
       },
       {
         name: 'almendra',
+        ecom: true,
         sizes: [
           { size: '40x40', code: 'DurAlm4040' },
           { size: '10x40', code: 'DurAlm1040' },
@@ -188,6 +199,7 @@ export const Collections = {
       },
       {
         name: 'plata',
+        ecom: true,
         sizes: [
           { size: '40x40', code: 'DurPla4040' },
           { size: '10x40', code: 'DurPla1040' },
@@ -196,6 +208,7 @@ export const Collections = {
       },
       {
         name: 'rosa',
+        ecom: true,
         sizes: [
           { size: '40x40', code: 'DurRos4040' },
           { size: '10x40', code: 'DurRos1040' },
@@ -204,6 +217,7 @@ export const Collections = {
       },
       {
         name: 'naranja',
+        ecom: true,
         sizes: [
           { size: '40x40', code: 'DurNar4040' },
           { size: '10x40', code: 'DurNar1040' },
@@ -212,6 +226,7 @@ export const Collections = {
       },
       {
         name: 'aqua',
+        ecom: false,
         sizes: [
           { size: '40x40', code: 'DurAqu4040' },
           { size: '10x40', code: 'DurAqu1040' },
@@ -220,6 +235,7 @@ export const Collections = {
       },
       {
         name: 'mies',
+        ecom: true,
         sizes: [
           { size: '40x40', code: 'DurMie4040' },
           { size: '10x40', code: 'DurMie1040' },
@@ -297,6 +313,8 @@ export const Collections = {
     uses: ['exteriores', 'interiores', 'revestimientos'],
   },
   gradiente: {
+    ecom: false,
+
     specs: 'compact40',
     priceCopy: 'stdCompact',
     key: { es: 'gradiente', en: 'gradiente' },
@@ -376,6 +394,7 @@ export const Collections = {
     uses: ['exteriores', 'interiores', 'revestimientos'],
   },
   rusticato: {
+    ecom: false,
     specs: 'compact50',
     priceCopy: '12x50',
     key: { es: 'rusticato', en: 'rusticato' },
@@ -493,6 +512,8 @@ export const Collections = {
     uses: ['exteriores'],
   },
   chromatic: {
+    ecom: true,
+
     specs: 'compact40',
     priceCopy: 'stdCompact',
     key: { es: 'chromatic', en: 'chromatic' },
@@ -508,6 +529,7 @@ export const Collections = {
     products: [
       {
         name: 'crudo',
+        ecom: true,
         sizes: [
           { size: '40x40', code: 'DurCru4040' },
           { size: '10x40', code: 'DurCru1040' },
@@ -532,6 +554,7 @@ export const Collections = {
       },
       {
         name: 'oliva',
+        ecom: true,
         sizes: [
           { size: '40x40', code: 'DurOli4040' },
           { size: '10x40', code: 'DurOli1040' },
@@ -540,6 +563,7 @@ export const Collections = {
       },
       {
         name: 'niebla',
+        ecom: true,
         sizes: [
           { size: '40x40', code: 'DurNie4040' },
           { size: '10x40', code: 'DurNie1040' },
@@ -548,6 +572,7 @@ export const Collections = {
       },
       {
         name: 'gris',
+        ecom: true,
         sizes: [
           { size: '40x40', code: 'DurGri4040' },
           { size: '10x40', code: 'DurGri1040' },
@@ -623,6 +648,8 @@ export const Collections = {
     uses: ['exteriores', 'interiores', 'revestimientos'],
   },
   clasica: {
+    ecom: true,
+
     specs: 'compact40',
     priceCopy: 'stdCompact',
     key: { es: 'clasica', en: 'clasica' },
@@ -638,6 +665,7 @@ export const Collections = {
     products: [
       {
         name: 'natural',
+        ecom: true,
         sizes: [
           { size: '40x40', code: 'DurNat4040' },
           { size: '10x40', code: 'DurNat1040' },
@@ -654,6 +682,7 @@ export const Collections = {
       },
       {
         name: 'grisPerla',
+        ecom: true,
         sizes: [
           { size: '40x40', code: 'DurGPe4040' },
           { size: '10x40', code: 'DurGPe1040' },
@@ -670,6 +699,7 @@ export const Collections = {
       },
       {
         name: 'negroAlpes',
+        ecom: true,
         sizes: [
           { size: '40x40', code: 'DurNeg4040' },
           { size: '10x40', code: 'DurNeg1040' },
@@ -729,6 +759,7 @@ export const Collections = {
     uses: ['exteriores', 'interiores', 'revestimientos'],
   },
   raisedFloors: {
+    ecom: false,
     specs: 'raisedFloor40',
     priceCopy: 'raisedFloor',
     key: { es: 'pisos-elevados', en: 'raised-floors' },

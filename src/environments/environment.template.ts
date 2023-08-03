@@ -13,6 +13,9 @@ export const environment = {
   googleMaps: {
     key: 'aca va la key de google maps',
   },
+  stripe: {
+    test_key: 'aca va la key de stripe',
+  },
   init: {
     eCom: false,
     lang: 'es',

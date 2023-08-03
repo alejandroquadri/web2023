@@ -53,6 +53,13 @@ const routes: Routes = [
           import('./checkout/checkout.module').then(m => m.CheckoutModule),
       },
       {
+        path: 'checkout-us',
+        loadChildren: () =>
+          import('./checkout-ecom/checkout-ecom.module').then(
+            m => m.CheckoutEcomModule
+          ),
+      },
+      {
         path: 'blog',
         loadChildren: () =>
           import('./blog/blog.module').then(m => m.BlogModule),
@@ -111,6 +118,13 @@ const routes: Routes = [
         path: 'checkout',
         loadChildren: () =>
           import('./checkout/checkout.module').then(m => m.CheckoutModule),
+      },
+      {
+        path: 'checkout-us',
+        loadChildren: () =>
+          import('./checkout-ecom/checkout-ecom.module').then(
+            m => m.CheckoutEcomModule
+          ),
       },
       {
         path: 'blog',

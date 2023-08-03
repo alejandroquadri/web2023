@@ -6,6 +6,8 @@ export interface CartItem {
   excess: number;
   subTotal: number;
   totalQ: number;
+  boxes: number;
+  units: number;
   imageUrl?: string;
   isComplement: boolean;
 }

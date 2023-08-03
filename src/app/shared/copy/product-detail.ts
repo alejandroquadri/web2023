@@ -8,8 +8,8 @@ export const ProductDetail = {
     en: 'Terrazzo raised floor',
   },
   samples: {
-    es: 'Caja de muestras',
-    en: 'Samples box',
+    es: 'Caja muestras',
+    en: 'Samples',
   },
   quantityReq: {
     es: 'Cantidad requerida',

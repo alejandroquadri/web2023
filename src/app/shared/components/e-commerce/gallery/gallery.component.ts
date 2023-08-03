@@ -121,4 +121,10 @@ export class GalleryComponent implements OnInit, OnChanges {
   getDim(dim) {
     return this.ecomSc.parseDim(dim);
   }
+
+  filterSizes(sizes: Array<any>) {
+    return sizes.filter(
+      size => this.dbProducts[size.code].packaging === 'caja'
+    );
+  }
 }

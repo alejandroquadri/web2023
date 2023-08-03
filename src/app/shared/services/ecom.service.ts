@@ -116,7 +116,6 @@ export class EcomService {
   }
 
   removeItem(i: number): void {
-    console.log('trato de borrar');
     if (this.qObj) {
       const val = this.cart[i];
       const itemSubTotal = val.subTotal;
@@ -133,7 +132,6 @@ export class EcomService {
         this.calcTotal();
         this.addCompToCart();
       }
-      console.log(this.cart);
       this.saveCart();
     }
   }
@@ -172,15 +170,6 @@ export class EcomService {
       this.cart = [...this.cart, ...extrasArr];
     }
   }
-
-  // calcTotal() {
-  //   this.qObj = this.calcQ(this.cart);
-  //   if (this.isEcom === false) {
-  //     this.compObj = this.calcExtras(this.qObj);
-  //     const extrasArr = this.addComplements(this.compObj);
-  //     this.cart = [...this.cart, ...extrasArr];
-  //   }
-  // }
 
   round(value: number, decimals: number): number {
     let d: string | number = '1';
@@ -297,6 +286,8 @@ export class EcomService {
             isComplement: true,
             excess: 0,
             subTotal: itemSubTotal,
+            units: q,
+            boxes: q,
             totalQ: q,
             imageUrl: this.compImgs[name] || null,
           });
@@ -344,9 +335,7 @@ export class EcomService {
           doc(this.firestore, 'web_users', user.uid),
           { cart: this.cart },
           { merge: true }
-        )
-          .then(() => console.log('cart saved'))
-          .catch(err => console.log('error saving cart', err));
+        ).catch(err => console.log('error saving cart', err));
       });
     }
     // }, 500); // delay of 1 second
@@ -367,6 +356,8 @@ export class EcomService {
         this.carrySamples = true;
       }
       this.calcTotal();
+    } else {
+      this.cart = [];
     }
   }
 }
