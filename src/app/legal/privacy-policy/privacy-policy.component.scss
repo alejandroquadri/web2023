@@ -1,0 +1,32 @@
+.wrapper {
+  min-height: 100vh;
+}
+
+.container {
+  margin-top: 64px;
+  max-width: 960px;
+  height: 100%;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 300;
+}
+
+@media (max-width: 576px) {
+  .wrapper {
+    // margin-top: 56px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .container {
+    padding-top: 1rem;
+    margin-top: 56px;
+  }
+
+  .title {
+    font-size: 1.7rem;
+    font-weight: 300;
+  }
+}

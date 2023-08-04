@@ -9,6 +9,9 @@
 /es/placas
 /es/not-found
 /es/thanks
+/es/info/politica-privacidad
+/es/info/terminos-servicio
+/es/info/devoluciones-envios
 
 /en/home
 /en/contact
@@ -17,6 +20,10 @@
 /en/checkout
 /en/not-found
 /en/thanks
+/en/info/privacy-policy
+/en/info/terms-service
+/en/info/returns-shipping
+
 /en/tiles
 
 /es/colecciones

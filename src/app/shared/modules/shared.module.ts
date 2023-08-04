@@ -36,7 +36,7 @@ import {
   CartComponent,
   CustomStepperComponent,
 } from '../components';
-import { SortPipe } from '../pipes';
+import { MarkdownPipe, SortPipe } from '../pipes';
 import { LazyImgDirective } from '../directives';
 import { SignupNlComponent } from '../components/signup-nl/signup-nl.component';
 
@@ -68,6 +68,7 @@ import { SignupNlComponent } from '../components/signup-nl/signup-nl.component';
     CartComponent,
     SignupNlComponent,
     SortPipe,
+    MarkdownPipe,
     DateFnsPipe,
     LazyImgDirective,
   ],
@@ -121,6 +122,7 @@ import { SignupNlComponent } from '../components/signup-nl/signup-nl.component';
     SignupNlComponent,
     SortPipe,
     DateFnsPipe,
+    MarkdownPipe,
     LazyImgDirective,
   ],
   providers: [provideNgxMask()],

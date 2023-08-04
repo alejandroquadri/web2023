@@ -19,6 +19,7 @@ import {
 } from 'src/app/shared/services';
 import { Platform } from '@angular/cdk/platform';
 import { LOGOS } from 'src/app/shared/constants';
+import { AbsUrl, CheckoutUrl, CtaBtnUrl, StickyUrls } from './header-constants';
 
 @Component({
   selector: 'app-header',
@@ -68,28 +69,10 @@ export class HeaderComponent implements OnInit {
   lang: string;
   cartBadgeState = false;
 
-  stickyUrls = [
-    'eshome',
-    'enhome',
-    'encontact',
-    'escontacto',
-    'escheckout',
-    'encheckout',
-    'encheckout-us',
-    'escheckout-us',
-    'esquote',
-    'enquote',
-    'blog',
-    'esnot-found',
-    'ennot-found',
-    'esinspiracion',
-    'enlookbook',
-    'escolecciones',
-    'encollections',
-  ];
-  absUrl = ['eshome', 'enhome', 'esquote', 'enquote'];
-  ctaBtnUrl = ['esquote', 'enquote'];
-  checkoutUrl = ['escheckout', 'encheckout'];
+  stickyUrls = StickyUrls;
+  absUrl = AbsUrl;
+  ctaBtnUrl = CtaBtnUrl;
+  checkoutUrl = CheckoutUrl;
 
   timedOutCloser;
 
@@ -120,26 +103,34 @@ export class HeaderComponent implements OnInit {
     return parsedUrl;
   }
 
+  // isSticky() {
+  //   let url = this.getUrl();
+  //   if (url.substring(2, 6) === 'blog') {
+  //     url = 'blog';
+  //   }
+  //   return !this.stickyUrls.includes(url);
+  // }
+
   isSticky() {
-    let url = this.getUrl();
-    if (url.substring(2, 6) === 'blog') {
+    let url = this.getUrl().substring(2);
+    if (url.substring(0, 4) === 'blog') {
       url = 'blog';
     }
     return !this.stickyUrls.includes(url);
   }
 
   isAbs() {
-    let url = this.getUrl();
+    let url = this.getUrl().substring(2);
     return this.absUrl.includes(url);
   }
 
   showQuoteBtn() {
-    const url = this.getUrl();
+    const url = this.getUrl().substring(2);
     return !this.ctaBtnUrl.includes(url);
   }
 
   showCartBtn() {
-    const url = this.getUrl();
+    const url = this.getUrl().substring(2);
     return !this.checkoutUrl.includes(url);
   }
 

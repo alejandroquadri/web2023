@@ -29,6 +29,7 @@ export class CartComponent implements OnInit {
   isEcom: boolean;
   copy = Cart;
   spinner = false;
+  termsAccepted = false;
 
   constructor(
     private sideNavSc: SidenavService,
@@ -105,17 +106,17 @@ export class CartComponent implements OnInit {
 
   mpCheckout() {
     this.spinner = true;
-    const title =
-      this.cartList.length > 1
-        ? 'Productos Quadri'
-        : this.cartList[0].product.descripcion;
+    // const title =
+    //   this.cartList.length > 1
+    //     ? 'Productos Quadri'
+    //     : this.cartList[0].product.descripcion;
     let description = '';
     this.cartList.forEach(item => {
       description += `${item.product.descripcion} x ${item.quantity} ;`;
     });
     const items: Array<MPitem> = [
       {
-        title,
+        title: description,
         quantity: 1,
         unit_price: this.qObj!.subTotal * 1.21,
         description,

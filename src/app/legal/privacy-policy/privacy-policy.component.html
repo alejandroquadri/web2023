@@ -1,0 +1,8 @@
+<div class="wrapper">
+  <div class="container pt-5 pb-4">
+    <h1 class="title">{{ copy[lang].title }}</h1>
+    <div
+      class="blog-content"
+      [innerHTML]="removeWhitespace(copy[lang].text) | markdown"></div>
+  </div>
+</div>

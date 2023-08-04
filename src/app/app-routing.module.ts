@@ -37,6 +37,11 @@ const routes: Routes = [
           import('./thanks/thanks.module').then(m => m.ThanksModule),
       },
       {
+        path: 'info',
+        loadChildren: () =>
+          import('./legal/legal.module').then(m => m.LegalModule),
+      },
+      {
         path: 'home',
         loadChildren: () =>
           import('./landing/landing.module').then(m => m.LandingModule),
@@ -102,6 +107,11 @@ const routes: Routes = [
         path: 'thanks',
         loadChildren: () =>
           import('./thanks/thanks.module').then(m => m.ThanksModule),
+      },
+      {
+        path: 'info',
+        loadChildren: () =>
+          import('./legal/legal.module').then(m => m.LegalModule),
       },
       {
         path: 'home',

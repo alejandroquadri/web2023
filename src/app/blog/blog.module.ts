@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { SharedModule } from 'src/app/shared/modules';
-import { MarkdownPipe } from 'src/app/shared/pipes';
+// import { MarkdownPipe } from 'src/app/shared/pipes';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
 import { BlogListComponent } from './blog-list/blog-list.component';
 import { BlogResolver } from './blog.resolver';
@@ -21,7 +21,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [BlogListComponent, BlogDetailComponent, MarkdownPipe],
+  declarations: [BlogListComponent, BlogDetailComponent],
   imports: [RouterModule.forChild(routes), SharedModule],
 })
 export class BlogModule {}

@@ -91,11 +91,25 @@
           }}</span
         >
       </div>
-      <div class="ms-2 ps-3 pt-1 pb-3 me-2 pe-3 subtotal-note">
+      <div
+        class="ms-2 ps-3 pt-2 me-2 pe-3 subtotal-note"
+        [ngClass]="{ 'pb-3': isEcom === false }">
         {{ copy.taxShipping[lang] }}
+      </div>
+      <div class="row mx-2 mt-2 pb-3" *ngIf="isEcom === true">
+        <div class="col d-flex">
+          <mat-checkbox
+            color="primary"
+            class="me-2"
+            [(ngModel)]="termsAccepted"></mat-checkbox>
+          <div class="flex-grow-1 ps-2 m-auto subtotal-note">
+            {{ copy.terms[lang] }}
+          </div>
+        </div>
       </div>
     </div>
     <button
+      [disabled]="termsAccepted === false && isEcom === true"
       *ngIf="forSideNav"
       class="buy-btn"
       mat-flat-button

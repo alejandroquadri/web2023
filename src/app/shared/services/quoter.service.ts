@@ -106,8 +106,8 @@ export class QuoterService {
           discount: 0,
           price: prod.precioActual,
           finalPrice: prod.precioActual,
-          quantity: item.quantity,
-          quantityNl: this.ecomSc.round(item.quantity / prod.eq, 2),
+          quantity: item.totalQ,
+          quantityNl: this.ecomSc.round(item.totalQ / prod.eq, 2),
           unit: prod.unidad,
           total: this.ecomSc.round(prod.precioActual * item.quantity, 2),
         });
