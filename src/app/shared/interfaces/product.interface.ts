@@ -18,6 +18,7 @@ export interface Producto {
   spPrensa: string;
   spTerminacion: string;
   spCorte: string;
+  spBisel: string;
   dimPrensa: string;
   stock: Record<string, Stock>;
   terminacion?: string;
@@ -47,4 +48,5 @@ export type Tipo =
   | 'concepto'
   | 'compra servicio'
   | 'insumo'
-  | 'materia prima';
+  | 'materia prima'
+  | 'muestras';

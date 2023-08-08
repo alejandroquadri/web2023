@@ -138,19 +138,19 @@ export const Landing = {
     },
     {
       bg_img_desktop: {
-        url: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2FprojectsNewWeb%2FMercurio%20Ban%CC%83o%204.webp?alt=media&token=0510d521-7c66-49f2-b09c-ee7d5744b0ac',
+        url: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2FprojectsNewWeb%2FCocina_acero.webp?alt=media&token=05a462ad-45eb-4eb6-a6c4-2267f87c9469',
       },
       bg_img_mob: {
-        url: 'https://drive.google.com/uc?id=1w9WtkKw0hzDTe637gg3e4vIfke-7eD_0',
+        url: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2FprojectsNewWeb%2FCocina_acero.webp?alt=media&token=05a462ad-45eb-4eb6-a6c4-2267f87c9469',
       },
       cta_btn1: {
         en: {
           text: { eCom: 'Buy', quote: 'Online quote' },
-          url: 'collections/splash',
+          url: 'collections/gradiente',
         },
         es: {
           text: { eCom: 'Comprar', quote: 'Cotización online' },
-          url: 'colecciones/splash',
+          url: 'colecciones/gradiente',
         },
       },
       cta_btn2: {

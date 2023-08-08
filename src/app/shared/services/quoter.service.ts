@@ -27,18 +27,6 @@ export class QuoterService {
     private ecomSc: EcomService
   ) {}
 
-  // getQuoteNumViejo(): Promise<any> {
-  //   //  busco primero cual es el ultimo numero guardado
-  //   const quoteSettings = this.db.colSDK('crm_settings').doc('quotes');
-  //   return this.db.transaction(tr =>
-  //     tr.get(quoteSettings).then(settings => {
-  //       const newCount: number = (settings.data().counter += 1);
-  //       tr.update(quoteSettings, { counter: newCount });
-  //       return newCount;
-  //     })
-  //   );
-  // }
-
   async getQuoteNum(): Promise<number> {
     //  busco primero cual es el ultimo numero guardado
     return new Promise(async (res, rej) => {
@@ -68,8 +56,6 @@ export class QuoterService {
     });
     const iva = this.ecomSc.round(subtotal * 0.21, 2);
     return {
-      // updatedAt: this.db.timestamp,
-      // createdAt: this.db.timestamp,
       updatedAt: serverTimestamp(),
       createdAt: serverTimestamp(),
       calcIVA: 0.21,
@@ -109,7 +95,7 @@ export class QuoterService {
           quantity: item.totalQ,
           quantityNl: this.ecomSc.round(item.totalQ / prod.eq, 2),
           unit: prod.unidad,
-          total: this.ecomSc.round(prod.precioActual * item.quantity, 2),
+          total: this.ecomSc.round(prod.precioActual * item.totalQ, 2),
         });
       }
     });
@@ -133,31 +119,6 @@ export class QuoterService {
     };
     return form;
   }
-
-  // saveViejo(quote: Quote, query: Query) {
-  //   return new Promise((res, rej) => {
-  //     try {
-  //       const batch = this.db.batch();
-  //       const setAuditObj = this.db.auditSetObject();
-  //       const pspkey = this.db.getUniqueId();
-  //       const queryKey = this.db.getUniqueId();
-
-  //       // save psp with query
-  //       quote.query = query;
-  //       const pspRef = this.db.doc(`crm_quotes/${pspkey}`).ref;
-  //       batch.set(pspRef, { ...quote, ...setAuditObj });
-
-  //       // save query
-  //       const queryRef = this.db.doc(`queries/${queryKey}`).ref;
-  //       batch.set(queryRef, query);
-
-  //       // save all
-  //       res(batch.commit());
-  //     } catch (err) {
-  //       rej(err);
-  //     }
-  //   });
-  // }
 
   save(quote: Quote, query: Query) {
     return new Promise((res, rej) => {
@@ -196,29 +157,3 @@ export class QuoterService {
     };
   }
 }
-
-// getProducts(): Observable<Producto[]> {
-//   return this.db.colValue$<Producto[]>('products', ref =>
-//     ref
-//       // .orderBy('codigo', 'asc')
-//       // .where('tipo', '==', 'producto')
-//       .where('tipo', 'in', ['producto', 'producto reventa', 'servicio'])
-//   );
-// }
-
-// ecomSc.round(value: number, decimals: number): number {
-//   let d: string | number = '1';
-//   for (let i = 0; i < decimals; i++) {
-//     d += '0';
-//   }
-//   d = Number(d);
-//   return Math.ecomSc.round((value + Number.EPSILON) * d) / d;
-// }
-
-// goToTop() {
-//   window.scroll({
-//     top: 0,
-//     left: 0,
-//     behavior: 'smooth',
-//   });
-// }

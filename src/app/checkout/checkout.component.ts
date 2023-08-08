@@ -59,6 +59,11 @@ export class CheckoutComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       phone: ['', Validators.required],
     });
+    // this.contactForm.patchValue({
+    //   name: 'Ale Q',
+    //   email: 'ale@quadri.com.ar',
+    //   phone: '1151612850',
+    // });
   }
 
   submit() {

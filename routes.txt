@@ -28,6 +28,7 @@
 
 /es/colecciones
 /es/colecciones/todos
+/es/colecciones/all
 /es/colecciones/volcan
 /es/colecciones/splash
 /es/colecciones/gradiente

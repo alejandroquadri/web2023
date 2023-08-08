@@ -33,7 +33,7 @@ export class AppComponent implements OnDestroy {
   ) {
     this.serviceWSc.checkForUpdates();
     this.update();
-    this.initAuth();
+    // this.initAuth();
   }
 
   ngOnDestroy(): void {

@@ -46,7 +46,7 @@ export const Colors = {
   },
   celadon: {
     name: 'Celadon',
-    url: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fcolors%2FchromaticCeladon-terrazzo.jpeg?alt=media&token=dcd8a339-ec0c-49b3-bcfd-2dcab00edaef',
+    url: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fcolors%2Fceladon_01.webp?alt=media&token=2a71aa6a-a979-4378-8dd2-9709f050ef3b',
   },
   ceppoClaro: {
     name: 'Ceppo claro',
@@ -107,7 +107,7 @@ export const Colors = {
   },
   gris: {
     name: 'Gris',
-    url: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fcolors%2Fgris-cemento-terrazzo.jpg?alt=media&token=79711fbe-a56e-411a-b023-6042655a0f9b',
+    url: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fcolors%2Fgris_01.webp?alt=media&token=74104454-e808-4dc2-b7f4-c409ef857ef3',
   },
   grisCemento: {
     name: 'Gris cemento',
@@ -286,7 +286,7 @@ export const Colors = {
   },
   ocaso: {
     name: 'Ocaso',
-    url: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fcolors%2Fchromatic-ocaso.webp?alt=media&token=7a9bf5ca-22e5-41d0-9a83-ca99e157d1cf',
+    url: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fcolors%2Focaso_01.webp?alt=media&token=c34ea304-8a2e-40c4-b13e-30a2277a3558',
   },
   avena: {
     name: 'Avena',
@@ -303,7 +303,7 @@ export const Colors = {
   },
   niebla: {
     name: 'Niebla',
-    url: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fcolors%2Fchromatic-niebla.webp?alt=media&token=8017edc3-4be6-47ed-9e1f-ef55d4f4d148',
+    url: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fcolors%2Fniebla_01.webp?alt=media&token=e33211c9-514c-4d14-8edb-480b40c23071',
   },
   sitana: {
     name: 'Sitana',

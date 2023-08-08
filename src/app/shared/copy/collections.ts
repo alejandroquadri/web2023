@@ -527,21 +527,30 @@ export const Collections = {
       },
     ],
     products: [
+      // {
+      //   name: 'crudo',
+      //   ecom: true,
+      //   sizes: [
+      //     { size: '40x40', code: 'DurCru4040' },
+      //     { size: '10x40', code: 'DurCru1040' },
+      //     { size: 'zocalo', code: 'ZocCru1040' },
+      //   ],
+      // },
+      // {
+      //   name: 'avena',
+      //   sizes: [
+      //     { size: '40x40', code: 'DurAve4040' },
+      //     { size: '10x40', code: 'DurAve1040' },
+      //     { size: 'zocalo', code: 'ZocAve1040' },
+      //   ],
+      // },
       {
-        name: 'crudo',
+        name: 'natural',
         ecom: true,
         sizes: [
-          { size: '40x40', code: 'DurCru4040' },
-          { size: '10x40', code: 'DurCru1040' },
-          { size: 'zocalo', code: 'ZocCru1040' },
-        ],
-      },
-      {
-        name: 'avena',
-        sizes: [
-          { size: '40x40', code: 'DurAve4040' },
-          { size: '10x40', code: 'DurAve1040' },
-          { size: 'zocalo', code: 'ZocAve1040' },
+          { size: '40x40', code: 'DurNat4040' },
+          { size: '10x40', code: 'DurNat1040' },
+          { size: 'zocalo', code: 'ZocNat1040' },
         ],
       },
       {
@@ -553,12 +562,12 @@ export const Collections = {
         ],
       },
       {
-        name: 'oliva',
+        name: 'celadon',
         ecom: true,
         sizes: [
-          { size: '40x40', code: 'DurOli4040' },
-          { size: '10x40', code: 'DurOli1040' },
-          { size: 'zocalo', code: 'ZocOli1040' },
+          { size: '40x40', code: 'DurCel4040' },
+          { size: '10x40', code: 'DurCel1040' },
+          { size: 'zocalo', code: 'ZocCel1040' },
         ],
       },
       {
@@ -580,25 +589,36 @@ export const Collections = {
         ],
       },
       {
-        name: 'petroleo',
+        name: 'negroAlpes',
+        ecom: true,
         sizes: [
-          { size: '40x40', code: 'DurPet4040' },
-          { size: '10x40', code: 'DurPet1040' },
-          { size: 'zocalo', code: 'ZocPet1040' },
+          { size: '40x40', code: 'DurNeg4040' },
+          { size: '10x40', code: 'DurNeg1040' },
+          { size: 'zocalo', code: 'ZocNeg1040' },
         ],
       },
+      // {
+      //   name: 'petroleo',
+      //   sizes: [
+      //     { size: '40x40', code: 'DurPet4040' },
+      //     { size: '10x40', code: 'DurPet1040' },
+      //     { size: 'zocalo', code: 'ZocPet1040' },
+      //   ],
+      // },
     ],
     colors: {
       collections: [
         {
           colors: [
-            'crudo',
-            'avena',
+            // 'crudo',
+            // 'avena',
+            'natural',
             'ocaso',
-            'oliva',
+            'celadon',
             'niebla',
+            'gris',
             'ceniza',
-            'petroleo',
+            // 'petroleo',
           ],
           name: 'Chromatic',
           order: 0,
@@ -647,117 +667,117 @@ export const Collections = {
     thickness: '1,8 cm',
     uses: ['exteriores', 'interiores', 'revestimientos'],
   },
-  clasica: {
-    ecom: true,
+  // clasica: {
+  //   ecom: true,
 
-    specs: 'compact40',
-    priceCopy: 'stdCompact',
-    key: { es: 'clasica', en: 'clasica' },
-    filterTags: ['indoor', 'outdoor', 'wall', 'floor'],
-    carrouselImgs: [
-      {
-        url: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2FprojectsNewWeb%2Fclasica_negro_alpes.webp?alt=media&token=a454730f-0696-4da3-a74c-85650270de6f',
-      },
-      {
-        url: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2FprojectsNewWeb%2Fpiso_chromatic_clasica.webp?alt=media&token=f101d970-29a2-4cfe-9dc9-9249450305c6',
-      },
-    ],
-    products: [
-      {
-        name: 'natural',
-        ecom: true,
-        sizes: [
-          { size: '40x40', code: 'DurNat4040' },
-          { size: '10x40', code: 'DurNat1040' },
-          { size: 'zocalo', code: 'ZocNat1040' },
-        ],
-      },
-      {
-        name: 'hueso',
-        sizes: [
-          { size: '40x40', code: 'DurHue4040' },
-          { size: '10x40', code: 'DurHue1040' },
-          { size: 'zocalo', code: 'ZocHue1040' },
-        ],
-      },
-      {
-        name: 'grisPerla',
-        ecom: true,
-        sizes: [
-          { size: '40x40', code: 'DurGPe4040' },
-          { size: '10x40', code: 'DurGPe1040' },
-          { size: 'zocalo', code: 'ZocGPe1040' },
-        ],
-      },
-      {
-        name: 'brechiato',
-        sizes: [
-          { size: '40x40', code: 'DurBre4040' },
-          { size: '10x40', code: 'DurBre1040' },
-          { size: 'zocalo', code: 'ZocBre1040' },
-        ],
-      },
-      {
-        name: 'negroAlpes',
-        ecom: true,
-        sizes: [
-          { size: '40x40', code: 'DurNeg4040' },
-          { size: '10x40', code: 'DurNeg1040' },
-          { size: 'zocalo', code: 'ZocNeg1040' },
-        ],
-      },
-    ],
-    colors: {
-      collections: [
-        {
-          colors: ['natural', 'hueso', 'grisPerla', 'brechiato', 'negroAlpes'],
-          name: 'Clasica',
-          order: 0,
-          hideName: true,
-        },
-      ],
-      has_series: true,
-    },
-    en: {
-      carrouselCopy:
-        'For terrazzo maximalists. Classic blends that last over time',
-      carrouselTitle: 'classic terrazzo, timeless, perpetual - for true fans',
-      ctaBtn: 'Online quote',
-      oneLiner: `Our classic terrazzo tiles are a tribute to the timeless beauty and durability of this iconic material. Crafted with care and precision, they are the perfect choice for those who appreciate the elegance and sophistication of traditional terrazzo. Whether you're looking to create a vintage-inspired design or a modern twist on a classic look, our tiles are sure to impress. With their durability and resilience, they are made to last for generations of terrazzo lovers to come.`,
-      piceText: {
-        post: '/ m2 + tax',
-        pre: 'From',
-      },
-      title: 'Classic',
-    },
-    es: {
-      carrouselCopy:
-        'Nuestras clásicas placas de terrazo son un tributo a la belleza atemporal y la durabilidad de este material icónico. Elaborados con cuidado y precisión, son la elección perfecta para aquellos que aprecian la elegancia y sofisticación del terrazo tradicional. Ya sea que esté buscando crear un diseño de inspiración vintage o un toque moderno en una apariencia clásica, nuestros mosaicos seguramente lo impresionarán. Con su durabilidad y resiliencia, están hechos para durar generaciones de amantes del terrazo.',
-      carrouselTitle:
-        'terrazo clásico, atemporal y eterno - para los verdaderos fanáticos',
-      ctaBtn: 'Cotizar online',
-      oneLiner: 'Sin',
-      piceText: {
-        post: '/ m2 + impuestos',
-        pre: 'Desde',
-      },
-      title: 'Clasica',
-    },
-    featureImgLg:
-      'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2FprojectsNewWeb%2Fclasica_portada_pc1.webp?alt=media&token=cd7fcf26-d2bc-477f-a272-d3b5859806ab',
-    featureImgMobile:
-      'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2FprojectsNewWeb%2Fclasica_portada_pc1.webp?alt=media&token=cd7fcf26-d2bc-477f-a272-d3b5859806ab',
-    featureImg:
-      'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2FprojectsNewWeb%2Fclasica_portada_pc1.webp?alt=media&token=cd7fcf26-d2bc-477f-a272-d3b5859806ab',
-    refPrice: 'Durella',
-    sizes: ['40x40'],
-    special_pieces: {
-      has: true,
-      pieces: ['zocalo', 'escalon'],
-    },
-    thickness: '1,8 cm',
-    uses: ['exteriores', 'interiores', 'revestimientos'],
-  },
+  //   specs: 'compact40',
+  //   priceCopy: 'stdCompact',
+  //   key: { es: 'clasica', en: 'clasica' },
+  //   filterTags: ['indoor', 'outdoor', 'wall', 'floor'],
+  //   carrouselImgs: [
+  //     {
+  //       url: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2FprojectsNewWeb%2Fclasica_negro_alpes.webp?alt=media&token=a454730f-0696-4da3-a74c-85650270de6f',
+  //     },
+  //     {
+  //       url: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2FprojectsNewWeb%2Fpiso_chromatic_clasica.webp?alt=media&token=f101d970-29a2-4cfe-9dc9-9249450305c6',
+  //     },
+  //   ],
+  //   products: [
+  //     {
+  //       name: 'natural',
+  //       ecom: true,
+  //       sizes: [
+  //         { size: '40x40', code: 'DurNat4040' },
+  //         { size: '10x40', code: 'DurNat1040' },
+  //         { size: 'zocalo', code: 'ZocNat1040' },
+  //       ],
+  //     },
+  //     {
+  //       name: 'hueso',
+  //       sizes: [
+  //         { size: '40x40', code: 'DurHue4040' },
+  //         { size: '10x40', code: 'DurHue1040' },
+  //         { size: 'zocalo', code: 'ZocHue1040' },
+  //       ],
+  //     },
+  //     {
+  //       name: 'grisPerla',
+  //       ecom: true,
+  //       sizes: [
+  //         { size: '40x40', code: 'DurGPe4040' },
+  //         { size: '10x40', code: 'DurGPe1040' },
+  //         { size: 'zocalo', code: 'ZocGPe1040' },
+  //       ],
+  //     },
+  //     {
+  //       name: 'brechiato',
+  //       sizes: [
+  //         { size: '40x40', code: 'DurBre4040' },
+  //         { size: '10x40', code: 'DurBre1040' },
+  //         { size: 'zocalo', code: 'ZocBre1040' },
+  //       ],
+  //     },
+  //     {
+  //       name: 'negroAlpes',
+  //       ecom: true,
+  //       sizes: [
+  //         { size: '40x40', code: 'DurNeg4040' },
+  //         { size: '10x40', code: 'DurNeg1040' },
+  //         { size: 'zocalo', code: 'ZocNeg1040' },
+  //       ],
+  //     },
+  //   ],
+  //   colors: {
+  //     collections: [
+  //       {
+  //         colors: ['natural', 'hueso', 'grisPerla', 'brechiato', 'negroAlpes'],
+  //         name: 'Clasica',
+  //         order: 0,
+  //         hideName: true,
+  //       },
+  //     ],
+  //     has_series: true,
+  //   },
+  //   en: {
+  //     carrouselCopy:
+  //       'For terrazzo maximalists. Classic blends that last over time',
+  //     carrouselTitle: 'classic terrazzo, timeless, perpetual - for true fans',
+  //     ctaBtn: 'Online quote',
+  //     oneLiner: `Our classic terrazzo tiles are a tribute to the timeless beauty and durability of this iconic material. Crafted with care and precision, they are the perfect choice for those who appreciate the elegance and sophistication of traditional terrazzo. Whether you're looking to create a vintage-inspired design or a modern twist on a classic look, our tiles are sure to impress. With their durability and resilience, they are made to last for generations of terrazzo lovers to come.`,
+  //     piceText: {
+  //       post: '/ m2 + tax',
+  //       pre: 'From',
+  //     },
+  //     title: 'Classic',
+  //   },
+  //   es: {
+  //     carrouselCopy:
+  //       'Nuestras clásicas placas de terrazo son un tributo a la belleza atemporal y la durabilidad de este material icónico. Elaborados con cuidado y precisión, son la elección perfecta para aquellos que aprecian la elegancia y sofisticación del terrazo tradicional. Ya sea que esté buscando crear un diseño de inspiración vintage o un toque moderno en una apariencia clásica, nuestros mosaicos seguramente lo impresionarán. Con su durabilidad y resiliencia, están hechos para durar generaciones de amantes del terrazo.',
+  //     carrouselTitle:
+  //       'terrazo clásico, atemporal y eterno - para los verdaderos fanáticos',
+  //     ctaBtn: 'Cotizar online',
+  //     oneLiner: 'Sin',
+  //     piceText: {
+  //       post: '/ m2 + impuestos',
+  //       pre: 'Desde',
+  //     },
+  //     title: 'Clasica',
+  //   },
+  //   featureImgLg:
+  //     'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2FprojectsNewWeb%2Fclasica_portada_pc1.webp?alt=media&token=cd7fcf26-d2bc-477f-a272-d3b5859806ab',
+  //   featureImgMobile:
+  //     'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2FprojectsNewWeb%2Fclasica_portada_pc1.webp?alt=media&token=cd7fcf26-d2bc-477f-a272-d3b5859806ab',
+  //   featureImg:
+  //     'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2FprojectsNewWeb%2Fclasica_portada_pc1.webp?alt=media&token=cd7fcf26-d2bc-477f-a272-d3b5859806ab',
+  //   refPrice: 'Durella',
+  //   sizes: ['40x40'],
+  //   special_pieces: {
+  //     has: true,
+  //     pieces: ['zocalo', 'escalon'],
+  //   },
+  //   thickness: '1,8 cm',
+  //   uses: ['exteriores', 'interiores', 'revestimientos'],
+  // },
   raisedFloors: {
     ecom: false,
     specs: 'raisedFloor40',
@@ -781,8 +801,8 @@ export const Collections = {
         sizes: [{ size: '40x40', code: 'PtDNat4040' }],
       },
       {
-        name: 'grisPerla',
-        sizes: [{ size: '40x40', code: 'PtDGPe4040' }],
+        name: 'gris',
+        sizes: [{ size: '40x40', code: 'PtDGri4040' }],
       },
       {
         name: 'guggenheim',

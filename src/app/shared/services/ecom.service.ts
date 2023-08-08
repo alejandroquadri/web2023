@@ -18,6 +18,8 @@ import { DimParser, ProdImgs, UnitsParser } from '../constants';
 import { environment } from 'src/environments/environment';
 import { AuthService } from './auth.service';
 import { User } from '@angular/fire/auth';
+import { CookiesService } from './cookies.service';
+import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
   providedIn: 'root',
@@ -40,7 +42,12 @@ export class EcomService {
   cartState = false;
   saveCartDebounce: number | null = null;
 
-  constructor(private authSc: AuthService, private ngZone: NgZone) {}
+  constructor(
+    private authSc: AuthService,
+    private ngZone: NgZone,
+    private cookiesSc: CookiesService,
+    private localStorageSc: LocalStorageService
+  ) {}
 
   // setting mode
 
@@ -80,7 +87,12 @@ export class EcomService {
     const prodColRef = collection(this.firestore, 'products');
     const q = query(
       prodColRef,
-      where('tipo', 'in', ['producto', 'producto reventa', 'servicio'])
+      where('tipo', 'in', [
+        'producto',
+        'producto reventa',
+        'servicio',
+        'muestras',
+      ])
     );
 
     const data = collectionData(q) as Observable<Producto[]>;
@@ -322,11 +334,48 @@ export class EcomService {
 
   // persist Ecom funcs
 
-  saveCart(): Promise<any> | void {
-    // if (this.saveCartDebounce !== null) {
-    //   clearTimeout(this.saveCartDebounce);
-    // }
-    // this.saveCartDebounce = window.setTimeout(() => {
+  saveCart() {
+    const simpliedCart = this.simplifyCart(
+      JSON.parse(JSON.stringify(this.cart))
+    );
+    const toSave = JSON.stringify(simpliedCart);
+    this.localStorageSc.saveData('cart', toSave);
+  }
+
+  simplifyCart(cart) {
+    return cart.map(item => {
+      if (item.product && item.product.codigo) {
+        item.product = item.product.codigo;
+      }
+      return item;
+    });
+  }
+
+  rebuildCart(simplifiedCart) {
+    return simplifiedCart.map(item => {
+      const productCode = item.product as string;
+      if (this.products[productCode]) {
+        item.product = this.products[productCode];
+      }
+      return item;
+    });
+  }
+
+  setCart() {
+    let cart = this.localStorageSc.getData('cart');
+    if (cart) {
+      const jsonCart = JSON.parse(cart);
+      this.cart = this.rebuildCart(jsonCart);
+      if (this.cart.length > 0 && this.cart[0].product.familia === 'muestras') {
+        this.carrySamples = true;
+      }
+      this.calcTotal();
+    } else {
+      this.cart = [];
+    }
+  }
+
+  saveCartToFb() {
     const user = this.authSc.currentUser;
     if (user) {
       // lo corro fuera del ciclo de deteccion de angular. No es necesario que termine de guardar el carro para que angular acualice ninguna vista
@@ -338,10 +387,9 @@ export class EcomService {
         ).catch(err => console.log('error saving cart', err));
       });
     }
-    // }, 500); // delay of 1 second
   }
 
-  async setCart() {
+  async setCartFb() {
     const user = (await firstValueFrom(
       this.authSc.authState$.pipe(
         filter(user => user !== null),

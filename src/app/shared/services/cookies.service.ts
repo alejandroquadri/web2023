@@ -15,8 +15,17 @@ export class CookiesService {
     // this.getCookieObj();
   }
 
-  setCookie(name, obj) {
-    return this.cookieSc.set(name, obj);
+  setCookie(name, obj: string, path?: string) {
+    const days = 30;
+    return this.cookieSc.set(
+      name,
+      obj,
+      days * 24 * 60 * 60 * 1000,
+      path,
+      undefined,
+      true,
+      'Strict'
+    );
   }
 
   getCookie(name) {
@@ -27,8 +36,8 @@ export class CookiesService {
     return this.cookieSc.getAll();
   }
 
-  deleteCookie(name: string) {
-    this.cookieSc.delete(name);
+  deleteCookie(name: string, path?: string) {
+    this.cookieSc.delete(name, path);
   }
 
   getCookieObj() {
