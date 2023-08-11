@@ -1,5 +1,6 @@
 <ng-container *ngFor="let item of menu">
-  <ng-container *ngIf="type === 'side-menu'">
+  <!-- side menu -->
+  <ng-container *ngIf="type === 'side-menu' && item.sideMenu === true">
     <a
       class="link-item"
       (click)="closeDrawer()"
@@ -44,15 +45,11 @@
     </div>
   </ng-container>
 
-  <ng-container *ngIf="type === 'footer' || type === 'header'">
+  <!-- header -->
+  <ng-container *ngIf="type === 'header' && item.header === true">
     <!-- link comun -->
     <a
-      class="link-item"
-      [ngClass]="{
-        'd-block': type === 'footer',
-        'footer-link': type === 'footer',
-        'mx-1': type === 'header'
-      }"
+      class="link-item mx-1"
       mat-button
       *ngIf="
         item[langSc.currentLang] &&
@@ -94,5 +91,24 @@
         </button>
       </div>
     </mat-menu>
+  </ng-container>
+
+  <!-- footer -->
+  <ng-container *ngIf="type === 'footer' && item.footer === true">
+    <!-- link comun -->
+    <a
+      class="link-item"
+      [ngClass]="{
+        'd-block': type === 'footer',
+        'footer-link': type === 'footer',
+      }"
+      mat-button
+      *ngIf="item[langSc.currentLang]"
+      [routerLink]="[
+        '/' + langSc.currentLang + '/' + item.url[langSc.currentLang]
+      ]"
+      routerLinkActive="router-link-active">
+      {{ item[langSc.currentLang] }}
+    </a>
   </ng-container>
 </ng-container>

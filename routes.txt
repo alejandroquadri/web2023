@@ -34,7 +34,6 @@
 /es/colecciones/gradiente
 /es/colecciones/rusticato
 /es/colecciones/chromatic
-/es/colecciones/clasica
 /es/colecciones/pisos-elevados
 /es/pisos-elevados
 
@@ -45,7 +44,6 @@
 /en/collections/gradiente
 /en/collections/rusticato
 /en/collections/chromatic
-/en/collections/clasica
 /en/collections/raised-floors
 
 /es/blog
@@ -124,37 +122,22 @@
 /en/collections/rusticato/basilisco
 /en/collections/rusticato/komodo
 
-
-/es/colecciones/chromatic/crudo
-/es/colecciones/chromatic/avena
-/es/colecciones/chromatic/oliva
+/es/colecciones/chromatic/natural
+/es/colecciones/chromatic/ocaso
+/es/colecciones/chromatic/celadon
 /es/colecciones/chromatic/niebla
 /es/colecciones/chromatic/gris
-/es/colecciones/chromatic/petroleo
-/es/colecciones/chromatic/ocaso
+/es/colecciones/chromatic/negroAlpes
 
-/en/collections/chromatic/crudo
-/en/collections/chromatic/avena
-/en/collections/chromatic/oliva
+/en/collections/chromatic/natural
+/en/collections/chromatic/ocaso
+/en/collections/chromatic/celadon
 /en/collections/chromatic/niebla
 /en/collections/chromatic/gris
-/en/collections/chromatic/petroleo
-/en/collections/chromatic/ocaso
-
-/es/colecciones/clasica/natural
-/es/colecciones/clasica/hueso
-/es/colecciones/clasica/grisPerla
-/es/colecciones/clasica/brechiato
-/es/colecciones/clasica/negroAlpes
-
-/en/collections/clasica/natural
-/en/collections/clasica/hueso
-/en/collections/clasica/grisPerla
-/en/collections/clasica/brechiato
-/en/collections/clasica/negroAlpes
+/en/collections/chromatic/negroAlpes
 
 /es/colecciones/pisos-elevados/natural
-/es/colecciones/pisos-elevados/grisPerla
+/es/colecciones/pisos-elevados/gris
 /es/colecciones/pisos-elevados/guggenheim
 /es/colecciones/pisos-elevados/grisDicks
 /es/colecciones/pisos-elevados/boana
@@ -162,7 +145,7 @@
 /es/colecciones/pisos-elevados/komodo
 
 /en/collections/pisos-elevados/natural
-/en/collections/pisos-elevados/grisPerla
+/en/collections/pisos-elevados/gris
 /en/collections/pisos-elevados/guggenheim
 /en/collections/pisos-elevados/grisDicks
 /en/collections/pisos-elevados/boana

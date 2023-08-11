@@ -10,7 +10,7 @@ export const routes: Routes = [
   { path: 'terms-service', component: TermsServiceComponent },
   { path: 'returns-shipping', component: ReturnsComponent },
   { path: 'politica-privacidad', component: PrivacyPolicyComponent },
-  { path: 'terminos-servicio', component: TermsServiceComponent },
+  { path: 'terminos-condiciones', component: TermsServiceComponent },
   { path: 'devoluciones-envios', component: ReturnsComponent },
 ];
 

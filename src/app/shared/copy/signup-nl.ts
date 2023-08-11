@@ -7,7 +7,7 @@ export const SignUpNlCopy = {
     thanks: 'Te enviamos un email de confirmación ¡Gracias por unirte!',
   },
   en: {
-    text: 'For inspirations and insights, hear first about limited editions, exclusive offers, new product announcements - plus a few surprises... subscribe now!',
+    text: 'For inspirations, insights, hear first about limited editions, new product announcements - plus a few surprises... subscribe now!',
     name: 'name',
     email: 'email',
     submit: 'join',

@@ -103,7 +103,8 @@
             class="me-2"
             [(ngModel)]="termsAccepted"></mat-checkbox>
           <div class="flex-grow-1 ps-2 m-auto subtotal-note">
-            {{ copy.terms[lang] }}
+            {{ copy.acceptance[lang] }} {{ copy.terms[lang] }},
+            {{ copy.privacy[lang] }}, {{ copy.returns[lang] }}
           </div>
         </div>
       </div>

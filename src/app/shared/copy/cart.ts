@@ -35,8 +35,20 @@ export const Cart = {
     es: 'por caja',
     en: 'per box',
   },
+  acceptance: {
+    es: 'He leido y acepto',
+    en: 'I have read and agree with the',
+  },
   terms: {
-    es: 'He leido y acepto terminos & condiciones, polititca de privacidad y política de cancelaciones & devoluciones',
-    en: 'I have read and agree with the term & conditions, privacy policy and return & cancellation policy',
+    es: 'terminos & condiciones',
+    en: 'terms of service',
+  },
+  privacy: {
+    es: 'polititca de privacidad',
+    en: 'privacy policy',
+  },
+  returns: {
+    es: 'política de cancelaciones & devoluciones',
+    en: 'return & cancellation policy',
   },
 };

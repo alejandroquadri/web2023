@@ -50,8 +50,7 @@ Thumbs.db
 deploy.sh
 deployEcom.sh
 
-#env variables
+#env variables and keys
 environment.e-com.ts
 environment.ts
-quadritile.pem
-quadriar.pem
+/ssh_keys

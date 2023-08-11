@@ -150,6 +150,7 @@ export class ColProductComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   setSeo() {
+    console.log(this.colId, this.prodId);
     const linksArr = this.buildInternalLinks();
     const metaTags = {
       title: `Quadri | ${this.lang === 'es' ? 'Terrazo' : 'Terrazzo'} ${

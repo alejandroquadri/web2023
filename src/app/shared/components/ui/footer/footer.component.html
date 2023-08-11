@@ -16,60 +16,60 @@
           id="email-link"
           >info@quadri.com.ar</a
         >
-        <div class="contact-link link-item my-1">Gascon 483</div>
+        <!-- <div class="contact-link link-item my-1">Gascon 483</div>
         <div class="contact-link link-item my-1">
           Ciudad Autonoma de Buenos Aires
         </div>
-        <div class="contact-link link-item my-1">CP C1181ACG, Argentina</div>
+        <div class="contact-link link-item my-1">CP C1181ACG, Argentina</div> -->
+        <div class="d-flex justify-content-center my-2">
+          <a
+            mat-icon-button
+            class="links mx-2"
+            href="https://www.instagram.com/quadribsas/">
+            <mat-icon
+              class="social-icons"
+              [svgIcon]="ig"
+              aria-label="IG"></mat-icon>
+          </a>
+          <a
+            mat-icon-button
+            class="links mx-2"
+            href="https://ar.pinterest.com/quadribsas/">
+            <mat-icon
+              class="social-icons"
+              [svgIcon]="pin"
+              aria-label="IG"></mat-icon>
+          </a>
+          <a
+            mat-icon-button
+            class="links mx-2"
+            href="https://www.facebook.com/quadribsas/">
+            <mat-icon
+              class="social-icons"
+              [svgIcon]="fb"
+              aria-label="IG"></mat-icon>
+          </a>
+        </div>
+
+        <div class="d-flex justify-content-center">
+          <app-lang-change class="lang-sel mt-4 mx-5"></app-lang-change>
+        </div>
       </div>
     </div>
     <div class="col-12 col-lg-4 mb-2">
       <div class="text-center my-3">
         <app-menu-list type="footer"></app-menu-list>
       </div>
-      <div class="d-flex justify-content-center">
-        <app-lang-change class="lang-sel mt-3 mx-5"></app-lang-change>
-      </div>
     </div>
     <div
-      class="col-12 col-lg-4 d-flex flex-column text-center mb-3 mt-3 mt-lg-0">
-      <div class="d-flex justify-content-center my-3">
-        <a
-          mat-icon-button
-          class="links mx-2"
-          href="https://www.instagram.com/quadribsas/">
-          <mat-icon
-            class="social-icons"
-            [svgIcon]="ig"
-            aria-label="IG"></mat-icon>
-        </a>
-        <a
-          mat-icon-button
-          class="links mx-2"
-          href="https://ar.pinterest.com/quadribsas/">
-          <mat-icon
-            class="social-icons"
-            [svgIcon]="pin"
-            aria-label="IG"></mat-icon>
-        </a>
-        <a
-          mat-icon-button
-          class="links mx-2"
-          href="https://www.facebook.com/quadribsas/">
-          <mat-icon
-            class="social-icons"
-            [svgIcon]="fb"
-            aria-label="IG"></mat-icon>
-        </a>
-      </div>
-
-      <div class="d-flex justify-content-center">
+      class="col-12 col-lg-4 d-flex flex-column text-center mb-2 mt-3 mt-lg-0">
+      <div class="my-3 d-flex justify-content-center">
         <app-signup-nl [forFooter]="true"></app-signup-nl>
       </div>
     </div>
   </div>
 
   <div class="d-flex">
-    <div class="px-2 nota">Copyright © 2022 Quadri - web design by Maurito</div>
+    <div class="px-2 nota">Copyright © 2023 Quadri - web design by Maurito</div>
   </div>
 </div>

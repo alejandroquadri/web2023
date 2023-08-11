@@ -27,7 +27,8 @@
     "upload:ftp": "./deploy.sh",
     "upload:ftp:ecom": "./deployEcom.sh",
     "sync": "rsync -avz /Users/ale/dev/quadri-web/dist/quadri-web/browser/ quadri@quadri.com.ar:~/public_html/",
-    "sync:ecom": "rsync -avz /Users/ale/dev/quadri-web/dist/quadri-web/browser/ quadritile@quadritile.com:~/public_html/"
+    "sync:ecom": "rsync -avz /Users/ale/dev/quadri-web/dist/quadri-web/browser/ quadritile@quadritile.com:~/public_html/",
+    "sync2": "rsync -avz -e 'ssh -i /Users/ale/dev/quadri-web/ssh_keys/web.ppk' /Users/ale/dev/quadri-web/dist/quadri-web/browser/ quadri@cpanel.quadri.com.ar:~/public_html/"
   },
   "private": true,
   "dependencies": {

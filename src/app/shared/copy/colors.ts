@@ -46,7 +46,7 @@ export const Colors = {
   },
   celadon: {
     name: 'Celadon',
-    url: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fcolors%2Fceladon_01.webp?alt=media&token=2a71aa6a-a979-4378-8dd2-9709f050ef3b',
+    url: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fcolors%2Fceladon_01.webp?alt=media&token=ce74f155-5c01-4be9-b8e9-09d5111ab139',
   },
   ceppoClaro: {
     name: 'Ceppo claro',
