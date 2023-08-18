@@ -7,16 +7,16 @@ export const SamplesCopy = {
           size: 'Seleccion',
           code: 'MuestraSeleccion',
           desc: {
-            es: 'Incluye los blends - Pucon, Fitz Roy, Guggenheim, Aqua, Almendra, Gris Dicks, Hueso, Basilisco',
-            en: 'Includes - Pucon, Fitz Roy, Guggenheim, Aqua, Almendra, Gris Dicks, Hueso, Basilisco',
+            es: 'Incluye los blends - Pucon, Fitz Roy, Guggenheim, Almendra, Gris Dicks, Celadon, Niebla, Gris',
+            en: 'Includes - Pucon, Fitz Roy, Guggenheim, Almendra, Gris Dicks, Celadon, Niebla, Gris',
           },
         },
         {
-          size: 'Volcan + Splash',
-          code: 'MuestraVolcanSplash',
+          size: 'Volcan',
+          code: 'MuestraVolcan',
           desc: {
-            es: 'Incluye los blends - Lanin, Ceppo di Gres, Frey, Llao Llao, Cumelen, Plata, Naranja, Mies, Rosa',
-            en: 'Includes - Lanin, Ceppo di Gres, Frey, Llao Llao, Cumelen, Plata, Naranja, Mies, Rosa',
+            es: 'Incluye los blends - Lanin, Ceppo di Gres, Frey, Llao Llao, Cumelen, Plata, Pucon, Fitz Roy',
+            en: 'Includes - Lanin, Ceppo di Gres, Frey, Llao Llao, Cumelen, Plata, Pucon, Fitz Roy',
           },
         },
         {
@@ -28,11 +28,19 @@ export const SamplesCopy = {
           },
         },
         {
-          size: 'Chromatic + Clasica',
-          code: 'MuestraChromaticClasica',
+          size: 'Splash',
+          code: 'MuestraSplash',
           desc: {
-            es: 'Incluye los blends - Ceniza, Niebla, Avena, Petróleo, Oliva, Crudo, Ocaso, Gris Perla, Natural',
-            en: 'Includes - Ceniza, Niebla, Avena, Petróleo, Oliva, Crudo, Ocaso, Gris Perla, Natural',
+            es: 'Incluye los blends - Guggenheim, Almendra, Gris Dicks, Mies, Rosa, Plata, Aqua, Naranja',
+            en: 'Includes - Guggenheim, Almendra, Gris Dicks, Mies, Rosa, Plata, Aqua, Naranja',
+          },
+        },
+        {
+          size: 'Chromatic',
+          code: 'MuestraChromatic',
+          desc: {
+            es: 'Incluye los blends - Natural, Ocaso, Celadon, Niebla, Gris, Negro Alpe, Brechiato, Gris Perla',
+            en: 'Includes - Natural, Ocaso, Celadon, Niebla, Gris, Negro Alpe, Brechiato, Gris Perla',
           },
         },
       ],

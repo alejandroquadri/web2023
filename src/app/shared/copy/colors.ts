@@ -329,38 +329,47 @@ export const Colors = {
   },
   MuestraSeleccion: {
     name: 'Seleccion',
-    url: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fcolors%2Fseleccion.webp?alt=media&token=da561f02-279a-4d33-9af7-3ea6684125a0',
+    url: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fprojects%2FSeleccion-muestras.webp?alt=media&token=2a877a91-1379-408e-ac5f-cfa3118950cf',
     secImgs: [
-      // 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fcolors%2Fcaja_calcos.webp?alt=media&token=96227e9c-31de-4730-b8cf-69c45e2da96d',
-      'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fcolors%2Fcaja_arriba.webp?alt=media&token=8d2e7c5b-5afe-45ba-9c93-d32470e06dda',
-      'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fcolors%2Fcaja_iso.webp?alt=media&token=a016aa9a-e536-482c-b861-33d914c6dcb0',
+      'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fprojects%2FCaja-muestras1.webp?alt=media&token=0c6f9be9-c3a3-4378-bda8-92e56aea5e97',
+      'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fprojects%2FCaja-muestras2.webp?alt=media&token=2952d4b2-894e-45df-8574-1217034d934c',
+      'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fprojects%2FCaja-muestras3.webp?alt=media&token=a71dc081-3b53-4ebc-9831-1cc12624d280',
     ],
   },
-  MuestraVolcanSplash: {
-    name: 'Volcan + Splash',
-    url: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fcolors%2Fsplash_volcan.webp?alt=media&token=14e53347-cee6-4a08-b432-9b6f4a1b1574',
+  MuestraVolcan: {
+    name: 'Volcan',
+    url: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fprojects%2FVolcan-muestras.webp?alt=media&token=804f4789-409f-42a7-a4b9-d3cfeb930082',
     secImgs: [
-      // 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fcolors%2Fcaja_calcos.webp?alt=media&token=96227e9c-31de-4730-b8cf-69c45e2da96d',
-      'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fcolors%2Fcaja_arriba.webp?alt=media&token=8d2e7c5b-5afe-45ba-9c93-d32470e06dda',
-      'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fcolors%2Fcaja_iso.webp?alt=media&token=a016aa9a-e536-482c-b861-33d914c6dcb0',
+      'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fprojects%2FCaja-muestras1.webp?alt=media&token=0c6f9be9-c3a3-4378-bda8-92e56aea5e97',
+      'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fprojects%2FCaja-muestras2.webp?alt=media&token=2952d4b2-894e-45df-8574-1217034d934c',
+      'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fprojects%2FCaja-muestras3.webp?alt=media&token=a71dc081-3b53-4ebc-9831-1cc12624d280',
     ],
   },
   MuestraRusticato: {
     name: 'Rusticato',
-    url: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fcolors%2Frusticato.webp?alt=media&token=e5a1d0b2-e950-4473-9412-542658e84ea4',
+    url: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fprojects%2FRusticato-muestras.webp?alt=media&token=016e647f-a454-413b-8c14-db0c61343dfc',
     secImgs: [
-      // 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fcolors%2Fcaja_calcos.webp?alt=media&token=96227e9c-31de-4730-b8cf-69c45e2da96d',
-      'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fcolors%2Fcaja_arriba.webp?alt=media&token=8d2e7c5b-5afe-45ba-9c93-d32470e06dda',
-      'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fcolors%2Fcaja_iso.webp?alt=media&token=a016aa9a-e536-482c-b861-33d914c6dcb0',
+      'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fprojects%2FCaja-muestras1.webp?alt=media&token=0c6f9be9-c3a3-4378-bda8-92e56aea5e97',
+      'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fprojects%2FCaja-muestras2.webp?alt=media&token=2952d4b2-894e-45df-8574-1217034d934c',
+      'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fprojects%2FCaja-muestras3.webp?alt=media&token=a71dc081-3b53-4ebc-9831-1cc12624d280',
     ],
   },
-  MuestraChromaticClasica: {
-    name: 'Chromatic + Clasica',
-    url: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fcolors%2Fchromatic_clasica.webp?alt=media&token=2ffe232f-1ec8-4be2-9b31-4ab22b10f922',
+  MuestraSplash: {
+    name: 'Splash',
+    url: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fprojects%2FSplash-muestras.webp?alt=media&token=8ea1f4ed-2c24-4d66-99e3-c99988e93b49',
     secImgs: [
-      // 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fcolors%2Fcaja_calcos.webp?alt=media&token=96227e9c-31de-4730-b8cf-69c45e2da96d',
-      'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fcolors%2Fcaja_arriba.webp?alt=media&token=8d2e7c5b-5afe-45ba-9c93-d32470e06dda',
-      'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fcolors%2Fcaja_iso.webp?alt=media&token=a016aa9a-e536-482c-b861-33d914c6dcb0',
+      'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fprojects%2FCaja-muestras1.webp?alt=media&token=0c6f9be9-c3a3-4378-bda8-92e56aea5e97',
+      'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fprojects%2FCaja-muestras2.webp?alt=media&token=2952d4b2-894e-45df-8574-1217034d934c',
+      'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fprojects%2FCaja-muestras3.webp?alt=media&token=a71dc081-3b53-4ebc-9831-1cc12624d280',
+    ],
+  },
+  MuestraChromatic: {
+    name: 'Chromatic',
+    url: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fprojects%2FChromatic-muestras.webp?alt=media&token=213b2b9b-d032-495d-822c-afba44704609',
+    secImgs: [
+      'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fprojects%2FCaja-muestras1.webp?alt=media&token=0c6f9be9-c3a3-4378-bda8-92e56aea5e97',
+      'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fprojects%2FCaja-muestras2.webp?alt=media&token=2952d4b2-894e-45df-8574-1217034d934c',
+      'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fprojects%2FCaja-muestras3.webp?alt=media&token=a71dc081-3b53-4ebc-9831-1cc12624d280',
     ],
   },
 };
