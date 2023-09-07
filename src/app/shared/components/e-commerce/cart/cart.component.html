@@ -109,23 +109,49 @@
         </div>
       </div>
     </div>
+    <!-- boton para presupuestos -->
     <button
       [disabled]="termsAccepted === false && isEcom === true"
-      *ngIf="forSideNav"
-      class="buy-btn"
-      mat-flat-button
+      *ngIf="forSideNav && !eComSc.showPrices()"
+      class="btn btn-quadri buy-btn"
       color="primary"
       (click)="endSale()">
-      <span *ngIf="eComSc.showPrices()">
+      <span>{{ copy.closeQuote[lang] }}</span>
+    </button>
+
+    <!-- boton para e-com o muestras -->
+    <button
+      [disabled]="termsAccepted === false && isEcom === true"
+      *ngIf="forSideNav && eComSc.showPrices()"
+      class="btn btn-quadri buy-btn"
+      [id]="returnId()"
+      color="primary"
+      type="button"
+      (click)="endSale()">
+      <span>
         <span>{{ copy.checkout[lang] }}</span>
         <div
           *ngIf="spinner"
           class="ms-2 spinner-border text-light spinner-border-sm"
-          role="status">
-          <span class="visually-hidden">Loading...</span>
-        </div>
+          role="status"></div>
       </span>
-      <span *ngIf="!eComSc.showPrices()">{{ copy.closeQuote[lang] }}</span>
     </button>
   </div>
 </div>
+
+<!-- <button
+  [disabled]="termsAccepted === false && isEcom === true"
+  *ngIf="forSideNav"
+  class="buy-btn"
+  mat-flat-button
+  color="primary"
+  (click)="endSale()">
+  <span *ngIf="eComSc.showPrices()">
+    <span>{{ copy.checkout[lang] }}</span>
+    <div
+      *ngIf="spinner"
+      class="ms-2 spinner-border text-light spinner-border-sm"
+      role="status"></div>
+  </span>
+  <span *ngIf="!eComSc.showPrices()">{{ copy.closeQuote[lang] }}</span>
+</button> -->

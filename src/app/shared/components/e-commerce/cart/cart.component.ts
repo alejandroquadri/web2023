@@ -26,7 +26,6 @@ import { firstValueFrom } from 'rxjs';
 export class CartComponent implements OnInit {
   @Input() forSideNav: boolean;
   lang;
-  isEcom: boolean;
   copy = Cart;
   spinner = false;
   termsAccepted = false;
@@ -39,9 +38,7 @@ export class CartComponent implements OnInit {
     private mpSc: MpService,
     private stripeSc: StripeService,
     private serverDetSc: ServerDetectService
-  ) {
-    this.isEcom = this.eComSc.isEcom;
-  }
+  ) {}
 
   ngOnInit(): void {
     this.langSc.setLanguage(this.router.url);
@@ -53,6 +50,10 @@ export class CartComponent implements OnInit {
 
   close(): void {
     this.sideNavSc.closeS();
+  }
+
+  get isEcom() {
+    return this.eComSc.isEcom as boolean;
   }
 
   get cartList() {
@@ -143,19 +144,29 @@ export class CartComponent implements OnInit {
         picture_url: item.imageUrl,
       });
     });
-    firstValueFrom(this.stripeSc.simpleCheckout(items)).then((res: any) => {
-      console.log(res);
-      window.location.href = res.url;
-      // this.spinner = false;
-      // this.eComSc.emptyCart();
-    });
+    // firstValueFrom(this.stripeSc.simpleCheckout(items)).then((res: any) => {
+    //   console.log(res);
+    //   window.location.href = res.url;
+    //   // this.spinner = false;
+    //   // this.eComSc.emptyCart();
+    // });
   }
 
   showPrices() {
-    if (this.eComSc.isEcom) {
+    if (this.isEcom) {
       return true;
     } else {
       return this.eComSc.carrySamples;
+    }
+  }
+
+  returnId() {
+    if (this.eComSc.carrySamples) {
+      return 'samples-id';
+    } else if (this.isEcom) {
+      return 'purchase-id';
+    } else {
+      return '';
     }
   }
 }

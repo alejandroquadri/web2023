@@ -82,22 +82,22 @@ export class FormComponent implements OnInit {
     if (this.viewFiles) {
       query = { ...query, files: this.viewFiles };
     }
-    this.formSc
-      .saveQuery(query)
-      .then(() => {
-        this.cookiesSc.deleteCookie('__reff');
-        this.sending = false;
-        this.submitEmiter.emit('submit');
-        this.form.reset();
-        this.viewFiles = {};
-        this.openSnackBar(
-          'Recibimos tu consulta! En breve te estaremos contestando'
-        );
-      })
-      .catch(err => {
-        this.submitEmiter.emit('error');
-        this.openSnackBar('Hubo un error enviando tu consulta');
-      });
+    // this.formSc
+    //   .saveQuery(query)
+    //   .then(() => {
+    //     this.cookiesSc.deleteCookie('__reff');
+    //     this.sending = false;
+    //     this.submitEmiter.emit('submit');
+    //     this.form.reset();
+    //     this.viewFiles = {};
+    //     this.openSnackBar(
+    //       'Recibimos tu consulta! En breve te estaremos contestando'
+    //     );
+    //   })
+    //   .catch(err => {
+    //     this.submitEmiter.emit('error');
+    //     this.openSnackBar('Hubo un error enviando tu consulta');
+    //   });
   }
 
   openSnackBar(message: string, action?: string) {

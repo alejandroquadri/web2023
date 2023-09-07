@@ -113,6 +113,10 @@ app-collections-menu {
     margin: auto;
     border-radius: 0.25rem;
   }
+
+  a {
+    color: var(--primary-600);
+  }
 }
 
 // ****************************************************
@@ -236,7 +240,28 @@ app-collections-menu {
 // ****************************************************
 // !!!! Modificaciones de CSS para Bootstrap
 
-.invalid-form {
+.btn-quadri {
+  background-color: var(--primary-600) !important;
+  border-color: var(--primary-600) !important;
+  color: white !important;
+
+  &:hover {
+    background-color: var(--primary-700) !important;
+    color: white !important;
+    box-shadow: rgba(0, 0, 0, 0.2) !important;
+  }
+
+  &:active {
+    background-color: var(--primary-800) !important;
+
+    color: white !important;
+  }
+
+  &:disabled {
+    background-color: #dcdcdc !important;
+    color: #888888 !important;
+    border-color: #dcdcdc !important;
+  }
 }
 
 @media (max-width: 576px) {

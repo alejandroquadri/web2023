@@ -7,8 +7,8 @@ export const SamplesCopy = {
           size: 'Seleccion',
           code: 'MuestraSeleccion',
           desc: {
-            es: 'Incluye los blends - Pucon, Fitz Roy, Guggenheim, Almendra, Gris Dicks, Celadon, Niebla, Gris',
-            en: 'Includes - Pucon, Fitz Roy, Guggenheim, Almendra, Gris Dicks, Celadon, Niebla, Gris',
+            es: 'Incluye los blends - Pucon, Fitz Roy, Guggenheim, Almendra, Gris Dicks, Celadon, Niebla, Basilisco',
+            en: 'Includes - Pucon, Fitz Roy, Guggenheim, Almendra, Gris Dicks, Celadon, Niebla, Basilisco',
           },
         },
         {

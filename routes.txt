@@ -55,6 +55,7 @@
 /es/blog/piso-adecuado-para-tu-espacio
 /es/blog/terrazo-adecuado-para-mi
 /es/blog/mitos-terrazo-dementidos
+/es/blog/terrazzo-piletas
 
 /en/blog
 /en/blog/que-es-el-terrazo
@@ -65,6 +66,7 @@
 /en/blog/piso-adecuado-para-tu-espacio
 /en/blog/terrazo-adecuado-para-mi
 /en/blog/mitos-terrazo-dementidos
+/en/blog/terrazzo-piletas
 
 /es/colecciones/volcan/pucon
 /es/colecciones/volcan/lanin

@@ -338,7 +338,7 @@ export const Colors = {
   },
   MuestraVolcan: {
     name: 'Volcan',
-    url: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fprojects%2FVolcan-muestras.webp?alt=media&token=804f4789-409f-42a7-a4b9-d3cfeb930082',
+    url: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fcolors%2FVolcan-muestras.webp?alt=media&token=5cc088f1-6fce-4d15-853c-9c2a6a52168d',
     secImgs: [
       'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fprojects%2FCaja-muestras1.webp?alt=media&token=0c6f9be9-c3a3-4378-bda8-92e56aea5e97',
       'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fprojects%2FCaja-muestras2.webp?alt=media&token=2952d4b2-894e-45df-8574-1217034d934c',
