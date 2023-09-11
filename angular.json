@@ -213,13 +213,13 @@
         "prerender": {
           "builder": "@nguniversal/builders:prerender",
           "options": {
-            "guessRoutes": false,
-            "routesFile": "routes.txt"
+            "guessRoutes": false
           },
           "configurations": {
             "production": {
               "browserTarget": "quadri-web:build:production",
-              "serverTarget": "quadri-web:server:production"
+              "serverTarget": "quadri-web:server:production",
+              "routesFile": "routes.txt"
             },
             "development": {
               "browserTarget": "quadri-web:build:development",
@@ -227,7 +227,8 @@
             },
             "e-com-prod": {
               "browserTarget": "quadri-web:build:e-com-prod",
-              "serverTarget": "quadri-web:server:e-com-prod"
+              "serverTarget": "quadri-web:server:e-com-prod",
+              "routesFile": "routes_ecom.txt"
             },
             "e-com-dev": {
               "browserTarget": "quadri-web:build:e-com-dev",

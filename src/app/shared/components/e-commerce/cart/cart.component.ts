@@ -127,7 +127,8 @@ export class CartComponent implements OnInit {
     firstValueFrom(this.mpSc.buyItem(items, true)).then((res: any) => {
       window.location.href = res.all.init_point;
       // this.spinner = false;
-      this.eComSc.emptyCart();
+      // this.eComSc.emptyCart();
+      this.eComSc.empyCartOnPersist();
     });
   }
 
@@ -162,9 +163,9 @@ export class CartComponent implements OnInit {
 
   returnId() {
     if (this.eComSc.carrySamples) {
-      return 'samples-id';
+      return 'samples';
     } else if (this.isEcom) {
-      return 'purchase-id';
+      return 'purchase';
     } else {
       return '';
     }

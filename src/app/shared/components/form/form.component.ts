@@ -82,22 +82,6 @@ export class FormComponent implements OnInit {
     if (this.viewFiles) {
       query = { ...query, files: this.viewFiles };
     }
-    // this.formSc
-    //   .saveQuery(query)
-    //   .then(() => {
-    //     this.cookiesSc.deleteCookie('__reff');
-    //     this.sending = false;
-    //     this.submitEmiter.emit('submit');
-    //     this.form.reset();
-    //     this.viewFiles = {};
-    //     this.openSnackBar(
-    //       'Recibimos tu consulta! En breve te estaremos contestando'
-    //     );
-    //   })
-    //   .catch(err => {
-    //     this.submitEmiter.emit('error');
-    //     this.openSnackBar('Hubo un error enviando tu consulta');
-    //   });
   }
 
   openSnackBar(message: string, action?: string) {
@@ -105,28 +89,6 @@ export class FormComponent implements OnInit {
       duration: 5000,
     });
   }
-
-  // uploadFilesV(e) {
-  //   this.uploading = true;
-  //   if (!this.viewFiles) {
-  //     this.viewFiles = {};
-  //   } else {
-  //     this.viewFiles = { ...this.viewFiles };
-  //   }
-  //   const targetFiles = e.target.files;
-  //   Object.keys(targetFiles).forEach((file: any) => {
-  //     const id = this.db.getUniqueId();
-  //     this.viewFiles[id] = {
-  //       id,
-  //       name: targetFiles[file].name,
-  //     };
-  //     // this.uploadAngularFire(targetFiles[file], id);
-  //   });
-
-  //   Promise.all(this.tasks).then(() => {
-  //     this.uploading = false;
-  //   });
-  // }
 
   uploadFiles(e) {
     this.uploading = true;
@@ -175,33 +137,4 @@ export class FormComponent implements OnInit {
     )}${blob.name}`;
     this.uploadSc.uploadAngularFire(blob, filePath, id);
   }
-
-  // uploadAngularFireV(blob, id) {
-  //   const filePath = `web/client_files/${this.dateFnsSc.getFormatedDate(
-  //     new Date(),
-  //     'yyyyMMddhhmm'
-  //   )}${blob.name}`;
-  //   const fileRef = this.storageV.ref(filePath);
-  //   const task = this.storageV.upload(filePath, blob);
-
-  //   this.tasks.push(task);
-  //   this.uploadPercent = task.percentageChanges();
-
-  //   this.uploadPercent.subscribe(per => {
-  //     this.viewFiles[id].running = true;
-  //     this.viewFiles[id].percentage = per;
-  //   });
-
-  //   // get notified when the download URL is available
-  //   task
-  //     .snapshotChanges()
-  //     .pipe(
-  //       finalize(async () => {
-  //         const url = await firstValueFrom(fileRef.getDownloadURL());
-  //         this.viewFiles[id].url = url;
-  //         this.viewFiles[id].running = false;
-  //       })
-  //     )
-  //     .subscribe();
-  // }
 }

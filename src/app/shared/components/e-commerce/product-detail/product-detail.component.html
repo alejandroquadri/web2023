@@ -198,26 +198,20 @@
             </div>
           </div>
         </div>
-        <div class="row mt-2">
-          <div class="col-12 d-flex justify-content-lg-start mt-2">
-            <button
-              class="buy-btn"
-              mat-flat-button
-              color="primary"
-              [disabled]="disableBtn()"
-              (click)="addToCart()">
-              <!-- <mat-icon class="material-icons-outlined"
-                >add_shopping_cart</mat-icon
-              > -->
-              <span *ngIf="isEcom || samples">{{ copy.addToCart[lang] }}</span>
-              <span *ngIf="!isEcom && !samples">{{
-                copy.addToQuote[lang]
-              }}</span>
-              <!-- <span *ngIf="samples">{{ copy.buy[lang] }}</span> -->
-            </button>
-          </div>
-        </div>
       </form>
+      <div class="row mt-2">
+        <div class="col-12 d-flex justify-content-lg-start mt-2">
+          <button
+            type="button"
+            id="addToCart"
+            class="btn lg-btn btn-quadri buy-btn"
+            [disabled]="disableBtn()"
+            (click)="addToCart()">
+            <span *ngIf="isEcom || samples">{{ copy.addToCart[lang] }}</span>
+            <span *ngIf="!isEcom && !samples">{{ copy.addToQuote[lang] }}</span>
+          </button>
+        </div>
+      </div>
       <div class="row mt-3" *ngIf="!(samples === true || isEcom === true)">
         <div class="col d-flex">
           <mat-checkbox

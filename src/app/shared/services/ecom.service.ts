@@ -342,6 +342,10 @@ export class EcomService {
     this.localStorageSc.saveData('cart', toSave);
   }
 
+  empyCartOnPersist() {
+    this.localStorageSc.saveData('cart', '[]');
+  }
+
   simplifyCart(cart) {
     return cart.map(item => {
       if (item.product && item.product.codigo) {

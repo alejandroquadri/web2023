@@ -114,7 +114,6 @@
       [disabled]="termsAccepted === false && isEcom === true"
       *ngIf="forSideNav && !eComSc.showPrices()"
       class="btn btn-quadri buy-btn"
-      color="primary"
       (click)="endSale()">
       <span>{{ copy.closeQuote[lang] }}</span>
     </button>
@@ -125,7 +124,6 @@
       *ngIf="forSideNav && eComSc.showPrices()"
       class="btn btn-quadri buy-btn"
       [id]="returnId()"
-      color="primary"
       type="button"
       (click)="endSale()">
       <span>
