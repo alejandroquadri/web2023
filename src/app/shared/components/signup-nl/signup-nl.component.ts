@@ -2,8 +2,12 @@ import { firstValueFrom } from 'rxjs';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { SignUpNlCopy } from '../../copy';
-import { CkApiService, LanguageService } from '../../services';
+import { SignUpNlCopy } from 'src/app/shared/copy';
+import {
+  GtmService,
+  CkApiService,
+  LanguageService,
+} from 'src/app/shared/services';
 
 @Component({
   selector: 'app-signup-nl',
@@ -22,7 +26,8 @@ export class SignupNlComponent implements OnInit {
   constructor(
     private langSc: LanguageService,
     private fb: FormBuilder,
-    private ckSc: CkApiService
+    private ckSc: CkApiService,
+    private gtmSc: GtmService
   ) {
     this.lang = this.langSc.currentLang;
   }
@@ -47,6 +52,7 @@ export class SignupNlComponent implements OnInit {
     setTimeout(() => {
       this.close();
     }, 30000);
+    this.gtmSc.gtmClick('subscribe');
   }
 
   close() {

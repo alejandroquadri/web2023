@@ -6,8 +6,8 @@ import { MPitem, MPshipments } from '../interfaces';
   providedIn: 'root',
 })
 export class MpService {
-  // url = 'https://erp-api.quadri.com.ar/api/';
-  url = 'http://localhost:3000/api/';
+  url = 'https://erp-api.quadri.com.ar/api/';
+  // url = 'http://localhost:3000/api/';
 
   constructor(private http: HttpClient) {}
 

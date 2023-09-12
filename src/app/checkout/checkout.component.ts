@@ -9,6 +9,7 @@ import { CartItem, MPitem, Query, Quote } from 'src/app/shared/interfaces';
 import {
   CkApiService,
   EcomService,
+  GtmService,
   LanguageService,
   PdfService,
   QuotePdfService,
@@ -40,7 +41,8 @@ export class CheckoutComponent implements OnInit {
     private pdfSc: PdfService,
     private ckSc: CkApiService,
     private mpSc: MpService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public gtmSc: GtmService
   ) {}
 
   ngOnInit(): void {
@@ -74,7 +76,8 @@ export class CheckoutComponent implements OnInit {
         this.strippedCheckout();
       }
     } else {
-      this.sendQuote();
+      // this.sendQuote();
+      this.gtmSc.gtmClick('quote');
     }
   }
 

@@ -19,3 +19,5 @@ export * from './auth.service';
 export * from './mp.service';
 export * from './stripe.service';
 export * from './local-storage.service';
+export * from './gtm.service';
+export * from './window-reference.service';

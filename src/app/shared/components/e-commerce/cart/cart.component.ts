@@ -9,6 +9,7 @@ import {
   ServerDetectService,
   MpService,
   StripeService,
+  GtmService,
 } from 'src/app/shared/services';
 import {
   CartItem,
@@ -37,7 +38,8 @@ export class CartComponent implements OnInit {
     private langSc: LanguageService,
     private mpSc: MpService,
     private stripeSc: StripeService,
-    private serverDetSc: ServerDetectService
+    private serverDetSc: ServerDetectService,
+    private gtmSc: GtmService
   ) {}
 
   ngOnInit(): void {
@@ -93,11 +95,13 @@ export class CartComponent implements OnInit {
         // this.close();
         // this.router.navigate([`/${this.lang}/checkout-us`]);
       }
+      this.gtmSc.gtmClick('samples');
     } else {
       if (this.eComSc.isEcom) {
         this.strippedCheckout();
         // this.close();
         // this.router.navigate([`/${this.lang}/checkout-us`]);
+        this.gtmSc.gtmClick('purchase');
       } else {
         this.close();
         this.router.navigate([`/${this.lang}/checkout`]);
@@ -107,10 +111,6 @@ export class CartComponent implements OnInit {
 
   mpCheckout() {
     this.spinner = true;
-    // const title =
-    //   this.cartList.length > 1
-    //     ? 'Productos Quadri'
-    //     : this.cartList[0].product.descripcion;
     let description = '';
     this.cartList.forEach(item => {
       description += `${item.product.descripcion} x ${item.quantity} ;`;
@@ -126,8 +126,6 @@ export class CartComponent implements OnInit {
     ];
     firstValueFrom(this.mpSc.buyItem(items, true)).then((res: any) => {
       window.location.href = res.all.init_point;
-      // this.spinner = false;
-      // this.eComSc.emptyCart();
       this.eComSc.empyCartOnPersist();
     });
   }
@@ -145,12 +143,10 @@ export class CartComponent implements OnInit {
         picture_url: item.imageUrl,
       });
     });
-    // firstValueFrom(this.stripeSc.simpleCheckout(items)).then((res: any) => {
-    //   console.log(res);
-    //   window.location.href = res.url;
-    //   // this.spinner = false;
-    //   // this.eComSc.emptyCart();
-    // });
+    firstValueFrom(this.stripeSc.simpleCheckout(items)).then((res: any) => {
+      window.location.href = res.url;
+      this.eComSc.empyCartOnPersist();
+    });
   }
 
   showPrices() {
@@ -158,16 +154,6 @@ export class CartComponent implements OnInit {
       return true;
     } else {
       return this.eComSc.carrySamples;
-    }
-  }
-
-  returnId() {
-    if (this.eComSc.carrySamples) {
-      return 'samples';
-    } else if (this.isEcom) {
-      return 'purchase';
-    } else {
-      return '';
     }
   }
 }

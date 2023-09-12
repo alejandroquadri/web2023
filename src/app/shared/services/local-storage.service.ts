@@ -1,27 +1,32 @@
 import { Injectable } from '@angular/core';
+import { WindowReferenceService } from './window-reference.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LocalStorageService {
-  constructor() {}
+  private window;
+
+  constructor(private _windowRef: WindowReferenceService) {
+    this.window = _windowRef.nativeWindow;
+  }
 
   public saveData(key: string, value: string) {
     // localStorage.setItem(key, this.encrypt(value));
-    localStorage.setItem(key, value);
+    this.window.localStorage.setItem(key, value);
   }
 
   public getData(key: string) {
-    let data = localStorage.getItem(key) || '';
+    let data = this.window.localStorage.getItem(key) || '';
     // return this.decrypt(data);
     return data;
   }
   public removeData(key: string) {
-    localStorage.removeItem(key);
+    this.window.localStorage.removeItem(key);
   }
 
   public clearData() {
-    localStorage.clear();
+    this.window.localStorage.clear();
   }
 
   // private encrypt(txt: string): string {

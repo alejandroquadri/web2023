@@ -10,6 +10,7 @@ import {
   DateFnsService,
   UploadService,
   UploadObj,
+  GtmService,
 } from 'src/app/shared/services';
 
 import { FormService } from './form.service';
@@ -53,7 +54,8 @@ export class FormComponent implements OnInit {
     private cookiesSc: CookiesService,
     private dateFnsSc: DateFnsService,
     private uploadSc: UploadService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private gtmSc: GtmService
   ) {}
 
   ngOnInit(): void {
@@ -82,6 +84,7 @@ export class FormComponent implements OnInit {
     if (this.viewFiles) {
       query = { ...query, files: this.viewFiles };
     }
+    this.gtmSc.gtmClick('query');
   }
 
   openSnackBar(message: string, action?: string) {

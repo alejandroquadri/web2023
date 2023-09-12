@@ -35,7 +35,7 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
-import { LanguageService } from 'src/app/shared/services';
+import { GtmService, LanguageService } from 'src/app/shared/services';
 
 @Component({
   selector: 'app-product-detail',
@@ -86,7 +86,8 @@ export class ProductDetailComponent
   constructor(
     private ecomSc: EcomService,
     private fb: FormBuilder,
-    private langSc: LanguageService
+    private langSc: LanguageService,
+    private gtmSc: GtmService
   ) {
     this.isEcom = ecomSc.isEcom;
   }
@@ -263,6 +264,7 @@ export class ProductDetailComponent
       values: this.qForm.value,
       complements: this.addComplements,
     });
+    this.gtmSc.gtmClick('addToCart');
   }
 
   setTitle() {
