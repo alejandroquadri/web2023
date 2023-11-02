@@ -105,13 +105,10 @@ export const Landing = {
     },
     {
       bg_img_desktop: {
-        url: LocalImgs.rusticato,
+        url: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fprojects%2FentradaAutoBaja.webp?alt=media&token=631814c4-4480-4cba-94e7-bb10be30733e',
       },
-      // bg_img_mob: {
-      //   url: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2FprojectsNewWeb%2FSolariun%20800x600.webp?alt=media&token=b373c30a-e6a5-411a-9ffc-29ad7dc4836c',
-      // },
       bg_img_mob: {
-        url: LocalImgs.rusticato,
+        url: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fprojects%2FentradaAutoMob.webp?alt=media&token=5f4b2447-eaf6-418f-ad4f-c6b3add3a48a',
       },
       cta_btn1: {
         en: {
@@ -139,9 +136,10 @@ export const Landing = {
     {
       bg_img_desktop: {
         url: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2FprojectsNewWeb%2FCocina_acero.webp?alt=media&token=05a462ad-45eb-4eb6-a6c4-2267f87c9469',
+        // url: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fprojects%2FentradaAutoBaja.webp?alt=media&token=631814c4-4480-4cba-94e7-bb10be30733e',
       },
       bg_img_mob: {
-        url: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2FprojectsNewWeb%2FCocina_acero.webp?alt=media&token=05a462ad-45eb-4eb6-a6c4-2267f87c9469',
+        url: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fprojects%2FcocinaGradMob.webp?alt=media&token=1a5ab7fc-aa06-4b59-bd29-b695c6006161',
       },
       cta_btn1: {
         en: {
