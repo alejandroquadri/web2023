@@ -18,7 +18,6 @@ import { DimParser, ProdImgs, UnitsParser } from '../constants';
 import { environment } from 'src/environments/environment';
 import { AuthService } from './auth.service';
 import { User } from '@angular/fire/auth';
-import { CookiesService } from './cookies.service';
 import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
@@ -45,7 +44,6 @@ export class EcomService {
   constructor(
     private authSc: AuthService,
     private ngZone: NgZone,
-    private cookiesSc: CookiesService,
     private localStorageSc: LocalStorageService
   ) {}
 
@@ -119,6 +117,9 @@ export class EcomService {
     this.qObj = null;
     this.compObj = null;
     this.cart.push(item);
+    // la funcion calcTotal() lo que hace es armar el objeto qObj
+    // este objeto cuenta todas las cantidades de m2, ml, m2 de pt.
+    // de esta forma luego puedo calcular cuanto se necesita de cada uno
     this.calcTotal();
     if (complements) {
       this.addCompToCart();
@@ -199,7 +200,7 @@ export class EcomService {
     }, 1000);
   }
 
-  calcQ(array: CartItem[]) {
+  calcQ(array: CartItem[]): QObj {
     let m2Placa = 0;
     let m2Pt = 0;
     let m2Rus = 0;
@@ -236,14 +237,16 @@ export class EcomService {
   calcExtras(compObj) {
     const grout = this.calcGrout(compObj);
     const glue = this.calcGlue(compObj);
-    const impPol = this.calcImpPol(compObj);
+    // const impPol = this.calcImpPol(compObj);
+    const impSell = this.calcImpSell(compObj);
     const impAc = this.calcImpAc(compObj);
     const sop = this.calcSop(compObj);
 
     return {
       grout,
       glue,
-      impPol,
+      // impPol,
+      impSell,
       impAc,
       sop,
     };
@@ -271,6 +274,14 @@ export class EcomService {
       compObj.m2Placa += compObj.ml * 0.4 * 0.1;
     }
     const imp = Math.ceil((compObj.m2Placa + compObj.m2Pt) / 10);
+    return imp;
+  }
+
+  calcImpSell(compObj: QObj) {
+    if (compObj.ml) {
+      compObj.m2Placa += compObj.ml * 0.4 * 0.1;
+    }
+    const imp = Math.ceil((compObj.m2Placa + compObj.m2Pt) / 8);
     return imp;
   }
 
@@ -319,9 +330,10 @@ export class EcomService {
   getComplement(name: string): Producto | undefined {
     const prodObj = {
       impPol: 'ImpPolMate',
+      impSell: 'ImpSell500',
       impAc: 'ImpAcr',
       grout: 'PasBCe5kg',
-      glue: 'PegamentoWeber',
+      glue: 'PegamentoWeberGris',
       sop: 'Sop12',
     };
     const code: string = prodObj[name];

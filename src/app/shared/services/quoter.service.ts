@@ -105,7 +105,6 @@ export class QuoterService {
   buildQueryObj(contactData, pspNum): Query {
     const cookieObj = this.cookiesSc.getCookieObj();
     const form: Query = {
-      // date: this.db.timestamp,
       date: serverTimestamp(),
       email: contactData.email,
       interest: '',

@@ -56,6 +56,7 @@
 /es/blog/terrazo-adecuado-para-mi
 /es/blog/mitos-terrazo-dementidos
 /es/blog/terrazzo-piletas
+/es/blog/terrazo-selladores
 
 /en/blog
 /en/blog/que-es-el-terrazo
@@ -67,6 +68,8 @@
 /en/blog/terrazo-adecuado-para-mi
 /en/blog/mitos-terrazo-dementidos
 /en/blog/terrazzo-piletas
+/en/blog/terrazo-selladores
+
 
 /es/colecciones/volcan/pucon
 /es/colecciones/volcan/lanin

@@ -76,7 +76,7 @@ export class CheckoutComponent implements OnInit {
         this.strippedCheckout();
       }
     } else {
-      // this.sendQuote();
+      this.sendQuote();
       this.gtmSc.gtmClick('quote');
     }
   }
