@@ -95,7 +95,6 @@ export class CartComponent implements OnInit {
         // this.close();
         // this.router.navigate([`/${this.lang}/checkout-us`]);
       }
-      this.gtmSc.gtmClick('samples');
     } else {
       if (this.eComSc.isEcom) {
         this.strippedCheckout();
@@ -125,6 +124,7 @@ export class CartComponent implements OnInit {
       },
     ];
     firstValueFrom(this.mpSc.buyItem(items, true)).then((res: any) => {
+      this.gtmSc.gtmClick('samples');
       window.location.href = res.all.init_point;
       this.eComSc.empyCartOnPersist();
     });

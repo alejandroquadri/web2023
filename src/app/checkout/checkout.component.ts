@@ -77,7 +77,6 @@ export class CheckoutComponent implements OnInit {
       }
     } else {
       this.sendQuote();
-      this.gtmSc.gtmClick('quote');
     }
   }
 
@@ -109,7 +108,7 @@ export class CheckoutComponent implements OnInit {
     const quote = await this.saveQuote().catch(err => {
       console.log(err);
     });
-
+    this.gtmSc.gtmClick('quote');
     this.spinner = false;
     this.openDialog(quote);
     this.ecomSc.emptyCart();

@@ -75,7 +75,8 @@ export const Landing = {
     },
     {
       bg_img_desktop: {
-        url: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2FprojectsNewWeb%2FYacones%20Luz%20Natural.webp?alt=media&token=3709d19f-f206-46ac-ba21-095948346ffe',
+        // url: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2FprojectsNewWeb%2FYacones%20Luz%20Natural.webp?alt=media&token=3709d19f-f206-46ac-ba21-095948346ffe',
+        url: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fprojects%2FparrillaBaja.webp?alt=media&token=ab14c04c-5344-4d86-948e-ca7a919e1a00',
       },
       bg_img_mob: {
         url: 'https://drive.google.com/uc?id=1bu_B02q9ZfyxSfP9eqequykJY6lLw49d',

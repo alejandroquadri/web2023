@@ -47,7 +47,7 @@
     "@angular/router": "^16.0.0",
     "@angular/service-worker": "^16.0.0",
     "@nguniversal/express-engine": "^16.0.2",
-    "@stripe/stripe-js": "^1.54.1",
+    "@stripe/stripe-js": "^2.1.11",
     "bootstrap": "^5.3.0",
     "date-fns": "^2.30.0",
     "express": "^4.15.2",

@@ -57,6 +57,7 @@
 /es/blog/mitos-terrazo-dementidos
 /es/blog/terrazzo-piletas
 /es/blog/terrazo-selladores
+/es/blog/dameros-terrazzo
 
 /en/blog
 /en/blog/que-es-el-terrazo
@@ -69,6 +70,7 @@
 /en/blog/mitos-terrazo-dementidos
 /en/blog/terrazzo-piletas
 /en/blog/terrazo-selladores
+/en/blog/dameros-terrazzo
 
 
 /es/colecciones/volcan/pucon
