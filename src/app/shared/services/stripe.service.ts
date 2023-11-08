@@ -23,6 +23,21 @@ export class StripeService {
     return this.http.post(`${this.url}simple-stripe-checkout`, body);
   }
 
+  embeddedFormCheckout(items: Array<StripeItem>) {
+    const body = {
+      items,
+      shippingAomunt: this.calcShipping(items),
+    };
+    console.log(body);
+    return this.http.post(`${this.url}embedded-stripe-checkout`, body);
+  }
+
+  getSessionData(sessionId: string) {
+    return this.http.get(`${this.url}session-status`, {
+      params: { session_id: sessionId },
+    });
+  }
+
   mixedCheckout(items: Array<StripeItem>, customerData: StripeCustomerData) {
     const body = {
       items,

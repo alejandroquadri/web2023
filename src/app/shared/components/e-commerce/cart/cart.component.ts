@@ -91,15 +91,15 @@ export class CartComponent implements OnInit {
       if (!this.eComSc.isEcom) {
         this.mpCheckout();
       } else {
-        this.strippedCheckout();
-        // this.close();
-        // this.router.navigate([`/${this.lang}/checkout-us`]);
+        // this.strippedCheckout();
+        this.close();
+        this.router.navigate([`/${this.lang}/checkout-us`]);
       }
     } else {
       if (this.eComSc.isEcom) {
-        this.strippedCheckout();
-        // this.close();
-        // this.router.navigate([`/${this.lang}/checkout-us`]);
+        // this.strippedCheckout();
+        this.close();
+        this.router.navigate([`/${this.lang}/checkout-us`]);
         this.gtmSc.gtmClick('purchase');
       } else {
         this.close();

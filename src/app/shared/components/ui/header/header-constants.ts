@@ -11,6 +11,7 @@ export const StickyUrls = [
   'lookbook',
   'colecciones',
   'collections',
+  'return',
   // 'privacy-policy',
   // 'terms-service',
   // 'returns-shipping',
@@ -21,4 +22,4 @@ export const StickyUrls = [
 
 export const AbsUrl = ['home', 'quote'];
 export const CtaBtnUrl = ['quote'];
-export const CheckoutUrl = ['checkout'];
+export const CheckoutUrl = ['checkout', 'checkout-us'];

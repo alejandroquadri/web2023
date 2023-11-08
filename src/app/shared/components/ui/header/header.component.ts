@@ -116,6 +116,9 @@ export class HeaderComponent implements OnInit {
     if (url.substring(0, 4) === 'blog') {
       url = 'blog';
     }
+    if (url.substring(0, 6) === 'return') {
+      url = 'return';
+    }
     return !this.stickyUrls.includes(url);
   }
 

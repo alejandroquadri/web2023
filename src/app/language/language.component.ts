@@ -73,6 +73,12 @@ export class LanguageComponent implements AfterViewInit {
   shouldShowNlDialog() {
     const url = this.router.url;
     const parsedUrl = url.replace(/\//g, '').substring(2);
-    return !(parsedUrl === 'thanks' || parsedUrl === 'not-found');
+    return !(
+      parsedUrl === 'thanks' ||
+      parsedUrl === 'checkout' ||
+      parsedUrl === 'checkout-us' ||
+      parsedUrl === 'return' ||
+      parsedUrl === 'not-found'
+    );
   }
 }

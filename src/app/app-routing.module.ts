@@ -137,6 +137,13 @@ const routes: Routes = [
           ),
       },
       {
+        path: 'return',
+        loadChildren: () =>
+          import('./return-page/return-page.module').then(
+            m => m.ReturnPageModule
+          ),
+      },
+      {
         path: 'blog',
         loadChildren: () =>
           import('./blog/blog.module').then(m => m.BlogModule),

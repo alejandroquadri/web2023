@@ -25,3 +25,4 @@ export * from './product-detail';
 export * from './cart';
 export * from './checkout';
 export * from './checkout-ecom';
+export * from './return';

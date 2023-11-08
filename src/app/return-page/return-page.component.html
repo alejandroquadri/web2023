@@ -1,0 +1,5 @@
+<div
+  *ngIf="sessionData$ | async as sessionData"
+  class="container wrapper d-flex flex-column justify-content-center align-items-center">
+  <div>{{ copy[lang].message }} {{ sessionData.customer_email }}</div>
+</div>
