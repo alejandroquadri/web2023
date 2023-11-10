@@ -58,6 +58,7 @@
 /es/blog/terrazzo-piletas
 /es/blog/terrazo-selladores
 /es/blog/dameros-terrazzo
+/es/blog/guia-instalacion
 
 /en/blog
 /en/blog/que-es-el-terrazo
@@ -71,6 +72,7 @@
 /en/blog/terrazzo-piletas
 /en/blog/terrazo-selladores
 /en/blog/dameros-terrazzo
+/en/blog/guia-instalacion
 
 
 /es/colecciones/volcan/pucon
