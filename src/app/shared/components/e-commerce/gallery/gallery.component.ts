@@ -13,7 +13,7 @@ import { Observable, Subject, tap } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { Colors } from 'src/app/shared/copy';
-import { Color, Producto } from 'src/app/shared/interfaces';
+import { Color, GalleryProductObj, Producto } from 'src/app/shared/interfaces';
 import {
   EcomService,
   LanguageService,
@@ -26,7 +26,7 @@ import {
   styleUrls: ['./gallery.component.scss'],
 })
 export class GalleryComponent implements OnInit, OnChanges {
-  @Input() products: any; // por ahora voy a hacer un mock de esto
+  @Input() products: Array<GalleryProductObj>;
   @Input() dbProducts: Record<string, Producto>;
   @Output() selected = new EventEmitter();
   isL$: Observable<boolean>;
@@ -37,6 +37,7 @@ export class GalleryComponent implements OnInit, OnChanges {
 
   isEcom: boolean;
   selectedProducts: Array<any>;
+  hooveringProduct: { name: string; url: string | null } | null = null;
 
   constructor(
     private layOutSc: LayoutService,
@@ -126,5 +127,24 @@ export class GalleryComponent implements OnInit, OnChanges {
     return sizes.filter(
       size => this.dbProducts[size.code].packaging === 'caja'
     );
+  }
+
+  onHover(product: GalleryProductObj, isHovering: boolean) {
+    if (isHovering && this.ecomSc.secImgs[product.name]) {
+      this.hooveringProduct = {
+        name: product.name,
+        url: this.ecomSc.secImgs[product.name]![0],
+      };
+    } else {
+      this.hooveringProduct = null;
+    }
+  }
+
+  imgSrc(product) {
+    if (this.hooveringProduct && this.hooveringProduct.name === product.name) {
+      return this.hooveringProduct.url;
+    } else {
+      return this.allColors[product.name].url;
+    }
   }
 }

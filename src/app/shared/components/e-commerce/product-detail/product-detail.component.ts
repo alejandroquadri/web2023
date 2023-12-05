@@ -130,21 +130,42 @@ export class ProductDetailComponent
     }
   }
 
+  // buildTerrazzoImgArray() {
+  //   const obj = this.allColors[this.productObj.name];
+  //   this.imgArray.push(obj.url);
+  //   if (obj.secImgs) {
+  //     obj.secImgs.forEach(img => this.imgArray.push(img));
+  //   }
+  // }
+
   buildTerrazzoImgArray() {
     const obj = this.allColors[this.productObj.name];
     this.imgArray.push(obj.url);
-    if (obj.secImgs) {
-      obj.secImgs.forEach(img => this.imgArray.push(img));
+    const secImgs = this.ecomSc.secImgs[this.productObj.name];
+    if (secImgs) {
+      secImgs.forEach(img => this.imgArray.push(img));
     }
   }
+
+  // buildAltImgArray() {
+  //   this.productObj.sizes.forEach(size => {
+  //     const obj = this.allColors[size.code];
+  //     this.imgObjArray[size.code] = [];
+  //     this.imgObjArray[size.code].push(obj.url);
+  //     if (obj.secImgs) {
+  //       obj.secImgs.forEach(img => this.imgObjArray[size.code].push(img));
+  //     }
+  //   });
+  // }
 
   buildAltImgArray() {
     this.productObj.sizes.forEach(size => {
       const obj = this.allColors[size.code];
       this.imgObjArray[size.code] = [];
       this.imgObjArray[size.code].push(obj.url);
-      if (obj.secImgs) {
-        obj.secImgs.forEach(img => this.imgObjArray[size.code].push(img));
+      const secImgs = this.ecomSc.secImgs[size.code];
+      if (secImgs) {
+        secImgs.forEach(img => this.imgObjArray[size.code].push(img));
       }
     });
   }

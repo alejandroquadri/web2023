@@ -13,9 +13,11 @@
       <div class="tile-wrapper d-flex flex-column">
         <div
           class="img-wrapper d-flex justify-content-center align-items-center"
+          (mouseenter)="onHover(product, true)"
+          (mouseleave)="onHover(product, false)"
           (click)="select(product.name)">
           <img
-            [src]="allColors[product.name].url"
+            [src]="imgSrc(product)"
             class="rounded prod-img"
             [alt]="product.name" />
         </div>

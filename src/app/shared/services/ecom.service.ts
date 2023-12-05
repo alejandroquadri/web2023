@@ -12,6 +12,7 @@ import {
   setDoc,
   where,
 } from '@angular/fire/firestore';
+import { Database, objectVal, ref, listVal } from '@angular/fire/database';
 
 import { CartItem, Producto, CompObj, QObj } from '../interfaces';
 import { DimParser, ProdImgs, UnitsParser } from '../constants';
@@ -28,6 +29,7 @@ export class EcomService {
   isEcom = environment.init.eCom;
   carrySamples = false;
   products: Record<string, Producto>;
+  secImgs: Record<string, Array<string>>;
   prodCrude: Array<Producto>;
   cart: CartItem[] = [];
   subTotal = 0;
@@ -43,6 +45,7 @@ export class EcomService {
 
   constructor(
     private authSc: AuthService,
+    private afd: Database,
     private ngZone: NgZone,
     private localStorageSc: LocalStorageService
   ) {}
@@ -100,6 +103,15 @@ export class EcomService {
       tap(productsObj => {
         this.products = productsObj;
         // es importante recien ahora cargar el carrito porque si no no estan los productos disponibles para mirar.
+      })
+    );
+  }
+
+  getGallerySecondaryImgs() {
+    return objectVal(ref(this.afd, 'newWeb/secProdImgs')).pipe(
+      tap((secImgs: any) => {
+        console.log(secImgs);
+        this.secImgs = secImgs;
       })
     );
   }

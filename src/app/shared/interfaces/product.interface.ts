@@ -50,3 +50,9 @@ export type Tipo =
   | 'insumo'
   | 'materia prima'
   | 'muestras';
+
+export interface GalleryProductObj {
+  name: string;
+  ecom?: boolean;
+  sizes: Array<{ code: string; size: string }>;
+}
