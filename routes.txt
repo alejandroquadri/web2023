@@ -61,6 +61,7 @@
 /es/blog/guia-instalacion
 /es/blog/terrazzos-emblematicos-parte1
 /es/blog/terrazzos-emblematicos-parte2
+/es/blog/terrazzos-emblematicos-parte3
 
 /en/blog
 /en/blog/que-es-el-terrazo
@@ -77,6 +78,7 @@
 /en/blog/guia-instalacion
 /en/blog/terrazzos-emblematicos-parte1
 /en/blog/terrazzos-emblematicos-parte2
+/en/blog/terrazzos-emblematicos-parte3
 
 
 /es/colecciones/volcan/pucon
