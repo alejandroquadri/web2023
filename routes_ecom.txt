@@ -56,44 +56,30 @@
 /es/colecciones/volcan/pucon
 /es/colecciones/volcan/lanin
 /es/colecciones/volcan/llaoLlao
-/es/colecciones/volcan/fitzRoy
-/es/colecciones/volcan/ceppoOscuro
-/es/colecciones/volcan/cumelen
-/es/colecciones/volcan/frey
 
 /en/collections/volcan/pucon
 /en/collections/volcan/lanin
 /en/collections/volcan/llaoLlao
-/en/collections/volcan/fitzRoy
-/en/collections/volcan/ceppoOscuro
-/en/collections/volcan/cumelen
-/en/collections/volcan/frey
 
 /es/colecciones/splash/guggenheim
 /es/colecciones/splash/almendra
 /es/colecciones/splash/plata
-/es/colecciones/splash/rosa
 /es/colecciones/splash/naranja
 /es/colecciones/splash/mies
-/es/colecciones/splash/grisDicks
 
 /en/collections/splash/guggenheim
 /en/collections/splash/almendra
 /en/collections/splash/plata
-/en/collections/splash/rosa
 /en/collections/splash/naranja
 /en/collections/splash/mies
-/en/collections/splash/grisDicks
 
 /es/colecciones/chromatic/natural
-/es/colecciones/chromatic/ocaso
 /es/colecciones/chromatic/celadon
 /es/colecciones/chromatic/niebla
 /es/colecciones/chromatic/gris
 /es/colecciones/chromatic/negroAlpes
 
 /en/collections/chromatic/natural
-/en/collections/chromatic/ocaso
 /en/collections/chromatic/celadon
 /en/collections/chromatic/niebla
 /en/collections/chromatic/gris

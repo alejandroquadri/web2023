@@ -9,7 +9,9 @@ import {
   CopyService,
   ServerDetectService,
   LayoutService,
+  EcomService,
 } from 'src/app/shared/services';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-footer',
@@ -20,6 +22,7 @@ export class FooterComponent implements OnInit {
   // @Input() data: any;
   // copy$: Observable<any>;
   copy = Footer;
+  isEcom = environment.init.eCom;
   isMobile$: Observable<boolean>;
   lang: string;
   icons = ICONS;
@@ -31,9 +34,11 @@ export class FooterComponent implements OnInit {
     private langSc: LanguageService,
     private copySc: CopyService,
     private serverDetSc: ServerDetectService,
-    private layoutSc: LayoutService
+    private layoutSc: LayoutService,
+    private ecomSc: EcomService
   ) {
     this.addIcons();
+    this.isEcom;
   }
 
   ngOnInit(): void {
@@ -58,5 +63,17 @@ export class FooterComponent implements OnInit {
     } else {
       return item.countries.includes(this.langSc.currentLangObj.countrycode);
     }
+  }
+
+  mailTo() {
+    return `mailto:${
+      this.isEcom ? this.copy.email.eCom : this.copy.email.local
+    }`;
+  }
+
+  callTo() {
+    return `tel:${
+      this.isEcom ? this.copy.callPhone.eCom : this.copy.callPhone.local
+    }`;
   }
 }

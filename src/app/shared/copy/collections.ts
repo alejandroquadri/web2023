@@ -45,7 +45,6 @@ export const Collections = {
       },
       {
         name: 'fitzRoy',
-        ecom: true,
         sizes: [
           { size: '40x40', code: 'DurFRo4040' },
           { size: '10x40', code: 'DurFRo1040' },
@@ -54,7 +53,6 @@ export const Collections = {
       },
       {
         name: 'ceppoOscuro',
-        ecom: true,
         sizes: [
           { size: '40x40', code: 'DurCOs4040' },
           { size: '10x40', code: 'DurCOs1040' },
@@ -63,7 +61,6 @@ export const Collections = {
       },
       {
         name: 'cumelen',
-        ecom: true,
         sizes: [
           { size: '40x40', code: 'DurCum4040' },
           { size: '10x40', code: 'DurCum1040' },
@@ -72,7 +69,6 @@ export const Collections = {
       },
       {
         name: 'frey',
-        ecom: true,
         sizes: [
           { size: '40x40', code: 'DurFre4040' },
           { size: '10x40', code: 'DurFre1040' },
@@ -208,7 +204,7 @@ export const Collections = {
       },
       {
         name: 'rosa',
-        ecom: true,
+        ecom: false,
         sizes: [
           { size: '40x40', code: 'DurRos4040' },
           { size: '10x40', code: 'DurRos1040' },
@@ -244,6 +240,7 @@ export const Collections = {
       },
       {
         name: 'grisDicks',
+        ecom: false,
         sizes: [
           { size: '40x40', code: 'DurGDi4040' },
           { size: '10x40', code: 'DurGDi1040' },

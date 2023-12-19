@@ -110,7 +110,6 @@ export class EcomService {
   getGallerySecondaryImgs() {
     return objectVal(ref(this.afd, 'newWeb/secProdImgs')).pipe(
       tap((secImgs: any) => {
-        console.log(secImgs);
         this.secImgs = secImgs;
       })
     );

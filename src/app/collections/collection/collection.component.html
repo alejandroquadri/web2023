@@ -225,7 +225,7 @@
         <app-gallery
           *ngIf="dbProducts"
           class="my-2"
-          [products]="copy.products"
+          [products]="filterBlends(copy.products)"
           [dbProducts]="dbProducts"
           (selected)="selectedProduct($event)"></app-gallery>
       </div>
@@ -238,7 +238,7 @@
             <h2 class="ps-3 ps-lg-5 sub-title">{{ item.value[lang].title }}</h2>
             <app-gallery
               class="my-2"
-              [products]="item.value.products"
+              [products]="filterBlends(item.value.products)"
               [dbProducts]="dbProducts"
               (selected)="selectedProduct($event, item.key)"></app-gallery>
           </ng-container>
@@ -246,16 +246,4 @@
       </div>
     </div>
   </div>
-
-  <!-- esto es el fab boton para cotizar -->
-  <!-- <div class="floating d-sm-none">
-    <app-cta-btn
-      class=""
-      [text]="lang === 'es' ? 'Cotizar' : 'Quote'"
-      [origin]="id"
-      [lang]="lang"
-      [small]="true"
-      [header]="true"
-      [fab]="true"></app-cta-btn>
-  </div> -->
 </div>

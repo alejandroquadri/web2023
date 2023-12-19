@@ -174,6 +174,15 @@ export class CollectionComponent implements OnInit, OnDestroy {
     return this.ecomSc.isEcom ? item.value.ecom : true;
   }
 
+  filterBlends(products) {
+    console.log(products);
+    if (this.ecomSc.isEcom) {
+      return products.filter(product => product.ecom);
+    } else {
+      return products;
+    }
+  }
+
   filterSizes(products) {
     return products.map(product => ({
       ...product,

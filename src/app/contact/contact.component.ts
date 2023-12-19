@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { tap } from 'rxjs/operators';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
@@ -11,6 +12,8 @@ import {
   LanguageService,
 } from 'src/app/shared/services';
 import { environment } from 'src/environments/environment';
+import { ContactCopy } from '../shared/copy';
+import { GoogleMap, MapInfoWindow, MapMarker } from '@angular/google-maps';
 
 @Component({
   selector: 'app-contact',
@@ -18,17 +21,23 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./contact.component.scss'],
 })
 export class ContactComponent implements OnInit {
+  @ViewChild(MapInfoWindow) infoWindow: MapInfoWindow;
+  @ViewChild('marker', { static: false }) storeMarker: MapMarker;
+
   isMobile$: Observable<boolean>;
   apiLoaded$: Observable<boolean>;
   lang: string;
   showMap = false;
+  isEcom = environment.init.eCom;
 
   googleMapsKey = environment.googleMaps.key;
-  zoom = 18;
+  zoom = this.isEcom ? 10 : 12;
   center: google.maps.LatLngLiteral = {
     lat: -34.6062565425857,
     lng: -58.42448375654149,
   };
+  copy = ContactCopy;
+  infoContent = '<h5>Quadri</h5><p>Gascon 483<br>C1181 CABA<br>Argentina</p>';
 
   options: google.maps.MapOptions = {
     zoomControl: true,
@@ -74,12 +83,25 @@ export class ContactComponent implements OnInit {
           map(() => {
             return true;
           }),
+          tap(() => {
+            setTimeout(() => {
+              console.log(this.storeMarker);
+              if (this.storeMarker) {
+                this.openInfoWindow(this.storeMarker);
+              }
+            }, 0);
+          }),
           catchError((err: any) => {
             console.log('hay un error', err);
             return of(false);
           })
         );
     }
+  }
+
+  openInfoWindow(marker: MapMarker) {
+    console.log('corro open');
+    this.infoWindow.open(marker);
   }
 
   setSeo() {
@@ -101,5 +123,17 @@ export class ContactComponent implements OnInit {
 
   submitted() {
     console.log('submit');
+  }
+
+  mailTo() {
+    return `mailto:${
+      this.isEcom ? this.copy.email.eCom : this.copy.email.local
+    }`;
+  }
+
+  callTo() {
+    return `tel:${
+      this.isEcom ? this.copy.callPhone.eCom : this.copy.callPhone.local
+    }`;
   }
 }
