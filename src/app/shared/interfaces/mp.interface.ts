@@ -9,7 +9,7 @@ export interface MPitem {
 }
 
 export interface MPshipments {
-  mode: 'me2';
+  mode: string; //'me2';
   local_pickup?: boolean;
   free_methods?: Array<any>;
   free_methods_types?: Array<any>;

@@ -6,8 +6,8 @@ import { MPitem, MPshipments } from '../interfaces';
   providedIn: 'root',
 })
 export class MpService {
-  url = 'https://erp-api.quadri.com.ar/api/';
-  // url = 'http://localhost:3000/api/';
+  // url = 'https://erp-api.quadri.com.ar/api/';
+  url = 'http://localhost:3000/api/';
 
   constructor(private http: HttpClient) {}
 
@@ -15,7 +15,7 @@ export class MpService {
     const shipments = !hasShipments
       ? {}
       : ({
-          mode: 'me2' as 'me2',
+          mode: 'me2',
           local_pickup: true,
           dimensions: '22x13x9,3000',
           // free_methods: [],
@@ -24,9 +24,8 @@ export class MpService {
 
     const body = {
       items,
-      shipments,
+      // shipments,
     };
-    console.log(body);
     return this.http.post(`${this.url}buy`, body);
   }
 }
