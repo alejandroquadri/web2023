@@ -21,11 +21,13 @@ export class GtmService {
     this.window = _windowRef.nativeWindow; // intialise the window to what we get from our window service
   }
 
-  // GTM lo unico que hace es sumar eventos al objeto global dataLayer.
-  // acá esta el tutorial https://itbusinesshub.com/blog/integrate-google-tag-manager-in-angular-app/
-  // Para que GTM detecte eventos lo unico que hay que hacer es un push de un objeto nuevo al objeto datalayer.
-  // es mejor hacerlo de esta forma y no dejando que GTM detecte solo por la siguiente razon
-  // Event Bubbling: In Single Page Applications (SPAs) like Angular, the actual elements you see on the page might be dynamically generated or destroyed. If the element you're trying to track isn't present at the time GTM is initialized, the trigger might not work. You might need to ensure that the GTM trigger is set up to listen for clicks on a parent element and then use conditions to filter out the specific clicks you want to track.
+  /* 
+  GTM lo unico que hace es sumar eventos al objeto global dataLayer.
+  acá esta el tutorial https://itbusinesshub.com/blog/integrate-google-tag-manager-in-angular-app/
+  Para que GTM detecte eventos lo unico que hay que hacer es un push de un objeto nuevo al objeto datalayer.
+  es mejor hacerlo de esta forma y no dejando que GTM detecte solo por la siguiente razon
+  Event Bubbling: In Single Page Applications (SPAs) like Angular, the actual elements you see on the page might be dynamically generated or destroyed. If the element you're trying to track isn't present at the time GTM is initialized, the trigger might not work. You might need to ensure that the GTM trigger is set up to listen for clicks on a parent element and then use conditions to filter out the specific clicks you want to track. 
+  */
 
   private pushToGTM(obj: DataLayerObj) {
     if (obj) this.window.dataLayer.push(obj);
