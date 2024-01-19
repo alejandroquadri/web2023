@@ -1,0 +1,17 @@
+<div class="wrapper d-flex" *ngIf="files && files.length">
+  <a
+    *ngFor="let file of files"
+    class="file-ref"
+    href="{{ file.url[lang] }}"
+    download
+    target="_blank">
+    <div class="d-flex flex-column me-5 file">
+      <mat-icon
+        class="material-icons-outlined icon"
+        aria-hidden="false"
+        aria-label="download"
+        fontIcon="description"></mat-icon>
+      <div class="text-center">{{ file.fileName[lang] }}</div>
+    </div>
+  </a>
+</div>

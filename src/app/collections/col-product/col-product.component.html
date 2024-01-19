@@ -6,11 +6,21 @@
       </div>
     </div>
   </div>
-  <app-product-detail
-    *ngIf="dbProducts"
-    [productObj]="productWebObj"
-    [colId]="colId"
-    [collection]="colData"
-    (add)="addToCart($event)"
-    [dbProducts]="dbProducts"></app-product-detail>
+  <div class="pb-0 pb-lg-3">
+    <app-product-detail
+      *ngIf="dbProducts"
+      [productObj]="productWebObj"
+      [colId]="colId"
+      [collection]="colData"
+      (add)="addToCart($event)"
+      [dbProducts]="dbProducts"></app-product-detail>
+  </div>
+
+  <div class="container pt-3 pt-lg-4 pb-5">
+    <app-prod-accordion
+      [copy]="collections[this.colId]"
+      [lang]="lang"
+      [prodSpecs]="prodSpecs"
+      [fullWidth]="true"></app-prod-accordion>
+  </div>
 </div>

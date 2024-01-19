@@ -91,7 +91,43 @@
           {{ copy[lang].carrouselCopy }}
         </div>
         <div class="mt-3">
-          <cdk-accordion multi>
+          <app-prod-accordion
+            [copy]="copy"
+            [lang]="lang"
+            [prodSpecs]="prodSpecs"></app-prod-accordion>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" id="products" *ngIf="id !== 'all'">
+      <div class="col-12 my-4">
+        <app-gallery
+          *ngIf="dbProducts"
+          class="my-2"
+          [products]="filterBlends(copy.products)"
+          [dbProducts]="dbProducts"
+          (selected)="selectedProduct($event)"></app-gallery>
+      </div>
+    </div>
+
+    <div class="row" id="products" *ngIf="id === 'all'">
+      <div class="col-12 my-4" *ngIf="dbProducts">
+        <div *ngFor="let item of collections | keyvalue : originalOrder">
+          <ng-container *ngIf="showCollection(item)">
+            <h2 class="ps-3 ps-lg-5 sub-title">{{ item.value[lang].title }}</h2>
+            <app-gallery
+              class="my-2"
+              [products]="filterBlends(item.value.products)"
+              [dbProducts]="dbProducts"
+              (selected)="selectedProduct($event, item.key)"></app-gallery>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <cdk-accordion multi>
             <cdk-accordion-item
               #dimItem="cdkAccordionItem"
               role="button"
@@ -215,35 +251,4 @@
                 <app-specs [specs]="prodSpecs[copy.specs][lang]"></app-specs>
               </div>
             </cdk-accordion-item>
-          </cdk-accordion>
-        </div>
-      </div>
-    </div>
-
-    <div class="row" id="products" *ngIf="id !== 'all'">
-      <div class="col-12 my-4">
-        <app-gallery
-          *ngIf="dbProducts"
-          class="my-2"
-          [products]="filterBlends(copy.products)"
-          [dbProducts]="dbProducts"
-          (selected)="selectedProduct($event)"></app-gallery>
-      </div>
-    </div>
-
-    <div class="row" id="products" *ngIf="id === 'all'">
-      <div class="col-12 my-4" *ngIf="dbProducts">
-        <div *ngFor="let item of collections | keyvalue : originalOrder">
-          <ng-container *ngIf="showCollection(item)">
-            <h2 class="ps-3 ps-lg-5 sub-title">{{ item.value[lang].title }}</h2>
-            <app-gallery
-              class="my-2"
-              [products]="filterBlends(item.value.products)"
-              [dbProducts]="dbProducts"
-              (selected)="selectedProduct($event, item.key)"></app-gallery>
-          </ng-container>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+          </cdk-accordion> -->

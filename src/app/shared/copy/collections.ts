@@ -135,6 +135,29 @@ export const Collections = {
     },
     thickness: '1,8 cm',
     uses: ['exteriores', 'interiores', 'revestimientos'],
+    docs: {
+      has: true,
+      ecom: {},
+      local: [
+        {
+          fileName: {
+            es: 'guia de instalacion & mantenimiento',
+            en: 'placement & maintenance guide',
+          },
+          url: {
+            es: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fguias%2FInstructivo%20de%20colocacio%CC%81n%20Terrazo%20-Sellado.pdf?alt=media&token=9fe266e5-2d52-49a2-875b-3500f10b2d82',
+            en: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fguias%2FInstructivo%20de%20colocacio%CC%81n%20Terrazo%20-Sellado.pdf?alt=media&token=9fe266e5-2d52-49a2-875b-3500f10b2d82',
+          },
+        },
+        {
+          fileName: { es: 'hoja tecnica', en: 'tehchnical sheet' },
+          url: {
+            es: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fguias%2FHoja%20de%20Producto%20Terrazzo.pdf?alt=media&token=c851cac1-c0be-4f10-9b5d-fca8025b044a',
+            en: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fguias%2FHoja%20de%20Producto%20Terrazzo.pdf?alt=media&token=c851cac1-c0be-4f10-9b5d-fca8025b044a',
+          },
+        },
+      ],
+    },
   },
   splash: {
     ecom: true,
@@ -308,6 +331,29 @@ export const Collections = {
     },
     thickness: '1,8 cm',
     uses: ['exteriores', 'interiores', 'revestimientos'],
+    docs: {
+      has: true,
+      ecom: {},
+      local: [
+        {
+          fileName: {
+            es: 'guia de instalacion & mantenimiento',
+            en: 'placement & maintenance guide',
+          },
+          url: {
+            es: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fguias%2FInstructivo%20de%20colocacio%CC%81n%20Terrazo%20-Sellado.pdf?alt=media&token=9fe266e5-2d52-49a2-875b-3500f10b2d82',
+            en: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fguias%2FInstructivo%20de%20colocacio%CC%81n%20Terrazo%20-Sellado.pdf?alt=media&token=9fe266e5-2d52-49a2-875b-3500f10b2d82',
+          },
+        },
+        {
+          fileName: { es: 'hoja tecnica', en: 'tehchnical sheet' },
+          url: {
+            es: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fguias%2FHoja%20de%20Producto%20Terrazzo.pdf?alt=media&token=c851cac1-c0be-4f10-9b5d-fca8025b044a',
+            en: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fguias%2FHoja%20de%20Producto%20Terrazzo.pdf?alt=media&token=c851cac1-c0be-4f10-9b5d-fca8025b044a',
+          },
+        },
+      ],
+    },
   },
   gradiente: {
     ecom: false,
@@ -507,6 +553,22 @@ export const Collections = {
     },
     thickness: '2 cm',
     uses: ['exteriores'],
+    docs: {
+      has: true,
+      ecom: {},
+      local: [
+        {
+          fileName: {
+            es: 'guia de instalacion & mantenimiento',
+            en: 'placement & maintenance guide',
+          },
+          url: {
+            es: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fguias%2FInstructivo%20de%20colocacio%CC%81n%20Rusticato.pdf?alt=media&token=4f8cd081-a608-41de-bddc-1bcf0e9f3445',
+            en: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fguias%2FInstructivo%20de%20colocacio%CC%81n%20Rusticato.pdf?alt=media&token=4f8cd081-a608-41de-bddc-1bcf0e9f3445',
+          },
+        },
+      ],
+    },
   },
   chromatic: {
     ecom: true,
@@ -663,8 +725,30 @@ export const Collections = {
     },
     thickness: '1,8 cm',
     uses: ['exteriores', 'interiores', 'revestimientos'],
+    docs: {
+      has: true,
+      ecom: {},
+      local: [
+        {
+          fileName: {
+            es: 'guia de instalacion & mantenimiento',
+            en: 'placement & maintenance guide',
+          },
+          url: {
+            es: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fguias%2FInstructivo%20de%20colocacio%CC%81n%20Terrazo%20-Sellado.pdf?alt=media&token=9fe266e5-2d52-49a2-875b-3500f10b2d82',
+            en: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fguias%2FInstructivo%20de%20colocacio%CC%81n%20Terrazo%20-Sellado.pdf?alt=media&token=9fe266e5-2d52-49a2-875b-3500f10b2d82',
+          },
+        },
+        {
+          fileName: { es: 'hoja tecnica', en: 'tehchnical sheet' },
+          url: {
+            es: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fguias%2FHoja%20de%20Producto%20Terrazzo.pdf?alt=media&token=c851cac1-c0be-4f10-9b5d-fca8025b044a',
+            en: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fguias%2FHoja%20de%20Producto%20Terrazzo.pdf?alt=media&token=c851cac1-c0be-4f10-9b5d-fca8025b044a',
+          },
+        },
+      ],
+    },
   },
-  // clasica: {
   //   ecom: true,
 
   //   specs: 'compact40',
@@ -874,5 +958,21 @@ export const Collections = {
     },
     thickness: '1,8 cm',
     uses: ['exteriores', 'interiores'],
+    docs: {
+      has: true,
+      ecom: {},
+      local: [
+        {
+          fileName: {
+            es: 'guia de instalacion & mantenimiento',
+            en: 'placement & maintenance guide',
+          },
+          url: {
+            es: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fguias%2FInstructivo%20de%20colocacio%CC%81n%20Piso%20Tecnico.pdf?alt=media&token=e2054955-46d2-4ec2-bd73-afdcb3cd8c32',
+            en: 'https://firebasestorage.googleapis.com/v0/b/repmant-ce7a5.appspot.com/o/web%2Fguias%2FInstructivo%20de%20colocacio%CC%81n%20Piso%20Tecnico.pdf?alt=media&token=e2054955-46d2-4ec2-bd73-afdcb3cd8c32',
+          },
+        },
+      ],
+    },
   },
 };

@@ -9,8 +9,16 @@ import {
   ViewChild,
 } from '@angular/core';
 
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  ValidatorFn,
+  Validators,
+} from '@angular/forms';
+
 import { Subject } from 'rxjs';
-import { startWith, takeUntil, tap } from 'rxjs/operators';
+import { takeUntil } from 'rxjs/operators';
 
 import { SwiperComponent } from 'swiper/angular';
 import SwiperCore, {
@@ -27,15 +35,11 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay, Thumbs]);
 
 import { Colors, ProductDetail } from 'src/app/shared/copy';
 import { Color, Producto } from 'src/app/shared/interfaces';
-import { EcomService } from '../../../services/ecom.service';
 import {
-  AbstractControl,
-  FormBuilder,
-  FormGroup,
-  ValidatorFn,
-  Validators,
-} from '@angular/forms';
-import { GtmService, LanguageService } from 'src/app/shared/services';
+  GtmService,
+  LanguageService,
+  EcomService,
+} from 'src/app/shared/services';
 
 @Component({
   selector: 'app-product-detail',

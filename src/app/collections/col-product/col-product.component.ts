@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subject, combineLatest } from 'rxjs';
 import { startWith, takeUntil, tap } from 'rxjs/operators';
 import { CollectionUrlParser } from 'src/app/shared/constants';
-import { Collections, Colors } from 'src/app/shared/copy';
+import { Collections, Colors, PorductSpecs } from 'src/app/shared/copy';
 import { Producto } from 'src/app/shared/interfaces';
 import {
   EcomService,
@@ -37,6 +37,7 @@ export class ColProductComponent implements OnInit, OnDestroy, AfterViewInit {
   // constants & copy
   collParser = CollectionUrlParser;
   collections = Collections;
+  prodSpecs = PorductSpecs;
 
   constructor(
     private route: ActivatedRoute,

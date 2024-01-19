@@ -35,6 +35,8 @@ import {
   ProductDetailComponent,
   CartComponent,
   CustomStepperComponent,
+  PdfDownloadComponent,
+  ProdAccordionComponent,
 } from '../components';
 import { MarkdownPipe, SortPipe } from '../pipes';
 import { LazyImgDirective } from '../directives';
@@ -71,6 +73,8 @@ import { SignupNlComponent } from '../components/signup-nl/signup-nl.component';
     MarkdownPipe,
     DateFnsPipe,
     LazyImgDirective,
+    PdfDownloadComponent,
+    ProdAccordionComponent,
   ],
   imports: [
     CommonModule,
@@ -120,6 +124,8 @@ import { SignupNlComponent } from '../components/signup-nl/signup-nl.component';
     ProductDetailComponent,
     CartComponent,
     SignupNlComponent,
+    PdfDownloadComponent,
+    ProdAccordionComponent,
     SortPipe,
     DateFnsPipe,
     MarkdownPipe,

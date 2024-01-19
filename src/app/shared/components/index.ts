@@ -22,3 +22,5 @@ export * from './lang-change/lang-change.component';
 export * from './e-commerce/gallery/gallery.component';
 export * from './e-commerce/product-detail/product-detail.component';
 export * from './e-commerce/cart/cart.component';
+export * from './pdf-download/pdf-download.component';
+export * from './prod-accordion/prod-accordion.component';

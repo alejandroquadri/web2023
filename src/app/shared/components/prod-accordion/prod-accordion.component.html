@@ -1,0 +1,134 @@
+<cdk-accordion multi>
+  <cdk-accordion-item
+    *ngIf="!fullWidth"
+    #dimItem="cdkAccordionItem"
+    role="button"
+    class="accordion-item">
+    <div class="accordion-item-header d-flex" (click)="dimItem.toggle()">
+      <div class="flex-grow-1 ac-item-title">
+        {{ lang === 'es' ? 'Dimensiones' : 'Sizes' }}
+      </div>
+      <div class="icon-cont" [ngClass]="{ 'large-title': fullWidth }">
+        <mat-icon *ngIf="!dimItem.expanded" class="align-middle">add</mat-icon>
+        <mat-icon *ngIf="dimItem.expanded" class="align-middle"
+          >remove</mat-icon
+        >
+      </div>
+    </div>
+    <div
+      [@contentExpansion]="dimItem.expanded ? 'expanded' : 'collapsed'"
+      class="accordion-item-body"
+      [style.display]="dimItem.expanded ? '' : 'none'">
+      <app-sizes [sizes]="copy.sizes" [thickness]="copy.thickness"></app-sizes>
+    </div>
+  </cdk-accordion-item>
+
+  <cdk-accordion-item
+    #usesItem="cdkAccordionItem"
+    role="button"
+    class="accordion-item">
+    <div class="accordion-item-header d-flex" (click)="usesItem.toggle()">
+      <div class="flex-grow-1 ac-item-title">
+        {{ lang === 'es' ? 'Usos' : 'Uses' }}
+      </div>
+      <div class="icon-cont" [ngClass]="{ 'large-title': fullWidth }">
+        <mat-icon *ngIf="!usesItem.expanded" class="align-middle">add</mat-icon>
+        <mat-icon *ngIf="usesItem.expanded" class="align-middle"
+          >remove</mat-icon
+        >
+      </div>
+    </div>
+    <div
+      [@contentExpansion]="usesItem.expanded ? 'expanded' : 'collapsed'"
+      class="accordion-item-body"
+      [style.display]="usesItem.expanded ? '' : 'none'">
+      <app-uses [uses]="copy.uses"></app-uses>
+    </div>
+  </cdk-accordion-item>
+
+  <cdk-accordion-item
+    *ngIf="copy.special_pieces?.has && type === 'local'"
+    #specialPiecesItem="cdkAccordionItem"
+    role="button"
+    class="accordion-item">
+    <div
+      class="accordion-item-header d-flex"
+      (click)="specialPiecesItem.toggle()">
+      <div class="flex-grow-1 ac-item-title">
+        {{ lang === 'es' ? 'Piezas especiales' : 'Special pieces' }}
+      </div>
+      <div class="icon-cont" [ngClass]="{ 'large-title': fullWidth }">
+        <mat-icon *ngIf="!specialPiecesItem.expanded" class="align-middle"
+          >add</mat-icon
+        >
+        <mat-icon *ngIf="specialPiecesItem.expanded" class="align-middle"
+          >remove</mat-icon
+        >
+      </div>
+    </div>
+    <div
+      [@contentExpansion]="
+        specialPiecesItem.expanded ? 'expanded' : 'collapsed'
+      "
+      class="accordion-item-body"
+      [style.display]="specialPiecesItem.expanded ? '' : 'none'">
+      <app-special-pieces
+        [pieces]="copy.special_pieces.pieces"></app-special-pieces>
+    </div>
+  </cdk-accordion-item>
+
+  <cdk-accordion-item
+    #specItem="cdkAccordionItem"
+    role="button"
+    class="accordion-item">
+    <div class="accordion-item-header d-flex" (click)="specItem.toggle()">
+      <div class="flex-grow-1 ac-item-title">
+        {{
+          lang === 'es' ? '¿Cómo las fabricamos?' : 'How are they manufactured?'
+        }}
+      </div>
+      <div class="icon-cont" [ngClass]="{ 'large-title': fullWidth }">
+        <mat-icon *ngIf="!specItem.expanded" class="align-middle">add</mat-icon>
+        <mat-icon *ngIf="specItem.expanded" class="align-middle"
+          >remove</mat-icon
+        >
+      </div>
+    </div>
+    <div
+      [@contentExpansion]="specItem.expanded ? 'expanded' : 'collapsed'"
+      class="accordion-item-body"
+      [style.display]="specItem.expanded ? '' : 'none'">
+      <app-specs [specs]="prodSpecs[copy.specs][lang]"></app-specs>
+    </div>
+  </cdk-accordion-item>
+
+  <cdk-accordion-item
+    *ngIf="copy.docs?.has"
+    #downloads="cdkAccordionItem"
+    role="button"
+    class="accordion-item">
+    <div class="accordion-item-header d-flex" (click)="downloads.toggle()">
+      <div class="flex-grow-1 ac-item-title">
+        {{ lang === 'es' ? 'Documentos utiles' : 'Useful docs' }}
+      </div>
+      <div class="icon-cont" [ngClass]="{ 'large-title': fullWidth }">
+        <mat-icon *ngIf="!downloads.expanded" class="align-middle"
+          >add</mat-icon
+        >
+        <mat-icon *ngIf="downloads.expanded" class="align-middle"
+          >remove</mat-icon
+        >
+      </div>
+    </div>
+    <div
+      [@contentExpansion]="downloads.expanded ? 'expanded' : 'collapsed'"
+      class="accordion-item-body"
+      [style.display]="downloads.expanded ? '' : 'none'">
+      <div class="my-3">
+        <app-pdf-download
+          [files]="copy.docs[type]"
+          [lang]="lang"></app-pdf-download>
+      </div>
+    </div>
+  </cdk-accordion-item>
+</cdk-accordion>
